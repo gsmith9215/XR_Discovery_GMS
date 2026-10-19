@@ -1,7 +1,8 @@
 
-
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class RandomObjectSpawner : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class RandomObjectSpawner : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private Transform rightHandAnchor;
 
-    [Header("Vocabulary Objects")]
-    [SerializeField] private GameObject[] objectPrefabs;
+    // Vocabulary Prefabs are loaded automatically.
+    private GameObject[] objectPrefabs;
 
     [Header("Spawn Settings")]
     [SerializeField] private float spawnDistance = 1.5f;
@@ -27,8 +28,24 @@ public class RandomObjectSpawner : MonoBehaviour
 
     private int roundNumber = 0;
 
+    [Header("Scoreboard")]
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text targetText;
+
+    private int score = 0;
+    private GameObject targetObject;
+
     private void Start()
     {
+        // Automatically load completed vocabulary boxes.
+        objectPrefabs = Resources.LoadAll<GameObject>(
+            "VocabularyBoxes"
+        );
+
+        Debug.Log(
+            $"Loaded {objectPrefabs.Length} vocabulary objects."
+        );
+
         if (playerCamera == null)
         {
             Debug.LogError("Player Camera is not assigned!");
@@ -36,12 +53,17 @@ public class RandomObjectSpawner : MonoBehaviour
             return;
         }
 
-        if (objectPrefabs == null || objectPrefabs.Length < 3)
+        if (objectPrefabs.Length < 3)
         {
-            Debug.LogError("At least 3 prefabs are required!");
+            Debug.LogError(
+                "At least 3 vocabulary Prefabs are required!"
+            );
             enabled = false;
             return;
         }
+
+        if (scoreText != null)
+            scoreText.text = "Score: 0";
 
         CalculateSpawnPositions();
         ShuffleObjects();
@@ -50,36 +72,6 @@ public class RandomObjectSpawner : MonoBehaviour
 
     private void Update()
     {
-        // A button on right controller.
-        bool buttonA = OVRInput.GetDown(
-            OVRInput.Button.One,
-            OVRInput.Controller.RTouch
-        );
-
-        // X button on left controller.
-        bool buttonX = OVRInput.GetDown(
-            OVRInput.Button.One,
-            OVRInput.Controller.LTouch
-        );
-
-        // Right index trigger.
-        bool rightTrigger = OVRInput.GetDown(
-            OVRInput.Button.PrimaryIndexTrigger,
-            OVRInput.Controller.RTouch
-        );
-
-        // Left index trigger.
-        bool leftTrigger = OVRInput.GetDown(
-            OVRInput.Button.PrimaryIndexTrigger,
-            OVRInput.Controller.LTouch
-        );
-
-        // Advance when any supported button is pressed.
-        if (buttonA || buttonX || rightTrigger || leftTrigger)
-        {
-            Debug.Log("Controller input detected!");
-            SpawnNextGroup();
-        }
     }
 
     private void CalculateSpawnPositions()
@@ -90,9 +82,7 @@ public class RandomObjectSpawner : MonoBehaviour
         ).normalized;
 
         if (forward.sqrMagnitude < 0.001f)
-        {
             forward = Vector3.forward;
-        }
 
         Vector3 right = Vector3.Cross(
             Vector3.up,
@@ -114,18 +104,15 @@ public class RandomObjectSpawner : MonoBehaviour
     {
         remainingIndices.Clear();
 
-        // Collect valid prefab indices.
         for (int i = 0; i < objectPrefabs.Length; i++)
         {
             if (objectPrefabs[i] != null)
-            {
                 remainingIndices.Add(i);
-            }
         }
 
         if (remainingIndices.Count < ItemsPerRound)
         {
-            Debug.LogError("Not enough valid prefabs!");
+            Debug.LogError("Not enough valid Prefabs!");
             enabled = false;
             return;
         }
@@ -141,7 +128,6 @@ public class RandomObjectSpawner : MonoBehaviour
         }
 
         roundNumber = 0;
-
         Debug.Log("Vocabulary objects shuffled!");
     }
 
@@ -150,57 +136,43 @@ public class RandomObjectSpawner : MonoBehaviour
         if (!enabled)
             return;
 
-        // Remove the current three objects.
         ClearObjects();
 
-        // Restart when fewer than three objects remain.
         if (remainingIndices.Count < ItemsPerRound)
         {
-            Debug.Log("Vocabulary cycle completed!");
             ShuffleObjects();
         }
 
         roundNumber++;
 
-        // Spawn three unique objects.
         for (int i = 0; i < ItemsPerRound; i++)
         {
             int prefabIndex = remainingIndices[0];
             remainingIndices.RemoveAt(0);
 
+            // Spawn the complete vocabulary box Prefab.
             GameObject newObject = Instantiate(
                 objectPrefabs[prefabIndex],
                 spawnPositions[i],
                 Quaternion.identity
             );
 
-            // Align the visible center of the object.
-            CenterObject(newObject, spawnPositions[i]);
-
             activeObjects.Add(newObject);
         }
 
-        Debug.Log("Vocabulary Round: " + roundNumber);
-    }
+        // Randomly choose one of the three as the correct answer.
+        targetObject = activeObjects[
+            UnityEngine.Random.Range(0, activeObjects.Count)
+        ];
 
-    private void CenterObject(GameObject obj, Vector3 target)
-    {
-        Renderer[] renderers =
-            obj.GetComponentsInChildren<Renderer>();
-
-        if (renderers.Length == 0)
-            return;
-
-        Bounds bounds = renderers[0].bounds;
-
-        foreach (Renderer renderer in renderers)
+        // Display its English name.
+        if (targetText != null)
         {
-            bounds.Encapsulate(renderer.bounds);
+            string word = targetObject.name.Replace("(Clone)", "").Trim();
+            targetText.text = "Find: " + word;
         }
 
-        Vector3 offset = target - bounds.center;
-
-        obj.transform.position += offset;
+        Debug.Log("Vocabulary Round: " + roundNumber);
     }
 
     private void ClearObjects()
@@ -208,11 +180,55 @@ public class RandomObjectSpawner : MonoBehaviour
         foreach (GameObject obj in activeObjects)
         {
             if (obj != null)
-            {
                 Destroy(obj);
-            }
         }
 
         activeObjects.Clear();
+    }
+
+    
+    private bool processingHit = false;
+
+    public void SelectBox(Collider hit)
+    {
+        if (processingHit) return;
+
+        foreach (GameObject box in activeObjects)
+        {
+            if (box != null &&
+                (hit.transform == box.transform ||
+                hit.transform.IsChildOf(box.transform)))
+            {
+                if (box == targetObject)
+                {
+                    score++;
+
+                    if (scoreText != null)
+                        scoreText.text = "Score: " + score;
+
+                    Debug.Log("Correct! Score: " + score);
+                }
+                else
+                {
+                    Debug.Log("Incorrect: " + box.name);
+                }
+
+                StartCoroutine(AdvanceRound());
+                return;
+            }
+        }
+    }
+
+    private IEnumerator AdvanceRound()
+    {
+        processingHit = true;
+
+        // Immediately spawn the next group.
+        SpawnNextGroup();
+
+        // Brief cooldown to prevent accidental double hits.
+        yield return new WaitForSeconds(0.3f);
+
+        processingHit = false;
     }
 }
