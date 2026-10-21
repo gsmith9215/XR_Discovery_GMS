@@ -919,6 +919,8 @@ MonoBehaviour:
   spawnDistance: 0.5
   objectSpacing: 0.5
   heightBelowEyes: -1
+  scoreText: {fileID: 1967025037}
+  targetText: {fileID: 420798864}
 --- !u!1 &1007332005
 GameObject:
   m_ObjectHideFlags: 0
