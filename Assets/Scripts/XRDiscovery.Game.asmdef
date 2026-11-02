@@ -1,0 +1,6 @@
+{
+  "name": "XRDiscovery.Game",
+  "rootNamespace": "XRDiscovery.Vocabulary",
+  "references": ["XRDiscovery.Vocabulary.Core", "Unity.TextMeshPro", "UnityEngine.UI", "Unity.InputSystem"],
+  "autoReferenced": true
+}

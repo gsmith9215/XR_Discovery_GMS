@@ -1,0 +1,192 @@
+using System;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
+
+namespace XRDiscovery.Vocabulary
+{
+    // A single world-space canvas, shared by mouse input in the Editor and controller rays on Quest.
+    public sealed class VocabularyView : MonoBehaviour
+    {
+        public static readonly Color Ink = new(.91f, .95f, .97f);
+        public static readonly Color Muted = new(.61f, .72f, .76f);
+        public static readonly Color Accent = new(.13f, .52f, .47f);
+        private TMP_FontAsset font;
+        private RectTransform page;
+        private UnityEngine.UI.Image background;
+        private Transform cameraTransform;
+        private RectTransform keyboardHost;
+        public Canvas Canvas { get; private set; }
+        public VocabularyKeyboard Keyboard { get; private set; }
+        public RectTransform Page => page;
+
+        public void Initialize(Transform cameraAnchor, Transform rightHand)
+        {
+            cameraTransform = cameraAnchor;
+            font = Resources.Load<TMP_FontAsset>(VocabularyLibrary.FontResourcePath) ?? TMP_Settings.defaultFontAsset;
+            var root = new GameObject("Vocabulary menu", typeof(RectTransform), typeof(Canvas),
+                typeof(UnityEngine.UI.CanvasScaler), typeof(UnityEngine.UI.GraphicRaycaster));
+            root.transform.SetParent(transform, false);
+            Canvas = root.GetComponent<Canvas>();
+            Canvas.renderMode = RenderMode.WorldSpace;
+            Canvas.worldCamera = cameraAnchor.GetComponent<Camera>();
+            Canvas.sortingOrder = 20;
+            var rect = (RectTransform)root.transform;
+            rect.sizeDelta = new Vector2(1200, 900);
+            rect.localScale = Vector3.one * .0013f;
+            root.GetComponent<UnityEngine.UI.CanvasScaler>().dynamicPixelsPerUnit = 2;
+            background = root.AddComponent<UnityEngine.UI.Image>();
+            background.color = new Color(.035f, .065f, .085f, .98f);
+            background.raycastTarget = false;
+            page = Rect("Page", rect, Vector2.zero, Vector2.one);
+            keyboardHost = Rect("Keyboard", rect, new Vector2(0, 0), new Vector2(1, 0));
+            keyboardHost.pivot = new Vector2(.5f, 0);
+            keyboardHost.sizeDelta = new Vector2(-40, 300);
+            keyboardHost.anchoredPosition = new Vector2(0, 12);
+            Keyboard = VocabularyKeyboard.Build(keyboardHost, font);
+            Keyboard.Hide();
+
+            var system = EventSystem.current;
+            if (system == null)
+            {
+                var eventObject = new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+                eventObject.transform.SetParent(transform, false);
+                eventObject.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();
+            }
+            var left = FindAnchor(cameraAnchor.root, "LeftHandAnchor");
+            var pointer = gameObject.AddComponent<VocabularyPointerInput>();
+            pointer.Configure(Canvas, rightHand, left, Canvas.worldCamera);
+            Recenter();
+        }
+
+        private static Transform FindAnchor(Transform root, string name)
+        {
+            foreach (var child in root.GetComponentsInChildren<Transform>(true))
+                if (child.name == name) return child;
+            return null;
+        }
+
+        public void Recenter()
+        {
+            var forward = Vector3.ProjectOnPlane(cameraTransform.forward, Vector3.up).normalized;
+            if (forward.sqrMagnitude < .001f) forward = Vector3.forward;
+            Canvas.transform.SetPositionAndRotation(cameraTransform.position + forward * 1.7f - Vector3.up * .06f,
+                Quaternion.LookRotation(forward, Vector3.up));
+        }
+
+        public void Clear(bool solidBackground = true)
+        {
+            Keyboard.Hide();
+            for (int i = page.childCount - 1; i >= 0; i--)
+            {
+                var child = page.GetChild(i).gameObject;
+                child.SetActive(false);
+                Destroy(child);
+            }
+            background.enabled = solidBackground;
+        }
+
+        // Positions are measured from the top left in the 1200 x 900 design canvas.
+        public RectTransform Area(string name, float x, float y, float width, float height, Transform parent = null)
+        {
+            var rect = Rect(name, parent ?? page, new Vector2(0, 1), new Vector2(0, 1));
+            rect.pivot = new Vector2(0, 1);
+            rect.anchoredPosition = new Vector2(x, -y);
+            rect.sizeDelta = new Vector2(width, height);
+            return rect;
+        }
+
+        public TMP_Text Text(string name, string value, float x, float y, float width, float height,
+            float size = 30, Color? color = null, Transform parent = null)
+        {
+            return Label(Area(name, x, y, width, height, parent), value, size, color ?? Ink);
+        }
+
+        public void Panel(string name, float x, float y, float width, float height)
+        {
+            var image = Area(name, x, y, width, height).gameObject.AddComponent<UnityEngine.UI.Image>();
+            image.color = new Color(.035f, .065f, .085f, .96f);
+            image.raycastTarget = false;
+        }
+
+        public TMP_Text Label(RectTransform rect, string value, float size = 30, Color? color = null)
+        {
+            var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
+            text.font = font;
+            text.fontSize = size;
+            text.color = color ?? Ink;
+            text.text = value;
+            text.richText = false;
+            text.raycastTarget = false;
+            text.textWrappingMode = TextWrappingModes.Normal;
+            text.overflowMode = TextOverflowModes.Ellipsis;
+            text.alignment = TextAlignmentOptions.MidlineLeft;
+            return text;
+        }
+
+        public UnityEngine.UI.Button Button(string name, string label, float x, float y, float width, float height,
+            Action clicked, bool primary = false, bool enabled = true, Transform parent = null)
+        {
+            var rect = Area(name, x, y, width, height, parent);
+            var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            image.color = primary ? Accent : new Color(.105f, .17f, .21f);
+            var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>();
+            button.targetGraphic = image;
+            var colors = button.colors;
+            colors.highlightedColor = new Color(1.25f, 1.25f, 1.25f);
+            colors.pressedColor = new Color(.7f, .9f, .85f);
+            colors.disabledColor = new Color(.4f, .4f, .4f, .65f);
+            button.colors = colors;
+            button.navigation = new UnityEngine.UI.Navigation { mode = UnityEngine.UI.Navigation.Mode.None };
+            button.interactable = enabled;
+            button.onClick.AddListener(() => clicked?.Invoke());
+            var labelRect = Rect("Label", rect, Vector2.zero, Vector2.one);
+            labelRect.offsetMin = new Vector2(18, 5);
+            labelRect.offsetMax = new Vector2(-18, -5);
+            var text = Label(labelRect, label, 28);
+            text.alignment = TextAlignmentOptions.Midline;
+            return button;
+        }
+
+        public TMP_InputField Input(string name, string value, string placeholder, float x, float y,
+            float width, Action<string> changed)
+        {
+            var rect = Area(name, x, y, width, 60);
+            var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            image.color = new Color(.08f, .13f, .16f);
+            var field = rect.gameObject.AddComponent<TMP_InputField>();
+            field.targetGraphic = image;
+            var viewport = Rect("Text viewport", rect, Vector2.zero, Vector2.one);
+            viewport.offsetMin = new Vector2(18, 8);
+            viewport.offsetMax = new Vector2(-18, -8);
+            viewport.gameObject.AddComponent<UnityEngine.UI.RectMask2D>();
+            var textRect = Rect("Value", viewport, Vector2.zero, Vector2.one);
+            var text = (TextMeshProUGUI)Label(textRect, "", 29);
+            text.textWrappingMode = TextWrappingModes.NoWrap;
+            var placeholderText = Label(Rect("Placeholder", viewport, Vector2.zero, Vector2.one), placeholder, 27, Muted);
+            field.textViewport = viewport;
+            field.textComponent = text;
+            field.placeholder = placeholderText;
+            field.fontAsset = font;
+            field.lineType = TMP_InputField.LineType.SingleLine;
+            field.characterLimit = 80;
+            field.richText = false;
+            field.text = value;
+            field.onValueChanged.AddListener(s => changed?.Invoke(s));
+            Keyboard.Bind(field);
+            return field;
+        }
+
+        private static RectTransform Rect(string name, Transform parent, Vector2 min, Vector2 max)
+        {
+            var rect = new GameObject(name, typeof(RectTransform)).GetComponent<RectTransform>();
+            rect.SetParent(parent, false);
+            rect.anchorMin = min;
+            rect.anchorMax = max;
+            rect.offsetMin = Vector2.zero;
+            rect.offsetMax = Vector2.zero;
+            return rect;
+        }
+    }
+}

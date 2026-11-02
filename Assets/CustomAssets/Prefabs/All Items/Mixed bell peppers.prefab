@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &840744031110748187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9105188244785246535}
+  m_Layer: 0
+  m_Name: Mixed bell peppers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9105188244785246535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840744031110748187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4003844713908949881}
+  - {fileID: 2486264412890169076}
+  - {fileID: 3930171455015655091}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1035179633035085546
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9105188244785246535}
+    m_Modifications:
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0017771274
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.012181259
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659259
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.25881907
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6687255464921132226, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+      propertyPath: m_Name
+      value: Bell pepper
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+--- !u!4 &2486264412890169076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3232826057564747806, guid: eccf6a4930aeabe4c944e2273c2f1421, type: 3}
+  m_PrefabInstance: {fileID: 1035179633035085546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1305244075502105628
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9105188244785246535}
+    m_Modifications:
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.14677712
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.002818741
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659259
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.25881907
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6090915972519491187, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+      propertyPath: m_Name
+      value: Bell pepper Green
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+--- !u!4 &3930171455015655091 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2636838407814963887, guid: e0a6db8860bd32e4eaea52ffb2555589, type: 3}
+  m_PrefabInstance: {fileID: 1305244075502105628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3314612968538819657
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9105188244785246535}
+    m_Modifications:
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.14322287
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.002818741
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9945219
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.104528464
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674120720566881260, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+      propertyPath: m_Name
+      value: Bell pepper Red
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+--- !u!4 &4003844713908949881 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1904843848156618544, guid: 36b1e328f9355834db74ae4c551b3b0b, type: 3}
+  m_PrefabInstance: {fileID: 3314612968538819657}
+  m_PrefabAsset: {fileID: 0}

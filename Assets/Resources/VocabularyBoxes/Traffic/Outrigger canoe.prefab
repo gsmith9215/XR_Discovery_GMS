@@ -1,0 +1,161 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6575702251623908137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4955834516488726682}
+  m_Layer: 0
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4955834516488726682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6575702251623908137}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.9063078, z: 0, w: 0.42261824}
+  m_LocalPosition: {x: -0.00039318204, y: -0.11373784, z: -0.0022845715}
+  m_LocalScale: {x: 0.10245862, y: 0.10245862, z: 0.10245862}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 742843345895012416}
+  m_Father: {fileID: 2101888686789834950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &636336443906572409
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095323846194838493, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      propertyPath: m_Name
+      value: Outrigger canoe
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4955834516488726682}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+--- !u!4 &2101888686789834950 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1585214292362983615, guid: 168c7ff32516af245a7d05369038347f, type: 3}
+  m_PrefabInstance: {fileID: 636336443906572409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8328885899162100669
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4955834516488726682}
+    m_Modifications:
+    - target: {fileID: 891158848220132502, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_Name
+      value: Outrigger canoe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+--- !u!4 &742843345895012416 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8780112232890801149, guid: e3e36a0cad0757b4f8f6d83fc840aee0, type: 3}
+  m_PrefabInstance: {fileID: 8328885899162100669}
+  m_PrefabAsset: {fileID: 0}

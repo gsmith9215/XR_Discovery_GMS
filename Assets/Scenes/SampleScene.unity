@@ -916,9 +916,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RandomObjectSpawner
   playerCamera: {fileID: 1779402006}
   rightHandAnchor: {fileID: 554075642}
-  spawnDistance: 0.5
+  spawnDistance: 1
   objectSpacing: 0.5
-  heightBelowEyes: -1
+  heightBelowEyes: 0.25
+  studyDistance: 1.5
+  studyHeightBelowEyes: 0.1
   scoreText: {fileID: 1967025037}
   targetText: {fileID: 420798864}
 --- !u!1 &1007332005

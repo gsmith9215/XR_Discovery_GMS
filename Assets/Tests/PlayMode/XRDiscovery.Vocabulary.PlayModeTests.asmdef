@@ -1,0 +1,21 @@
+{
+    "name": "XRDiscovery.Vocabulary.PlayModeTests",
+    "rootNamespace": "XRDiscovery.Vocabulary.Tests",
+    "references": [
+        "XRDiscovery.Game",
+        "XRDiscovery.Vocabulary.Core",
+        "UnityEngine.UI",
+        "Unity.TextMeshPro",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": ["UNITY_INCLUDE_TESTS"],
+    "optionalUnityReferences": ["TestAssemblies"],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
