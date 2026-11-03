@@ -45,6 +45,5 @@ sysinfo.txt
 /[Aa]ssets/AssetStoreTools*
 
 # Builds and packages
-*.apk
 *.aab
 *.unitypackage
