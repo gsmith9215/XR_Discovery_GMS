@@ -13,7 +13,7 @@ Open `Assets/Scenes/SampleScene.unity` and press Play. The existing `RandomObjec
 
 ## Controls
 
-In XR, point the right controller at a menu and press/release its trigger. The left controller is used if the right controller is unavailable. The hammer remains the test answer mechanism. Recenter relocates the menu and objects in front of the current head direction.
+In XR, point the right controller at a menu and press/release its trigger. The left controller is used if the right controller is unavailable. The hammer remains the test answer mechanism. The menu is positioned at startup, then stays in place when navigating, changing settings, or starting Study or Test. Recenter relocates the menu and objects in front of the current head direction.
 
 Selecting a text field opens a world-space keyboard with Latin, hiragana and katakana layouts, shift/small kana, voiced marks, backspace and space. Done returns to item selection. Physical keyboard/IME input works, and a System keyboard option is available when supported by the platform.
 

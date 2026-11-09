@@ -67,6 +67,70 @@ namespace XRDiscovery.Vocabulary.Tests
         }
 
         [UnityTest]
+        public IEnumerator NavigationKeepsMenuPoseUntilRecenterIsClicked()
+        {
+            Transform menu = app.View.Canvas.transform;
+            Vector3 position = menu.position;
+            Quaternion rotation = menu.rotation;
+
+            void Navigate(string button)
+            {
+                cameraObject.transform.position += new Vector3(.1f, .02f, .05f);
+                cameraObject.transform.rotation *= Quaternion.Euler(0, 7, 0);
+                Click(button);
+                Assert.That(Vector3.Distance(menu.position, position), Is.LessThan(.0001f), button + " moved the menu.");
+                Assert.That(Quaternion.Angle(menu.rotation, rotation), Is.LessThan(.001f), button + " rotated the menu.");
+            }
+
+            Navigate("Study");
+            Navigate("Back");
+            Navigate("Study");
+            Navigate("Set_premade:all");
+            Navigate("StartSet");
+            Navigate("NextItem");
+            Navigate("PreviousItem");
+            Navigate("Back");
+            Navigate("Test");
+            Navigate("Set_premade:all");
+            Navigate("StartSet");
+            Navigate("Back");
+            Navigate("Cancel");
+            Navigate("Back");
+            Navigate("Confirm");
+            Navigate("CustomSets");
+            Navigate("NewBlankSet");
+            Navigate("Back");
+            Navigate("Confirm");
+            Navigate("Back");
+
+            int promptLanguage = PlayerPrefs.GetInt("Vocabulary.JapanesePrompts", 1);
+            bool hadPromptLanguage = PlayerPrefs.HasKey("Vocabulary.JapanesePrompts");
+            try
+            {
+                Navigate("PromptLanguage");
+                Navigate("PromptLanguage");
+            }
+            finally
+            {
+                if (hadPromptLanguage) PlayerPrefs.SetInt("Vocabulary.JapanesePrompts", promptLanguage);
+                else PlayerPrefs.DeleteKey("Vocabulary.JapanesePrompts");
+                PlayerPrefs.Save();
+            }
+
+            Click("Recenter");
+            Assert.That(Vector3.Distance(menu.position, position), Is.GreaterThan(.1f));
+            Assert.That(Quaternion.Angle(menu.rotation, rotation), Is.GreaterThan(1f));
+            Assert.That(Vector3.Angle(menu.forward, Vector3.ProjectOnPlane(cameraObject.transform.forward, Vector3.up)), Is.LessThan(.001f));
+            position = menu.position;
+            rotation = menu.rotation;
+            Navigate("Study");
+            Navigate("Back");
+            yield return null;
+            Assert.That(Vector3.Distance(menu.position, position), Is.LessThan(.0001f));
+            Assert.That(Quaternion.Angle(menu.rotation, rotation), Is.LessThan(.001f));
+        }
+
+        [UnityTest]
         public IEnumerator MainMenuAndStudyUseRealPremadeSetAndWrapInBothDirections()
         {
             Assert.That(spawner.ActiveObjects, Is.Empty);

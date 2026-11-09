@@ -39,6 +39,7 @@ namespace XRDiscovery.Vocabulary
         private bool initialized;
         private bool japanese = true;
         private Coroutine feedback;
+        private Coroutine initialPositioning;
         private string draftId;
         private string draftName;
         private HashSet<string> draftItems;
@@ -96,7 +97,7 @@ namespace XRDiscovery.Vocabulary
                 Debug.LogWarning(storageNotice);
             }
             ShowMainMenu();
-            StartCoroutine(PositionAfterTrackingStarts());
+            initialPositioning = StartCoroutine(PositionAfterTrackingStarts());
         }
 
         private IEnumerator PositionAfterTrackingStarts()
@@ -104,18 +105,27 @@ namespace XRDiscovery.Vocabulary
             // OVRCameraRig initializes its anchors after MonoBehaviour.Start.
             yield return null;
             yield return new WaitForEndOfFrame();
-            if (Screen == VocabularyScreen.MainMenu) Recenter();
+            if (Screen == VocabularyScreen.MainMenu) view.Recenter();
             while (enabled && Screen == VocabularyScreen.MainMenu)
             {
                 var head = UnityEngine.XR.InputDevices.GetDeviceAtXRNode(UnityEngine.XR.XRNode.Head);
                 if (head.isValid && head.TryGetFeatureValue(UnityEngine.XR.CommonUsages.isTracked, out bool tracked) && tracked)
                 {
                     yield return new WaitForEndOfFrame();
-                    if (Screen == VocabularyScreen.MainMenu) Recenter();
+                    if (Screen == VocabularyScreen.MainMenu) view.Recenter();
+                    initialPositioning = null;
                     yield break;
                 }
                 yield return null;
             }
+            initialPositioning = null;
+        }
+
+        private void StopInitialPositioning()
+        {
+            if (initialPositioning == null) return;
+            StopCoroutine(initialPositioning);
+            initialPositioning = null;
         }
 
         private void OnKeyboardVisibility(bool visible)
@@ -125,6 +135,7 @@ namespace XRDiscovery.Vocabulary
 
         private void NewPage(VocabularyScreen screen, bool solid = true)
         {
+            StopInitialPositioning();
             Screen = screen;
             itemArea = null;
             view.Clear(solid);
@@ -143,7 +154,6 @@ namespace XRDiscovery.Vocabulary
             StopPresentation();
             session = null;
             NewPage(VocabularyScreen.MainMenu);
-            view.Recenter();
             view.Text("Eyebrow", "XR DISCOVERY  /  JAPANESE VOCABULARY", 60, 55, 1080, 45, 25, VocabularyView.Muted);
             view.Text("Heading", "Make the words familiar.", 60, 115, 1080, 100, 58);
             view.Text("Introduction", "Explore objects, learn their names, then put your memory to the test.", 60, 224, 1080, 100, 30);
@@ -244,7 +254,6 @@ namespace XRDiscovery.Vocabulary
             if (studyItems.Length == 0) return;
             selected = new SetChoice { Name = name, Items = studyItems };
             studyIndex = 0;
-            view.Recenter();
             spawner.Recenter();
             ShowStudyItem();
         }
@@ -280,7 +289,6 @@ namespace XRDiscovery.Vocabulary
             if (valid.Length == 0) return;
             selected = new SetChoice { Name = name, Items = valid };
             session = new TestSession(valid, library.AllItemIds, new System.Random(), id => Prompt(library.Get(id)));
-            view.Recenter();
             spawner.Recenter();
             ShowQuestion();
         }
@@ -355,7 +363,12 @@ namespace XRDiscovery.Vocabulary
             ShowQuestion();
         }
 
-        private void Recenter() { view.Recenter(); spawner.Recenter(); }
+        private void Recenter()
+        {
+            StopInitialPositioning();
+            view.Recenter();
+            spawner.Recenter();
+        }
 
         private void OpenEditor(string id, string name, IEnumerable<string> items)
         {
