@@ -157,7 +157,7 @@ namespace XRDiscovery.Vocabulary
             var heading = view.Text("Heading", "Vocabulary Learning Center", 60, 100, 1080, 100, 58);
             heading.alignment = TextAlignmentOptions.Center;
             view.Button("Study", "Study\nLearn words with 3D objects.", 60, 360, 520, 160, () => Browse(BrowsePurpose.Study), true);
-            view.Button("Test", "Game\nTest you knowledge with vocabulary games.", 620, 360, 520, 160, () => Browse(BrowsePurpose.Test), true);
+            view.Button("Test", "Games\nTest you knowledge with vocabulary games.", 620, 360, 520, 160, () => Browse(BrowsePurpose.Test), true);
             view.Button("CustomSets", "My custom sets", 60, 550, 1080, 80, () => Browse(BrowsePurpose.Manage), enabled: storageAvailable);
             view.Button("PromptLanguage", "Test prompts: " + (japanese ? "Japanese" : "English"), 60, 665, 700, 65, () =>
             {
