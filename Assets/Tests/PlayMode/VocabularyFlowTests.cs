@@ -67,6 +67,78 @@ namespace XRDiscovery.Vocabulary.Tests
         }
 
         [UnityTest]
+        public IEnumerator MainMenuLabelsRenderFullyAndButtonTextAlignsAfterNavigation()
+        {
+            AssertMainMenuLayout();
+            Click("Study");
+            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.Sets));
+            Click("Back");
+            yield return null;
+            AssertMainMenuLayout();
+            Click("Test");
+            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.Sets));
+            Click("Back");
+            yield return null;
+            AssertMainMenuLayout();
+        }
+
+        private void AssertMainMenuLayout()
+        {
+            Canvas.ForceUpdateCanvases();
+            var titles = new TMP_Text[2];
+            var descriptions = new TMP_Text[2];
+            string[] names = { "Study", "Test" };
+            string[] expectedTitles = { "Study", "Games" };
+            for (int i = 0; i < names.Length; i++)
+            {
+                var button = Button(names[i]);
+                var rect = (RectTransform)button.transform;
+                titles[i] = button.transform.Find("Title").GetComponent<TMP_Text>();
+                descriptions[i] = button.transform.Find("Description").GetComponent<TMP_Text>();
+                Assert.That(titles[i].text, Is.EqualTo(expectedTitles[i]));
+                foreach (var label in new[] { titles[i], descriptions[i] })
+                {
+                    AssertFullyRendered(label);
+                    foreach (var character in label.textInfo.characterInfo.Take(label.textInfo.characterCount)
+                                 .Where(character => character.isVisible))
+                    {
+                        Vector3 bottom = rect.InverseTransformPoint(label.transform.TransformPoint(character.bottomLeft));
+                        Vector3 top = rect.InverseTransformPoint(label.transform.TransformPoint(character.topRight));
+                        Assert.That(bottom.x, Is.GreaterThanOrEqualTo(rect.rect.xMin), label.name);
+                        Assert.That(bottom.y, Is.GreaterThanOrEqualTo(rect.rect.yMin), label.name);
+                        Assert.That(top.x, Is.LessThanOrEqualTo(rect.rect.xMax), label.name);
+                        Assert.That(top.y, Is.LessThanOrEqualTo(rect.rect.yMax), label.name);
+                    }
+                }
+                Assert.That(titles[i].textInfo.lineCount, Is.EqualTo(1));
+                var titleBottom = MenuTextY(titles[i], titles[i].textBounds.min.y);
+                var descriptionTop = MenuTextY(descriptions[i], descriptions[i].textBounds.max.y);
+                Assert.That(titleBottom - descriptionTop, Is.GreaterThan(20f), "Leave a visible gap below each title.");
+            }
+            Assert.That(MenuTextY(titles[0], titles[0].textInfo.lineInfo[0].baseline),
+                Is.EqualTo(MenuTextY(titles[1], titles[1].textInfo.lineInfo[0].baseline)).Within(.1f));
+            Assert.That(MenuTextY(descriptions[0], descriptions[0].textInfo.lineInfo[0].baseline),
+                Is.EqualTo(MenuTextY(descriptions[1], descriptions[1].textInfo.lineInfo[0].baseline)).Within(.1f));
+            Assert.That(Text("Heading").text, Is.EqualTo("Vocabulary Learning Center"));
+            foreach (var label in app.View.Page.GetComponentsInChildren<TMP_Text>()
+                         .Where(label => !string.IsNullOrEmpty(label.text)))
+                AssertFullyRendered(label);
+        }
+
+        private float MenuTextY(TMP_Text text, float localY) => app.View.Page.InverseTransformPoint(
+            text.transform.TransformPoint(new Vector3(0, localY, 0))).y;
+
+        private static void AssertFullyRendered(TMP_Text label)
+        {
+            label.ForceMeshUpdate();
+            string visible = new string(label.textInfo.characterInfo.Take(label.textInfo.characterCount)
+                .Where(character => character.isVisible).Select(character => character.character).ToArray());
+            string expected = new string(label.text.Where(character => !char.IsWhiteSpace(character)).ToArray());
+            Assert.That(visible, Is.EqualTo(expected), label.transform.parent.name + "/" + label.name + " must render every letter.");
+            Assert.That(label.isTextOverflowing, Is.False, label.name + " must fit its rectangle.");
+        }
+
+        [UnityTest]
         public IEnumerator NavigationKeepsMenuPoseUntilRecenterIsClicked()
         {
             Transform menu = app.View.Canvas.transform;

@@ -149,6 +149,20 @@ namespace XRDiscovery.Vocabulary
             return button;
         }
 
+        public UnityEngine.UI.Button MenuButton(string name, string title, string description,
+            float x, float y, float width, float height, Action clicked)
+        {
+            var button = Button(name, "", x, y, width, height, clicked, true);
+            // Noto Sans JP needs more than 60 units of line height at this size.
+            var titleText = Text("Title", title, 20, 20, width - 40, 80, 42, parent: button.transform);
+            titleText.alignment = TextAlignmentOptions.Center;
+            titleText.textWrappingMode = TextWrappingModes.NoWrap;
+            var descriptionText = Text("Description", description, 20, 120, width - 40, 75, 24,
+                parent: button.transform);
+            descriptionText.alignment = TextAlignmentOptions.Top;
+            return button;
+        }
+
         public TMP_InputField Input(string name, string value, string placeholder, float x, float y,
             float width, Action<string> changed)
         {
