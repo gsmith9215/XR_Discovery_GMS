@@ -82,6 +82,48 @@ namespace XRDiscovery.Vocabulary.Tests
             AssertMainMenuLayout();
         }
 
+        [UnityTest]
+        public IEnumerator RoundedButtonsKeepTheirLabelsVisibleAcrossScreens()
+        {
+            void CheckButtons()
+            {
+                Canvas.ForceUpdateCanvases();
+                foreach (var button in app.View.Page.GetComponentsInChildren<UnityEngine.UI.Button>())
+                {
+                    var image = button.GetComponent<UnityEngine.UI.Image>();
+                    Assert.That(image, Is.Not.Null, button.name);
+                    Assert.That(image.sprite, Is.Not.Null, button.name);
+                    Assert.That(image.type, Is.EqualTo(UnityEngine.UI.Image.Type.Sliced), button.name);
+                    foreach (var label in button.GetComponentsInChildren<TMP_Text>())
+                        if (!string.IsNullOrEmpty(label.text)) AssertFullyRendered(label);
+                }
+            }
+
+            CheckButtons();
+            Click("Study");
+            CheckButtons();
+            Click("Set_premade:all");
+            CheckButtons();
+            Click("StartSet");
+            CheckButtons();
+            Click("Back");
+            Click("CustomSets");
+            CheckButtons();
+            Click("NewBlankSet");
+            CheckButtons();
+            app.View.Keyboard.Show(Input("SetName"));
+            Canvas.ForceUpdateCanvases();
+            foreach (var key in app.View.Keyboard.GetComponentsInChildren<UnityEngine.UI.Button>())
+            {
+                var image = key.GetComponent<UnityEngine.UI.Image>();
+                Assert.That(image.sprite, Is.Not.Null, key.name);
+                Assert.That(image.type, Is.EqualTo(UnityEngine.UI.Image.Type.Sliced), key.name);
+                foreach (var label in key.GetComponentsInChildren<TMP_Text>())
+                    AssertFullyRendered(label);
+            }
+            yield return null;
+        }
+
         private void AssertMainMenuLayout()
         {
             Canvas.ForceUpdateCanvases();

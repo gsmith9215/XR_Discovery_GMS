@@ -37,6 +37,7 @@ namespace XRDiscovery.Vocabulary
             rect.localScale = Vector3.one * .0013f;
             root.GetComponent<UnityEngine.UI.CanvasScaler>().dynamicPixelsPerUnit = 2;
             background = root.AddComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.Apply(background, true);
             background.color = new Color(.035f, .065f, .085f, .98f);
             background.raycastTarget = false;
             page = Rect("Page", rect, Vector2.zero, Vector2.one);
@@ -106,6 +107,7 @@ namespace XRDiscovery.Vocabulary
         public void Panel(string name, float x, float y, float width, float height)
         {
             var image = Area(name, x, y, width, height).gameObject.AddComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.Apply(image, true);
             image.color = new Color(.035f, .065f, .085f, .96f);
             image.raycastTarget = false;
         }
@@ -130,6 +132,7 @@ namespace XRDiscovery.Vocabulary
         {
             var rect = Area(name, x, y, width, height, parent);
             var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.Apply(image);
             image.color = primary ? Accent : new Color(.105f, .17f, .21f);
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>();
             button.targetGraphic = image;
@@ -146,6 +149,9 @@ namespace XRDiscovery.Vocabulary
             labelRect.offsetMax = new Vector2(-18, -5);
             var text = Label(labelRect, label, 28);
             text.alignment = TextAlignmentOptions.Midline;
+            text.enableAutoSizing = true;
+            text.fontSizeMin = 20;
+            text.fontSizeMax = 28;
             return button;
         }
 
@@ -168,6 +174,7 @@ namespace XRDiscovery.Vocabulary
         {
             var rect = Area(name, x, y, width, 60);
             var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.Apply(image);
             image.color = new Color(.08f, .13f, .16f);
             var field = rect.gameObject.AddComponent<TMP_InputField>();
             field.targetGraphic = image;

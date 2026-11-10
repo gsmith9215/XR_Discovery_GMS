@@ -156,9 +156,9 @@ namespace XRDiscovery.Vocabulary
             NewPage(VocabularyScreen.MainMenu);
             var heading = view.Text("Heading", "Vocabulary Learning Center", 60, 100, 1080, 100, 58);
             heading.alignment = TextAlignmentOptions.Center;
-            view.MenuButton("Study", "Study", "Learn words with 3D objects.", 30, 310, 550, 220,
+            view.MenuButton("Study", "Study", "Learn words with 3D objects.", 60, 310, 520, 220,
                 () => Browse(BrowsePurpose.Study));
-            view.MenuButton("Test", "Games", "Test you knowledge with vocabulary games.", 620, 310, 550, 220,
+            view.MenuButton("Test", "Games", "Test you knowledge with vocabulary games.", 620, 310, 520, 220,
                 () => Browse(BrowsePurpose.Test));
             view.Button("CustomSets", "My Custom Vocabulary Sets", 60, 550, 1080, 80, () => Browse(BrowsePurpose.Manage), enabled: storageAvailable);
             view.Button("PromptLanguage", "Test prompts: " + (japanese ? "Japanese" : "English"), 60, 665, 700, 65, () =>

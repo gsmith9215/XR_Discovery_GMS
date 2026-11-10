@@ -116,6 +116,7 @@ namespace XRDiscovery.Vocabulary
         private void BuildContents()
         {
             var background = GetComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.Apply(background, true);
             background.color = new Color(0.055f, 0.085f, 0.12f, 0.98f);
             background.raycastTarget = false;
             var layout = gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
@@ -340,6 +341,7 @@ namespace XRDiscovery.Vocabulary
         {
             RectTransform rect = Rect(label + "Key", parent);
             var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.Apply(image);
             image.color = accent ? new Color(0.12f, 0.46f, 0.40f) : new Color(0.14f, 0.20f, 0.27f);
             image.raycastTarget = true;
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>();
