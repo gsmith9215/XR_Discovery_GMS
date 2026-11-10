@@ -160,7 +160,7 @@ namespace XRDiscovery.Vocabulary
                 () => Browse(BrowsePurpose.Study));
             view.MenuButton("Test", "Games", "Test you knowledge with vocabulary games.", 620, 310, 550, 220,
                 () => Browse(BrowsePurpose.Test));
-            view.Button("CustomSets", "My custom sets", 60, 550, 1080, 80, () => Browse(BrowsePurpose.Manage), enabled: storageAvailable);
+            view.Button("CustomSets", "My Custom Vocabulary Sets", 60, 550, 1080, 80, () => Browse(BrowsePurpose.Manage), enabled: storageAvailable);
             view.Button("PromptLanguage", "Test prompts: " + (japanese ? "Japanese" : "English"), 60, 665, 700, 65, () =>
             {
                 japanese = !japanese;
@@ -168,10 +168,10 @@ namespace XRDiscovery.Vocabulary
                 PlayerPrefs.Save();
                 ShowMainMenu();
             });
-            view.Text("LibraryCount", $"{library.Entries.Count} items · {library.Categories.Count} premade sets", 60, 755, 1080, 48, 26, VocabularyView.Muted);
             view.Button("Recenter", "Recenter", 800, 665, 340, 65, Recenter);
-            view.Text("Help", string.IsNullOrEmpty(storageNotice) ? "Point and press the trigger to select. Mouse and keyboard work in the Editor." : storageNotice,
+            var help = view.Text("Help", string.IsNullOrEmpty(storageNotice) ? "Point and press the trigger to select. Mouse and keyboard work in the Editor." : storageNotice,
                 60, 810, 1080, 70, 23, VocabularyView.Muted);
+            help.alignment = TextAlignmentOptions.Center;
         }
 
         private void Browse(BrowsePurpose nextPurpose, bool reset = true)
