@@ -362,14 +362,6 @@
             "resourcePath": "VocabularyBoxes/Household Items/Door"
         },
         {
-            "id": "3997574328ae3e04cb108620a5f74a44",
-            "name": "Driftwood",
-            "japanese": "流木",
-            "reading": "りゅうぼく",
-            "category": "Nature Items",
-            "resourcePath": "VocabularyBoxes/Nature Items/Driftwood"
-        },
-        {
             "id": "232da5d832f29a24f82e614c2ac53182",
             "name": "Dumpster",
             "japanese": "大型ごみ箱",
@@ -578,14 +570,6 @@
             "resourcePath": "VocabularyBoxes/Food/Lemon"
         },
         {
-            "id": "3ebb48d82ec613c4da80c993c22eb6f2",
-            "name": "Lily pads",
-            "japanese": "睡蓮の葉",
-            "reading": "すいれんのは",
-            "category": "Nature Items",
-            "resourcePath": "VocabularyBoxes/Nature Items/Lily pads"
-        },
-        {
             "id": "57a35808302f8d04a88242bb5c4453e1",
             "name": "Log",
             "japanese": "丸太",
@@ -776,14 +760,6 @@
             "reading": "くまで",
             "category": "Tools",
             "resourcePath": "VocabularyBoxes/Tools/Rake"
-        },
-        {
-            "id": "f5ca0553eb66f76458374f82074e2146",
-            "name": "Reeds",
-            "japanese": "葦",
-            "reading": "あし",
-            "category": "Nature Items",
-            "resourcePath": "VocabularyBoxes/Nature Items/Reeds"
         },
         {
             "id": "2769b40565841f841b8f481fd6bcd45c",
