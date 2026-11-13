@@ -223,12 +223,29 @@ namespace XRDiscovery.Vocabulary
         {
             selected = choice;
             NewPage(VocabularyScreen.SetDetails);
-            Header(choice.Name, () => Browse(purpose, false));
+            Header(choice.Name, () => Browse(purpose, false), centerTitle: true);
             var valid = ValidIds(choice.Items);
-            view.Text("SetType", (choice.Custom ? "MY CUSTOM SET" : "PREMADE SET") + "  ·  " + valid.Length + " items", 48, 145, 1104, 60, 29, VocabularyView.Muted);
-            view.Text("Preview", string.Join("  ·  ", valid.Take(18).Select(id => library.Get(id).Name)) + (valid.Length > 18 ? "  …" : ""), 48, 235, 1104, 260, 32);
+            view.Text("SetType", (choice.Custom ? "MY CUSTOM SET" : "PREMADE SET") + "  ·  " + valid.Length + " items", 48, 125, 1104, 35, 29, VocabularyView.Muted);
+            view.ScrollArea("Preview", 48, 145, 1104, 470, out var content);
+            const float columnWidth = 500;
+            const float rowHeight = 48;
+            const float columnGap = 24;
+            const float horizontalPadding = 22;
+            const float verticalPadding = 12;
+            int rows = Mathf.Max(1, (valid.Length + 1) / 2);
+            content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, verticalPadding * 2 + rows * rowHeight);
+            for (int i = 0; i < valid.Length; i++)
+            {
+                int column = i % 2;
+                int row = i / 2;
+                var item = view.Text("PreviewItem_" + i, library.Get(valid[i]).Name,
+                    horizontalPadding + column * (columnWidth + columnGap),
+                    verticalPadding + row * rowHeight,
+                    columnWidth, rowHeight - 4, 27, parent: content);
+                item.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
+            }
             int missing = choice.Items.Length - valid.Length;
-            if (missing > 0) view.Text("Missing", $"{missing} unavailable items will be skipped. They remain in your saved set.", 48, 500, 1104, 70, 26, VocabularyView.Muted);
+            if (missing > 0) view.Text("Missing", $"{missing} unavailable items will be skipped. They remain in your saved set.", 48, 145, 1104, 30, 20, VocabularyView.Muted);
             if (purpose == BrowsePurpose.Manage)
             {
                 view.Button("EditSet", "Edit items / rename", 48, 610, 530, 75, () => OpenEditor(choice.Id, choice.Name, choice.Items), true);
@@ -241,7 +258,7 @@ namespace XRDiscovery.Vocabulary
             }
             else
             {
-                view.Button("StartSet", purpose == BrowsePurpose.Study ? "Begin studying" : "Begin test", 48, 640, 1104, 100,
+                view.Button("StartSet", purpose == BrowsePurpose.Study ? "Begin studying" : "Begin test", 48, 650, 1104, 100,
                     () => { if (purpose == BrowsePurpose.Study) StartStudy(choice.Name, valid); else StartTest(choice.Name, valid); }, true, valid.Length > 0);
                 view.Text("Rules", purpose == BrowsePurpose.Study ? "Use Previous and Next to cycle through every item." : "Every word is asked once. After the round, retest everything or practice only the words you missed.",
                     48, 770, 1104, 95, 26, VocabularyView.Muted);
@@ -450,10 +467,13 @@ namespace XRDiscovery.Vocabulary
             catch (Exception e) { draftStatus.text = "Could not save: " + e.Message; }
         }
 
-        private void Header(string title, Action back)
+        private void Header(string title, Action back, bool centerTitle = false)
         {
             view.Button("Back", "← Back", 48, 35, 175, 60, back);
-            view.Text("Title", title, 255, 28, 897, 78, 38);
+            var titleText = centerTitle
+                ? view.Text("Title", title, 48, 28, 1104, 78, 38)
+                : view.Text("Title", title, 255, 28, 897, 78, 38);
+            if (centerTitle) titleText.alignment = TextAlignmentOptions.Center;
         }
 
         private void Pager(int page, int pages, Action<int> change, float y)

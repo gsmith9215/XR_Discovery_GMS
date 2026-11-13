@@ -16,7 +16,7 @@ namespace XRDiscovery.Vocabulary
     {
         [SerializeField, Min(0.1f)] private float maximumDistance = 8f;
         [SerializeField, Min(0.001f)] private float beamWidth = 0.003f;
-        [SerializeField, Min(0f)] private float scrollSpeed = 500f;
+        [SerializeField, Min(0f)] private float scrollSpeed = 40f;
 
         private Canvas canvas;
         private UnityEngine.UI.GraphicRaycaster raycaster;
@@ -101,6 +101,7 @@ namespace XRDiscovery.Vocabulary
             bool hitsPlane = plane.Raycast(ray, out float distance) && distance <= maximumDistance;
             GameObject hitObject = null;
             RaycastResult hitResult = default;
+            pointer.delta = Vector2.zero;
 
             if (hitsPlane)
             {
@@ -130,6 +131,8 @@ namespace XRDiscovery.Vocabulary
 
             if (!requireRelease && pressed && !wasPressed)
                 Press(hitObject);
+            else if (pressed && wasPressed)
+                Drag();
             else if (!pressed && wasPressed)
                 Release(hitObject);
 
@@ -224,6 +227,22 @@ namespace XRDiscovery.Vocabulary
             pointer.pointerPress = ExecuteEvents.ExecuteHierarchy(target, pointer, ExecuteEvents.pointerDownHandler);
             if (pointer.pointerPress == null)
                 pointer.pointerPress = ExecuteEvents.GetEventHandler<IPointerClickHandler>(target);
+            pointer.pointerDrag = ExecuteEvents.GetEventHandler<IDragHandler>(target);
+            ExecuteEvents.Execute(pointer.pointerDrag, pointer, ExecuteEvents.initializePotentialDrag);
+        }
+
+        private void Drag()
+        {
+            if (pointer.pointerDrag == null || pointer.delta.sqrMagnitude < .001f) return;
+            if (!pointer.dragging)
+            {
+                if ((pointer.position - pointer.pressPosition).sqrMagnitude <
+                    EventSystem.current.pixelDragThreshold * EventSystem.current.pixelDragThreshold) return;
+                ExecuteEvents.Execute(pointer.pointerDrag, pointer, ExecuteEvents.beginDragHandler);
+                pointer.dragging = true;
+                pointer.eligibleForClick = false;
+            }
+            ExecuteEvents.Execute(pointer.pointerDrag, pointer, ExecuteEvents.dragHandler);
         }
 
         private void Release(GameObject target)
@@ -232,9 +251,13 @@ namespace XRDiscovery.Vocabulary
             bool click = pointer.eligibleForClick && pressedObject != null &&
                 pressedObject == ExecuteEvents.GetEventHandler<IPointerClickHandler>(target);
             ExecuteEvents.Execute(pressedObject, pointer, ExecuteEvents.pointerUpHandler);
+            if (pointer.dragging)
+                ExecuteEvents.Execute(pointer.pointerDrag, pointer, ExecuteEvents.endDragHandler);
             // Clear before invoking callbacks: a click may hide or destroy this canvas.
             pointer.pointerPress = null;
             pointer.rawPointerPress = null;
+            pointer.pointerDrag = null;
+            pointer.dragging = false;
             pointer.eligibleForClick = false;
             if (click)
                 ExecuteEvents.Execute(pressedObject, pointer, ExecuteEvents.pointerClickHandler);
@@ -333,8 +356,12 @@ namespace XRDiscovery.Vocabulary
             if (pointer != null)
             {
                 ExecuteEvents.Execute(pointer.pointerPress, pointer, ExecuteEvents.pointerUpHandler);
+                if (pointer.dragging)
+                    ExecuteEvents.Execute(pointer.pointerDrag, pointer, ExecuteEvents.endDragHandler);
                 pointer.pointerPress = null;
                 pointer.rawPointerPress = null;
+                pointer.pointerDrag = null;
+                pointer.dragging = false;
                 pointer.eligibleForClick = false;
                 UpdateHover(null);
             }

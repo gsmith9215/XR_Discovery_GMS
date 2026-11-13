@@ -112,6 +112,65 @@ namespace XRDiscovery.Vocabulary
             image.raycastTarget = false;
         }
 
+        public UnityEngine.UI.ScrollRect ScrollArea(string name, float x, float y, float width, float height,
+            out RectTransform content)
+        {
+            var viewport = Area(name + "Viewport", x, y, width, height);
+            var image = viewport.gameObject.AddComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.Apply(image, true);
+            image.color = new Color(.025f, .05f, .065f, .72f);
+            image.raycastTarget = true;
+            viewport.gameObject.AddComponent<UnityEngine.UI.RectMask2D>();
+
+            content = Rect("Content", viewport, new Vector2(0, 1), new Vector2(1, 1));
+            content.pivot = new Vector2(.5f, 1);
+            content.sizeDelta = new Vector2(0, 0);
+            content.anchoredPosition = Vector2.zero;
+
+            var scroll = viewport.gameObject.AddComponent<UnityEngine.UI.ScrollRect>();
+            scroll.viewport = viewport;
+            scroll.content = content;
+            scroll.horizontal = false;
+            scroll.vertical = true;
+            scroll.movementType = UnityEngine.UI.ScrollRect.MovementType.Clamped;
+            scroll.scrollSensitivity = 40;
+
+            var scrollbarRect = Rect("Scrollbar", viewport, new Vector2(1, 0), new Vector2(1, 1));
+            scrollbarRect.pivot = new Vector2(1, .5f);
+            scrollbarRect.sizeDelta = new Vector2(36, -64);
+            scrollbarRect.anchoredPosition = new Vector2(-8, 0);
+            var scrollbarImage = scrollbarRect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.ApplyCapsule(scrollbarImage);
+            scrollbarImage.color = new Color(.11f, .19f, .22f, .9f);
+            scrollbarImage.raycastTarget = false;
+
+            var handleRect = Rect("Handle", scrollbarRect, Vector2.zero, Vector2.one);
+            handleRect.offsetMin = new Vector2(2, 0);
+            handleRect.offsetMax = new Vector2(-2, 0);
+            var handleHitArea = handleRect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            handleHitArea.color = Color.clear;
+            handleHitArea.raycastTarget = true;
+
+            var thumbRect = Rect("Thumb", handleRect, new Vector2(0, 0), new Vector2(1, .7f));
+            var thumbImage = thumbRect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.ApplyCapsule(thumbImage);
+            thumbImage.color = new Color(.35f, .78f, .7f, .95f);
+            thumbImage.raycastTarget = false;
+
+            var scrollbar = scrollbarRect.gameObject.AddComponent<UnityEngine.UI.Scrollbar>();
+            scrollbar.direction = UnityEngine.UI.Scrollbar.Direction.BottomToTop;
+            scrollbar.targetGraphic = thumbImage;
+            scrollbar.handleRect = handleRect;
+            scrollbar.onValueChanged.AddListener(value =>
+            {
+                thumbRect.anchorMin = new Vector2(0, .3f * value);
+                thumbRect.anchorMax = new Vector2(1, .7f + .3f * value);
+            });
+            scroll.verticalScrollbar = scrollbar;
+            scroll.verticalScrollbarVisibility = UnityEngine.UI.ScrollRect.ScrollbarVisibility.AutoHide;
+            return scroll;
+        }
+
         public TMP_Text Label(RectTransform rect, string value, float size = 30, Color? color = null)
         {
             var text = rect.gameObject.AddComponent<TextMeshProUGUI>();
