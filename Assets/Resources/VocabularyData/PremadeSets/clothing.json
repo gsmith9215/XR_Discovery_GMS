@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "id": "premade:Clothing",
+  "name": "Clothing",
+  "description": "",
+  "sortOrder": 20,
+  "itemIds": [
+    "7d753f29dea3977408ed0b73b666c878",
+    "b1aa7dd139fc61647adb5e3bbc453105",
+    "fa4678bc0a37a3444bed0f109050d5ef"
+  ]
+}

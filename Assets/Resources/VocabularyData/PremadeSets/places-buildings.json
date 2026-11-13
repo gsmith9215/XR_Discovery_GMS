@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "id": "premade:Places-Buildings",
+  "name": "Places-Buildings",
+  "description": "",
+  "sortOrder": 120,
+  "itemIds": [
+    "7fe0ecbbb2cde4b469cf3e9a8d172be9",
+    "9ad0d86edf5010444bb520dc4cbdaf5d",
+    "1447e32000fbb254f938c06b6591499a",
+    "4a09995b8b29c9d45ba79fa8a07c8473",
+    "a7daafe53384237478a971d64322e12a",
+    "dc864b747921c884fa94ade41f6058e8",
+    "6cb5fb555863a384fa0d18767df2f423",
+    "86e8b746ebc524740b02fa8776f7bed9",
+    "51cf59158bf166d43b77511ba49bf1be",
+    "2eb4063d65dc08848b7cb937660e9694",
+    "efcdb59ef3068b141859e8765371ab70",
+    "af6d04878740144468b532ca8279f265",
+    "64b3880fe665afe4ba8d0c36e0b3e2bf",
+    "7ec960e4a355629499f0f8510873142c",
+    "aa94340c23022fd42ab0b54c28230c0d",
+    "22ac84d6e90fb5541bc603a5b0a71b9c"
+  ]
+}

@@ -117,7 +117,7 @@ namespace XRDiscovery.Vocabulary
         {
             var background = GetComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.Apply(background, true);
-            background.color = new Color(0.055f, 0.085f, 0.12f, 0.98f);
+            background.color = VocabularyView.Surface;
             background.raycastTarget = false;
             var layout = gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
             layout.padding = new RectOffset(8, 8, 8, 8);
@@ -342,16 +342,17 @@ namespace XRDiscovery.Vocabulary
             RectTransform rect = Rect(label + "Key", parent);
             var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.Apply(image);
-            image.color = accent ? new Color(0.12f, 0.46f, 0.40f) : new Color(0.14f, 0.20f, 0.27f);
+            image.color = Color.white;
             image.raycastTarget = true;
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>();
             button.targetGraphic = image;
             button.navigation = new UnityEngine.UI.Navigation { mode = UnityEngine.UI.Navigation.Mode.None };
             var colors = button.colors;
-            colors.normalColor = Color.white;
-            colors.highlightedColor = new Color(0.68f, 1f, 0.90f);
-            colors.pressedColor = new Color(0.42f, 0.75f, 0.66f);
-            colors.disabledColor = new Color(0.42f, 0.47f, 0.50f, 0.5f);
+            colors.normalColor = accent ? VocabularyView.Accent : VocabularyView.Secondary;
+            colors.highlightedColor = VocabularyView.Highlight;
+            colors.pressedColor = new Color32(16, 38, 69, 255);
+            colors.selectedColor = VocabularyView.Highlight;
+            colors.disabledColor = new Color32(139, 151, 161, 210);
             colors.fadeDuration = 0.08f;
             button.colors = colors;
             button.onClick.AddListener(callback);
@@ -370,7 +371,7 @@ namespace XRDiscovery.Vocabulary
             text.fontSizeMin = 15f;
             text.fontSizeMax = 23f;
             text.alignment = TextAlignmentOptions.Center;
-            text.color = new Color(0.94f, 0.97f, 1f);
+            text.color = VocabularyView.ButtonInk;
             text.raycastTarget = false;
             text.richText = false;
             return button;

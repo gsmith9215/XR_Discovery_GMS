@@ -323,8 +323,8 @@ namespace XRDiscovery.Vocabulary
                     tipRenderer.sharedMaterial = pointerMaterial;
             }
 
-            Color color = hit ? (pressed ? new Color(0.98f, 0.77f, 0.28f) : new Color(0.35f, 0.94f, 0.78f)) :
-                new Color(0.55f, 0.67f, 0.73f);
+            Color color = hit ? (pressed ? VocabularyView.Accent : VocabularyView.Highlight) :
+                VocabularyView.Secondary;
             if (pointerMaterial != null)
             {
                 pointerMaterial.color = color;

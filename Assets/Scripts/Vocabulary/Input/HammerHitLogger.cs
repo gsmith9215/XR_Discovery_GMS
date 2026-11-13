@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HammerHitLogger : MonoBehaviour
 {
-    [SerializeField] private RandomObjectSpawner spawner;
+    [SerializeField] private VocabularyObjectPresenter spawner;
 
     private void OnTriggerEnter(Collider other)
     {

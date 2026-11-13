@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using XRDiscovery.Vocabulary;
+using UnityEngine.Scripting.APIUpdating;
 
-// Keeps the scene's camera, spacing and hammer references; VocabularyApp owns session rules.
-public class RandomObjectSpawner : MonoBehaviour
+// Presents catalog items and accepts one selection per question. Startup belongs to VocabularyApp.
+[MovedFrom(true, sourceNamespace: "", sourceAssembly: "XRDiscovery.Game", sourceClassName: "RandomObjectSpawner")]
+public class VocabularyObjectPresenter : MonoBehaviour
 {
     [Header("VR References")]
     [SerializeField] private Transform playerCamera;
@@ -37,20 +39,19 @@ public class RandomObjectSpawner : MonoBehaviour
     public Transform RightHandAnchor => rightHandAnchor;
     public IReadOnlyList<GameObject> ActiveObjects => activeObjects;
 
-    private void Start()
+    private readonly VocabularyPrefabProvider prefabs = new();
+
+    public void Initialize(Transform cameraOverride = null, Transform rightHandOverride = null)
     {
+        if (cameraOverride != null) playerCamera = cameraOverride;
+        if (rightHandOverride != null) rightHandAnchor = rightHandOverride;
         if (playerCamera == null && Camera.main != null) playerCamera = Camera.main.transform;
         if (playerCamera == null)
         {
-            Debug.LogError("Vocabulary requires a player camera.", this);
-            enabled = false;
-            return;
+            throw new InvalidOperationException("Vocabulary requires a player camera.");
         }
         if (scoreText != null) scoreText.gameObject.SetActive(false);
         if (targetText != null) targetText.gameObject.SetActive(false);
-        var app = GetComponent<VocabularyApp>();
-        if (app == null) app = gameObject.AddComponent<VocabularyApp>();
-        app.Initialize(this);
     }
 
     public void ShowItems(IReadOnlyList<VocabularyEntry> entries, bool allowAnswers)
@@ -66,7 +67,7 @@ public class RandomObjectSpawner : MonoBehaviour
         presentationRoot.SetPositionAndRotation(displayPosition, displayRotation);
         for (int i = 0; i < entries.Count; i++)
         {
-            var prefab = entries[i].Prefab;
+            var prefab = prefabs.Load(entries[i]);
             if (prefab == null) throw new InvalidOperationException("Missing vocabulary box: " + entries[i].Name);
             var box = Instantiate(prefab, presentationRoot);
             box.name = entries[i].Name;

@@ -15,7 +15,6 @@ namespace XRDiscovery.Vocabulary
         [SerializeField] private string reading;
         [SerializeField] private string category;
         [SerializeField] private string resourcePath;
-        [NonSerialized] private GameObject prefab;
 
         public string Id => id;
         public string Name => name;
@@ -24,7 +23,6 @@ namespace XRDiscovery.Vocabulary
         public string Category => category;
         public string ResourcePath => resourcePath;
         public string Prompt => string.IsNullOrWhiteSpace(Japanese) ? Name : Japanese;
-        public GameObject Prefab => LoadPrefab();
 
         public VocabularyEntry(string id, string name, string japanese, string reading,
             string category, string resourcePath)
@@ -37,12 +35,6 @@ namespace XRDiscovery.Vocabulary
             this.resourcePath = resourcePath;
         }
 
-        public GameObject LoadPrefab()
-        {
-            if (prefab == null)
-                prefab = Resources.Load<GameObject>(resourcePath);
-            return prefab;
-        }
     }
 
     [Serializable]

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "id": "premade:Farm Items",
+  "name": "Farm Items",
+  "description": "",
+  "sortOrder": 30,
+  "itemIds": [
+    "22e5c7be402f62045a4b344468f9d741",
+    "b0097fa3a2f029447a448db594f5d390",
+    "bdf41ecce0250994dbb3d8fcc435bc4d",
+    "fc4f58c7b8b69734ea8a2edba7512c95",
+    "283989b4b4b4c7c4288d6ef75a48fa34",
+    "f1b77cf4c78eb1f4490fc39cd3a53021",
+    "b25f6b1de42244848aca6271e35833d0",
+    "2e49d720ee0b04e4ca17eb5e85bd2cc0",
+    "fd8c333c67bead04e9b8eaada0f5d7fd",
+    "1316d426721e2d1479a5bebee9a6a717",
+    "f4a433d5844a5494d99a5652db85c502",
+    "f804fc87eff51344caf757af60baa8a6",
+    "cb838e83086305149bbb8772b937f5a8",
+    "577413b4afba02a46b00fd5b92c04868",
+    "46d6adbbb5c84834ca7e9fe73ef1c376",
+    "a0ec05d69a6239e49ad1a458d406e488",
+    "4fcbccfebbc862745bb54eca27ca3ba5",
+    "556ba3a73f2a5d94eaa6ea27b08a5b33",
+    "77101eeff5653b14fba12db53530184c"
+  ]
+}

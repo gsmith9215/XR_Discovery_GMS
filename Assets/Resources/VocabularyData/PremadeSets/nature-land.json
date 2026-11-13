@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "premade:Nature-Land",
+  "name": "Nature-Land",
+  "description": "",
+  "sortOrder": 70,
+  "itemIds": [
+    "3a080d3a0ffed624a921548491381455",
+    "40f61946c28d9e74689f05c9787ca60d",
+    "6103e37511e708346a3d7443bce55e16",
+    "57c0cad64fe05c049885e482f3cc521f",
+    "743c96dbde8dcb148b7edd411ba1c740",
+    "e1abbe040075c1e418608659f89bf186"
+  ]
+}

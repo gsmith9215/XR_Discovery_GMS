@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
@@ -23,7 +22,7 @@ namespace XRDiscovery.Vocabulary.Tests
     {
         private GameObject host;
         private GameObject cameraObject;
-        private RandomObjectSpawner spawner;
+        private VocabularyObjectPresenter spawner;
         private VocabularyApp app;
         private string testDirectory;
         private string savePath;
@@ -40,10 +39,8 @@ namespace XRDiscovery.Vocabulary.Tests
             cameraObject = new GameObject("Vocabulary test camera", typeof(Camera));
             cameraObject.transform.position = new Vector3(0, 1.6f, 0);
             host = new GameObject("Vocabulary test app");
-            spawner = host.AddComponent<RandomObjectSpawner>();
-            spawner.enabled = false; // Initialize explicitly with disposable storage, before Start can run.
-            typeof(RandomObjectSpawner).GetField("playerCamera", BindingFlags.Instance | BindingFlags.NonPublic)
-                .SetValue(spawner, cameraObject.transform);
+            spawner = host.AddComponent<VocabularyObjectPresenter>();
+            spawner.Initialize(cameraObject.transform);
             app = host.AddComponent<VocabularyApp>();
             app.enabled = false; // Physical desktop input must not interfere with deterministic UI callbacks.
             app.Initialize(spawner, savePath);
@@ -64,6 +61,44 @@ namespace XRDiscovery.Vocabulary.Tests
             yield return null;
             if (!string.IsNullOrEmpty(testDirectory) && Directory.Exists(testDirectory))
                 Directory.Delete(testDirectory, true);
+        }
+
+        [UnityTest]
+        public IEnumerator ExplicitInitializationAndStartDoNotCreateDuplicateServices()
+        {
+            var originalView = app.View;
+            var originalRepository = app.CustomSets;
+            app.enabled = true;
+            yield return null;
+            app.enabled = false;
+            Assert.That(app.View, Is.SameAs(originalView));
+            Assert.That(app.CustomSets, Is.SameAs(originalRepository));
+            Assert.That(app.CustomSets.FilePath, Is.EqualTo(savePath));
+            Assert.That(host.GetComponents<VocabularyApp>().Length, Is.EqualTo(1));
+            Assert.That(host.GetComponents<VocabularyView>().Length, Is.EqualTo(1));
+        }
+
+        [UnityTest]
+        public IEnumerator EveryPremadeSetCanStartStudyInItsAuthoredOrder()
+        {
+            foreach (var definition in app.PremadeSets.Sets)
+            {
+                var set = definition.Set;
+                app.ShowMainMenu();
+                Click("Study");
+                while (!app.View.Page.GetComponentsInChildren<UnityEngine.UI.Button>().Any(b => b.name == "Set_" + set.Id))
+                    Click("NextPage");
+                Click("Set_" + set.Id);
+                Click("StartSet");
+                Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.Study));
+                Assert.That(spawner.ActiveObjects.Single().name, Is.EqualTo(app.Library.Get(set.ItemIds[0]).Name));
+                if (set.ItemIds.Count > 1)
+                {
+                    Click("NextItem");
+                    Assert.That(spawner.ActiveObjects.Single().name, Is.EqualTo(app.Library.Get(set.ItemIds[1]).Name));
+                }
+                yield return null;
+            }
         }
 
         [UnityTest]
@@ -363,20 +398,21 @@ namespace XRDiscovery.Vocabulary.Tests
         [UnityTest]
         public IEnumerator CustomSetTemplateDuplicateRenameMembershipAndDeletePersistThroughUi()
         {
-            string category = app.Library.Categories.First(); // Always on the first premade browser page.
-            string[] template = app.Library.GetCategory(category).Select(entry => entry.Id).ToArray();
+            var premade = app.PremadeSets.Sets.First().Set;
+            string category = premade.Name;
+            string[] template = premade.ItemIds.ToArray();
             Assert.That(template.Length, Is.GreaterThan(0));
 
             Click("CustomSets");
             Click("NewFromTemplate");
-            Click("Set_premade:" + category);
+            Click("Set_" + premade.Id);
             Input("SetName").text = category; // Same name as its premade template is explicitly allowed.
             Click("SaveSet");
             yield return null;
             VocabularySet original = app.CustomSets.Sets.Single();
             Assert.That(original.Name, Is.EqualTo(category));
             Assert.That(original.ItemIds, Is.EquivalentTo(template));
-            Assert.That(app.Library.GetCategory(category).Select(entry => entry.Id), Is.EquivalentTo(template));
+            Assert.That(app.PremadeSets.Sets.Single(s => s.Set.Id == premade.Id).Set.ItemIds, Is.EquivalentTo(template));
 
             Click("Set_" + original.Id);
             Click("DuplicateSet");

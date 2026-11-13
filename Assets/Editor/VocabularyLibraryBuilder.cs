@@ -24,6 +24,7 @@ public sealed class VocabularyLibraryBuilder : IPreprocessBuildWithReport
     public void OnPreprocessBuild(BuildReport report)
     {
         RebuildLibrary();
+        PremadeSetAuthoring.Validate();
         EnsureJapaneseFont();
     }
 
@@ -113,6 +114,8 @@ public sealed class VocabularyLibraryBuilder : IPreprocessBuildWithReport
         text.Append("ー・。、！？「」『』（）〜…—–✓×→←↑↓");
         foreach (var entry in data.entries)
             text.Append(entry.Name).Append(entry.Japanese).Append(entry.Reading).Append(entry.Category);
+        string premadeText = string.Concat(PremadeSetAuthoring.FontText());
+        text.Append(premadeText);
         font.atlasPopulationMode = AtlasPopulationMode.Dynamic;
         bool complete = font.TryAddCharacters(new string(text.ToString().Distinct().ToArray()), out string missing);
         font.atlasPopulationMode = AtlasPopulationMode.Static;
@@ -129,7 +132,7 @@ public sealed class VocabularyLibraryBuilder : IPreprocessBuildWithReport
         EditorUtility.SetDirty(font);
         EditorUtility.SetDirty(fallback);
         AssetDatabase.SaveAssets();
-        string required = string.Concat(data.entries.Select(e => e.Japanese + e.Reading));
+        string required = string.Concat(data.entries.Select(e => e.Japanese + e.Reading)) + premadeText;
         var missingRequired = required.Distinct().Where(c => !font.HasCharacter(c)).ToArray();
         if (missingRequired.Length > 0)
             throw new InvalidOperationException("The vocabulary font is missing required Japanese characters: " + new string(missingRequired));

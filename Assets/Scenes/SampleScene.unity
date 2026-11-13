@@ -880,8 +880,9 @@ GameObject:
   m_Component:
   - component: {fileID: 861400395}
   - component: {fileID: 861400396}
+  - component: {fileID: 861400397}
   m_Layer: 0
-  m_Name: RandomObjectSpawner
+  m_Name: VocabularyApp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -913,7 +914,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a2c10d5c5e39a045897fc6ae10a1f2b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RandomObjectSpawner
+  m_EditorClassIdentifier: XRDiscovery.Game::VocabularyObjectPresenter
   playerCamera: {fileID: 1779402006}
   rightHandAnchor: {fileID: 554075642}
   spawnDistance: 1
@@ -923,6 +924,20 @@ MonoBehaviour:
   studyHeightBelowEyes: 0.1
   scoreText: {fileID: 1967025037}
   targetText: {fileID: 420798864}
+--- !u!114 &861400397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861400393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5595de9daf323294f940a0bd59db2f00, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: XRDiscovery.Game::XRDiscovery.Vocabulary.VocabularyApp
+  presenter: {fileID: 861400396}
+  hammer: {fileID: 1500577423}
 --- !u!1 &1007332005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,7 +1368,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a68712ca98e90474eb71010eb243e884, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HammerHitLogger
+  m_EditorClassIdentifier: XRDiscovery.Game::HammerHitLogger
   spawner: {fileID: 861400396}
 --- !u!1 &1509984458
 GameObject:

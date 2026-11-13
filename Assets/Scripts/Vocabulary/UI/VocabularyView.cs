@@ -9,9 +9,13 @@ namespace XRDiscovery.Vocabulary
     // A single world-space canvas, shared by mouse input in the Editor and controller rays on Quest.
     public sealed class VocabularyView : MonoBehaviour
     {
-        public static readonly Color Ink = new(.91f, .95f, .97f);
-        public static readonly Color Muted = new(.61f, .72f, .76f);
-        public static readonly Color Accent = new(.13f, .52f, .47f);
+        public static readonly Color Ink = new Color32(29, 45, 66, 255);
+        public static readonly Color Muted = new Color32(82, 95, 111, 255);
+        public static readonly Color Accent = new Color32(25, 55, 94, 255);
+        public static readonly Color Secondary = new Color32(43, 75, 112, 255);
+        public static readonly Color Highlight = new Color32(65, 108, 158, 255);
+        public static readonly Color ButtonInk = new Color32(255, 252, 245, 255);
+        public static readonly Color Surface = new Color32(244, 233, 201, 250);
         private TMP_FontAsset font;
         private RectTransform page;
         private UnityEngine.UI.Image background;
@@ -41,7 +45,7 @@ namespace XRDiscovery.Vocabulary
             root.GetComponent<UnityEngine.UI.CanvasScaler>().dynamicPixelsPerUnit = 2;
             background = root.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.Apply(background, true);
-            background.color = new Color(.035f, .065f, .085f, .98f);
+            background.color = Surface;
             background.raycastTarget = false;
             page = Rect("Page", rect, Vector2.zero, Vector2.one);
             keyboardHost = Rect("Keyboard", rect, new Vector2(0, 0), new Vector2(1, 0));
@@ -113,7 +117,7 @@ namespace XRDiscovery.Vocabulary
         {
             var image = Area(name, x, y, width, height).gameObject.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.Apply(image, true);
-            image.color = new Color(.035f, .065f, .085f, .96f);
+            image.color = new Color32(244, 233, 201, 248);
             image.raycastTarget = false;
         }
 
@@ -123,7 +127,7 @@ namespace XRDiscovery.Vocabulary
             var viewport = Area(name + "Viewport", x, y, width, height);
             var image = viewport.gameObject.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.Apply(image, true);
-            image.color = new Color(.025f, .05f, .065f, .72f);
+            image.color = new Color32(255, 249, 228, 245);
             image.raycastTarget = true;
             viewport.gameObject.AddComponent<UnityEngine.UI.RectMask2D>();
 
@@ -146,7 +150,7 @@ namespace XRDiscovery.Vocabulary
             scrollbarRect.anchoredPosition = new Vector2(-8, 0);
             var scrollbarImage = scrollbarRect.gameObject.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.ApplyCapsule(scrollbarImage);
-            scrollbarImage.color = new Color(.11f, .19f, .22f, .9f);
+            scrollbarImage.color = new Color32(203, 190, 172, 230);
             scrollbarImage.raycastTarget = false;
 
             var handleRect = Rect("Handle", scrollbarRect, Vector2.zero, Vector2.one);
@@ -159,7 +163,7 @@ namespace XRDiscovery.Vocabulary
             var thumbRect = Rect("Thumb", handleRect, new Vector2(0, 0), new Vector2(1, .7f));
             var thumbImage = thumbRect.gameObject.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.ApplyCapsule(thumbImage);
-            thumbImage.color = new Color(.35f, .78f, .7f, .95f);
+            thumbImage.color = Secondary;
             thumbImage.raycastTarget = false;
 
             var scrollbar = scrollbarRect.gameObject.AddComponent<UnityEngine.UI.Scrollbar>();
@@ -197,13 +201,15 @@ namespace XRDiscovery.Vocabulary
             var rect = Area(name, x, y, width, height, parent);
             var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.Apply(image);
-            image.color = primary ? Accent : new Color(.105f, .17f, .21f);
+            image.color = Color.white;
             var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>();
             button.targetGraphic = image;
             var colors = button.colors;
-            colors.highlightedColor = new Color(1.25f, 1.25f, 1.25f);
-            colors.pressedColor = new Color(.7f, .9f, .85f);
-            colors.disabledColor = new Color(.4f, .4f, .4f, .65f);
+            colors.normalColor = primary ? Accent : Secondary;
+            colors.highlightedColor = Highlight;
+            colors.pressedColor = new Color32(16, 38, 69, 255);
+            colors.selectedColor = Highlight;
+            colors.disabledColor = new Color32(139, 151, 161, 210);
             button.colors = colors;
             button.navigation = new UnityEngine.UI.Navigation { mode = UnityEngine.UI.Navigation.Mode.None };
             button.interactable = enabled;
@@ -211,7 +217,7 @@ namespace XRDiscovery.Vocabulary
             var labelRect = Rect("Label", rect, Vector2.zero, Vector2.one);
             labelRect.offsetMin = new Vector2(18, 5);
             labelRect.offsetMax = new Vector2(-18, -5);
-            var text = Label(labelRect, label, 28);
+            var text = Label(labelRect, label, 28, ButtonInk);
             text.alignment = TextAlignmentOptions.Midline;
             text.enableAutoSizing = true;
             text.fontSizeMin = 20;
@@ -224,11 +230,11 @@ namespace XRDiscovery.Vocabulary
         {
             var button = Button(name, "", x, y, width, height, clicked, true);
             // Noto Sans JP needs more than 60 units of line height at this size.
-            var titleText = Text("Title", title, 20, 20, width - 40, 80, 42, parent: button.transform);
+            var titleText = Text("Title", title, 20, 20, width - 40, 80, 42, ButtonInk, button.transform);
             titleText.alignment = TextAlignmentOptions.Center;
             titleText.textWrappingMode = TextWrappingModes.NoWrap;
             var descriptionText = Text("Description", description, 20, 120, width - 40, 75, 24,
-                parent: button.transform);
+                ButtonInk, button.transform);
             descriptionText.alignment = TextAlignmentOptions.Top;
             return button;
         }
@@ -239,7 +245,7 @@ namespace XRDiscovery.Vocabulary
             var rect = Area(name, x, y, width, 60);
             var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.Apply(image);
-            image.color = new Color(.08f, .13f, .16f);
+            image.color = new Color32(255, 249, 228, 255);
             var field = rect.gameObject.AddComponent<TMP_InputField>();
             field.targetGraphic = image;
             var viewport = Rect("Text viewport", rect, Vector2.zero, Vector2.one);

@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "id": "premade:Tools",
+  "name": "Tools",
+  "description": "",
+  "sortOrder": 130,
+  "itemIds": [
+    "d910386731412e74a93c5e3187c5c484",
+    "49047f224c83c464f882d7bdb8f6f0ce",
+    "46122dfab91f4e5429aefb1ef00d0b5e",
+    "fa56d9e734700984785e016132e292f7",
+    "c3ec9171edd9db64098d0731be6888e6",
+    "72f450f8a3ca9844ca6b311b17ba6985",
+    "ee2ed5cdd5bc78f4aaf4779558362ca4",
+    "8650744a833f2094e94a965fb6386bc0",
+    "402034f1029002b43b873d78799f2b68",
+    "5833286e6f7886644a558792f15da681",
+    "c16addf395e1d7347b2c066267e0fe22",
+    "f65c793fb1f2dd747b3da03357750625",
+    "19452392a083c4849ae4734353faa1ec",
+    "26cb28d30de523b45acc9bfec21e677e",
+    "bc4f42d51a742f34ea90582bf0f5aeb6",
+    "fcb3beabd1621254ca228760ab8db9e9",
+    "b2cdc72697e8fc6439a143ee5fbae58b",
+    "0e86d28044780584585bd14eb4a9919f",
+    "08a2d75f0198d68479dff4dd98c626d0",
+    "fbb3fc2d1d5d163448e1c0151ad398b0",
+    "3497ac464d7c57c4dab3e129a278223e",
+    "65ebffead89d45948ae3fd828a773c59"
+  ]
+}

@@ -1,15 +1,24 @@
 {
     "name": "XRDiscovery.Vocabulary.Core.EditorTests",
     "rootNamespace": "XRDiscovery.Vocabulary.Tests",
-    "references": ["XRDiscovery.Vocabulary.Core"],
-    "includePlatforms": ["Editor"],
+    "references": [
+        "XRDiscovery.Vocabulary.Core",
+        "XRDiscovery.Game"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": false,
-    "defineConstraints": ["UNITY_INCLUDE_TESTS"],
-    "optionalUnityReferences": ["TestAssemblies"],
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
     "versionDefines": [],
     "noEngineReferences": false
 }

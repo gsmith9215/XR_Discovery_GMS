@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "id": "premade:Office Items",
+  "name": "Office Items",
+  "description": "",
+  "sortOrder": 90,
+  "itemIds": [
+    "a8b9adb676251f548aa625e470ce1502",
+    "a60702c629bf711439b22230ac357aed",
+    "c9e4628de59333248ae35567fa797adb",
+    "dc7ccd5d3f44430458601093876dc532",
+    "cb86f6d39e7e6c24188461fba446c547"
+  ]
+}
