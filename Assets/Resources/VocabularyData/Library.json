@@ -2,14 +2,6 @@
     "version": 1,
     "entries": [
         {
-            "id": "242dd1267b516e4458bb0a7774ef25c6",
-            "name": "Air conditioner",
-            "japanese": "エアコン",
-            "reading": "えあこん",
-            "category": "Household Items",
-            "resourcePath": "VocabularyBoxes/Household Items/Air conditioner"
-        },
-        {
             "id": "dfc1a3ff232f34e40a42666c606e6577",
             "name": "Ambulance",
             "japanese": "救急車",
@@ -40,14 +32,6 @@
             "reading": "りんご",
             "category": "Food",
             "resourcePath": "VocabularyBoxes/Food/Apple"
-        },
-        {
-            "id": "2cd7a2b6565691249a09fa55ee3ec583",
-            "name": "Apricot",
-            "japanese": "あんず",
-            "reading": "あんず",
-            "category": "Food",
-            "resourcePath": "VocabularyBoxes/Food/Apricot"
         },
         {
             "id": "f6d750d1c141089468f46c0313009f27",
@@ -106,6 +90,14 @@
             "resourcePath": "VocabularyBoxes/Farm Items/Barrel"
         },
         {
+            "id": "7d753f29dea3977408ed0b73b666c878",
+            "name": "baseball cap",
+            "japanese": "帽子",
+            "reading": "ぼうし",
+            "category": "Clothing",
+            "resourcePath": "VocabularyBoxes/Clothing/baseball cap"
+        },
+        {
             "id": "c8a2d104c9f3b5146988e835e319413b",
             "name": "Beans",
             "japanese": "豆",
@@ -120,14 +112,6 @@
             "reading": "べっど",
             "category": "Household Items",
             "resourcePath": "VocabularyBoxes/Household Items/Bed"
-        },
-        {
-            "id": "7f4551c93fda4e04d85c0c8cf810df12",
-            "name": "Beet",
-            "japanese": "ビーツ",
-            "reading": "びーつ",
-            "category": "Food",
-            "resourcePath": "VocabularyBoxes/Food/Beet"
         },
         {
             "id": "1fb217dee3915974ea6c7fc47331f42b",
@@ -194,36 +178,12 @@
             "resourcePath": "VocabularyBoxes/Farm Items/Bucket"
         },
         {
-            "id": "44a0ccff3e1da8948bd5cb8154662c1e",
-            "name": "Bus shelter",
-            "japanese": "バス停",
-            "reading": "ばすてい",
-            "category": "Traffic",
-            "resourcePath": "VocabularyBoxes/Traffic/Bus shelter"
-        },
-        {
             "id": "f14f8402016cbeb44a4ce8fcf20ea045",
             "name": "Butternut squash",
             "japanese": "バターナッツかぼちゃ",
             "reading": "ばたーなっつかぼちゃ",
             "category": "Food",
             "resourcePath": "VocabularyBoxes/Food/Butternut squash"
-        },
-        {
-            "id": "46122dfab91f4e5429aefb1ef00d0b5e",
-            "name": "Cable reel",
-            "japanese": "ケーブルリール",
-            "reading": "けーぶるりーる",
-            "category": "Tools",
-            "resourcePath": "VocabularyBoxes/Tools/Cable reel"
-        },
-        {
-            "id": "7d753f29dea3977408ed0b73b666c878",
-            "name": "Cap",
-            "japanese": "帽子",
-            "reading": "ぼうし",
-            "category": "Clothing",
-            "resourcePath": "VocabularyBoxes/Clothing/Cap"
         },
         {
             "id": "9c6eee6a5a209994eb8ce039627c7d10",
@@ -248,14 +208,6 @@
             "reading": "にんじん",
             "category": "Food",
             "resourcePath": "VocabularyBoxes/Food/Carrots"
-        },
-        {
-            "id": "3a080d3a0ffed624a921548491381455",
-            "name": "Cave",
-            "japanese": "洞窟",
-            "reading": "どうくつ",
-            "category": "Nature-Land",
-            "resourcePath": "VocabularyBoxes/Nature-Land/Cave"
         },
         {
             "id": "fa56d9e734700984785e016132e292f7",
@@ -306,12 +258,12 @@
             "resourcePath": "VocabularyBoxes/Food/Chili pepper"
         },
         {
-            "id": "1447e32000fbb254f938c06b6591499a",
-            "name": "City hall",
-            "japanese": "市役所",
-            "reading": "しやくしょ",
-            "category": "Places-Buildings",
-            "resourcePath": "VocabularyBoxes/Places-Buildings/City hall"
+            "id": "df3ee50fee187b142aec258eea29b797",
+            "name": "clam",
+            "japanese": "シャコガイ",
+            "reading": "しゃこがい",
+            "category": "Nature Items",
+            "resourcePath": "VocabularyBoxes/Nature Items/clam"
         },
         {
             "id": "2490b11e00bca9e4d8db67b3ee359c6e",
@@ -358,8 +310,8 @@
             "name": "Coral",
             "japanese": "サンゴ",
             "reading": "さんご",
-            "category": "Nature-Water",
-            "resourcePath": "VocabularyBoxes/Nature-Water/Coral"
+            "category": "Nature Items",
+            "resourcePath": "VocabularyBoxes/Nature Items/Coral"
         },
         {
             "id": "d6b9f503ad5ae904e865b3942192e92f",
@@ -386,20 +338,12 @@
             "resourcePath": "VocabularyBoxes/Nature Items/Dead tree"
         },
         {
-            "id": "230ca4ffd3ebf6149b1179fba7fd43bd",
-            "name": "Deck chair",
-            "japanese": "デッキチェア",
-            "reading": "でっきちぇあ",
-            "category": "Household Items",
-            "resourcePath": "VocabularyBoxes/Household Items/Deck chair"
-        },
-        {
             "id": "a8b9adb676251f548aa625e470ce1502",
             "name": "Desk",
             "japanese": "机",
             "reading": "つくえ",
-            "category": "Office Items",
-            "resourcePath": "VocabularyBoxes/Office Items/Desk"
+            "category": "Household Items",
+            "resourcePath": "VocabularyBoxes/Household Items/Desk"
         },
         {
             "id": "4a09995b8b29c9d45ba79fa8a07c8473",
@@ -422,8 +366,8 @@
             "name": "Driftwood",
             "japanese": "流木",
             "reading": "りゅうぼく",
-            "category": "Nature-Water",
-            "resourcePath": "VocabularyBoxes/Nature-Water/Driftwood"
+            "category": "Nature Items",
+            "resourcePath": "VocabularyBoxes/Nature Items/Driftwood"
         },
         {
             "id": "232da5d832f29a24f82e614c2ac53182",
@@ -448,14 +392,6 @@
             "reading": "のうぎょうようとれーらー",
             "category": "Farm Items",
             "resourcePath": "VocabularyBoxes/Farm Items/Farm trailer"
-        },
-        {
-            "id": "df73b7601443c224ebe5e63ad0117183",
-            "name": "Farmer",
-            "japanese": "農家",
-            "reading": "のうか",
-            "category": "People",
-            "resourcePath": "VocabularyBoxes/People/Farmer"
         },
         {
             "id": "283989b4b4b4c7c4288d6ef75a48fa34",
@@ -538,22 +474,6 @@
             "resourcePath": "VocabularyBoxes/Tools/Gas tank"
         },
         {
-            "id": "f1b77cf4c78eb1f4490fc39cd3a53021",
-            "name": "Gate",
-            "japanese": "門",
-            "reading": "もん",
-            "category": "Farm Items",
-            "resourcePath": "VocabularyBoxes/Farm Items/Gate"
-        },
-        {
-            "id": "df3ee50fee187b142aec258eea29b797",
-            "name": "Giant clam",
-            "japanese": "シャコガイ",
-            "reading": "しゃこがい",
-            "category": "Animals",
-            "resourcePath": "VocabularyBoxes/Animals/Giant clam"
-        },
-        {
             "id": "6150d0d1bf560394883eb964cd650fc7",
             "name": "Girl",
             "japanese": "女の子",
@@ -568,14 +488,6 @@
             "reading": "めがね",
             "category": "Clothing",
             "resourcePath": "VocabularyBoxes/Clothing/Glasses"
-        },
-        {
-            "id": "b25f6b1de42244848aca6271e35833d0",
-            "name": "Grain bag",
-            "japanese": "穀物袋",
-            "reading": "こくもつぶくろ",
-            "category": "Farm Items",
-            "resourcePath": "VocabularyBoxes/Farm Items/Grain bag"
         },
         {
             "id": "5affd748b322f1140b3e80fcca2ea04e",
@@ -608,14 +520,6 @@
             "reading": "ぼうし",
             "category": "Clothing",
             "resourcePath": "VocabularyBoxes/Clothing/Hat"
-        },
-        {
-            "id": "2e49d720ee0b04e4ca17eb5e85bd2cc0",
-            "name": "Hay bale",
-            "japanese": "干し草の束",
-            "reading": "ほしくさのたば",
-            "category": "Farm Items",
-            "resourcePath": "VocabularyBoxes/Farm Items/Hay bale"
         },
         {
             "id": "8650744a833f2094e94a965fb6386bc0",
@@ -658,14 +562,6 @@
             "resourcePath": "VocabularyBoxes/Personal Items/Key"
         },
         {
-            "id": "a60702c629bf711439b22230ac357aed",
-            "name": "Keypad",
-            "japanese": "キーパッド",
-            "reading": "きーぱっど",
-            "category": "Office Items",
-            "resourcePath": "VocabularyBoxes/Office Items/Keypad"
-        },
-        {
             "id": "5833286e6f7886644a558792f15da681",
             "name": "Ladder",
             "japanese": "はしご",
@@ -682,20 +578,12 @@
             "resourcePath": "VocabularyBoxes/Food/Lemon"
         },
         {
-            "id": "c16addf395e1d7347b2c066267e0fe22",
-            "name": "Lever",
-            "japanese": "レバー",
-            "reading": "ればー",
-            "category": "Tools",
-            "resourcePath": "VocabularyBoxes/Tools/Lever"
-        },
-        {
             "id": "3ebb48d82ec613c4da80c993c22eb6f2",
             "name": "Lily pads",
             "japanese": "睡蓮の葉",
             "reading": "すいれんのは",
-            "category": "Nature-Water",
-            "resourcePath": "VocabularyBoxes/Nature-Water/Lily pads"
+            "category": "Nature Items",
+            "resourcePath": "VocabularyBoxes/Nature Items/Lily pads"
         },
         {
             "id": "57a35808302f8d04a88242bb5c4453e1",
@@ -714,14 +602,6 @@
             "resourcePath": "VocabularyBoxes/Household Items/Mailbox"
         },
         {
-            "id": "40f61946c28d9e74689f05c9787ca60d",
-            "name": "Mountain",
-            "japanese": "山",
-            "reading": "やま",
-            "category": "Nature-Land",
-            "resourcePath": "VocabularyBoxes/Nature-Land/Mountain"
-        },
-        {
             "id": "864e7286dbd2081459cb842b77a2d1b0",
             "name": "Mug",
             "japanese": "マグカップ",
@@ -736,22 +616,6 @@
             "reading": "きのこ",
             "category": "Nature Items",
             "resourcePath": "VocabularyBoxes/Nature Items/Mushroom"
-        },
-        {
-            "id": "c9e4628de59333248ae35567fa797adb",
-            "name": "Newspaper",
-            "japanese": "新聞",
-            "reading": "しんぶん",
-            "category": "Office Items",
-            "resourcePath": "VocabularyBoxes/Office Items/Newspaper"
-        },
-        {
-            "id": "dba40a1963623324eb93087e3a18c146",
-            "name": "Oar",
-            "japanese": "オール",
-            "reading": "おーる",
-            "category": "Traffic",
-            "resourcePath": "VocabularyBoxes/Traffic/Oar"
         },
         {
             "id": "2eb4063d65dc08848b7cb937660e9694",
@@ -776,14 +640,6 @@
             "reading": "おれんじ",
             "category": "Food",
             "resourcePath": "VocabularyBoxes/Food/Orange"
-        },
-        {
-            "id": "efcdb59ef3068b141859e8765371ab70",
-            "name": "Outhouse",
-            "japanese": "屋外トイレ",
-            "reading": "おくがいといれ",
-            "category": "Places-Buildings",
-            "resourcePath": "VocabularyBoxes/Places-Buildings/Outhouse"
         },
         {
             "id": "7842364cd153b3549ba67af0927779cb",
@@ -818,28 +674,12 @@
             "resourcePath": "VocabularyBoxes/Traffic/Parking meter"
         },
         {
-            "id": "9019fb76996ab2144bbb5b632ed0b91c",
-            "name": "Peach",
-            "japanese": "桃",
-            "reading": "もも",
-            "category": "Food",
-            "resourcePath": "VocabularyBoxes/Food/Peach"
-        },
-        {
             "id": "cbdb09a4f1ff21f4481b8432ea879eec",
             "name": "Pear",
             "japanese": "洋梨",
             "reading": "ようなし",
             "category": "Food",
             "resourcePath": "VocabularyBoxes/Food/Pear"
-        },
-        {
-            "id": "6103e37511e708346a3d7443bce55e16",
-            "name": "Pebbles",
-            "japanese": "小石",
-            "reading": "こいし",
-            "category": "Nature-Land",
-            "resourcePath": "VocabularyBoxes/Nature-Land/Pebbles"
         },
         {
             "id": "f65c793fb1f2dd747b3da03357750625",
@@ -858,28 +698,12 @@
             "resourcePath": "VocabularyBoxes/Household Items/Picnic table"
         },
         {
-            "id": "3e76e07678fbf4b40ae1f14f9e4f02af",
-            "name": "Picture frame",
-            "japanese": "額縁",
-            "reading": "がくぶち",
-            "category": "Household Items",
-            "resourcePath": "VocabularyBoxes/Household Items/Picture frame"
-        },
-        {
             "id": "532f6977547e4984f901a275bbedc3ca",
             "name": "Pine tree",
             "japanese": "松",
             "reading": "まつ",
             "category": "Nature Items",
             "resourcePath": "VocabularyBoxes/Nature Items/Pine tree"
-        },
-        {
-            "id": "19452392a083c4849ae4734353faa1ec",
-            "name": "Pipe",
-            "japanese": "パイプ",
-            "reading": "ぱいぷ",
-            "category": "Tools",
-            "resourcePath": "VocabularyBoxes/Tools/Pipe"
         },
         {
             "id": "0627fe5aec67c3649bbc445341a132c7",
@@ -896,14 +720,6 @@
             "reading": "のうぎょうようふぉーく",
             "category": "Tools",
             "resourcePath": "VocabularyBoxes/Tools/Pitchfork"
-        },
-        {
-            "id": "bc4f42d51a742f34ea90582bf0f5aeb6",
-            "name": "Plank",
-            "japanese": "板",
-            "reading": "いた",
-            "category": "Tools",
-            "resourcePath": "VocabularyBoxes/Tools/Plank"
         },
         {
             "id": "e8536ba321fafce468c74a9736397d75",
@@ -954,22 +770,6 @@
             "resourcePath": "VocabularyBoxes/Food/Pumpkin"
         },
         {
-            "id": "fcb3beabd1621254ca228760ab8db9e9",
-            "name": "Push button",
-            "japanese": "押しボタン",
-            "reading": "おしぼたん",
-            "category": "Tools",
-            "resourcePath": "VocabularyBoxes/Tools/Push button"
-        },
-        {
-            "id": "80a3d26fd25673845853b59ce19f46ee",
-            "name": "Raft",
-            "japanese": "いかだ",
-            "reading": "いかだ",
-            "category": "Traffic",
-            "resourcePath": "VocabularyBoxes/Traffic/Raft"
-        },
-        {
             "id": "b2cdc72697e8fc6439a143ee5fbae58b",
             "name": "Rake",
             "japanese": "熊手",
@@ -982,8 +782,8 @@
             "name": "Reeds",
             "japanese": "葦",
             "reading": "あし",
-            "category": "Nature-Water",
-            "resourcePath": "VocabularyBoxes/Nature-Water/Reeds"
+            "category": "Nature Items",
+            "resourcePath": "VocabularyBoxes/Nature Items/Reeds"
         },
         {
             "id": "2769b40565841f841b8f481fd6bcd45c",
@@ -1006,8 +806,8 @@
             "name": "Rock",
             "japanese": "岩",
             "reading": "いわ",
-            "category": "Nature-Land",
-            "resourcePath": "VocabularyBoxes/Nature-Land/Rock"
+            "category": "Nature Items",
+            "resourcePath": "VocabularyBoxes/Nature Items/Rock"
         },
         {
             "id": "be517b999c225bf4a96ed2d1c04d316a",
@@ -1016,22 +816,6 @@
             "reading": "ろっきんぐちぇあ",
             "category": "Household Items",
             "resourcePath": "VocabularyBoxes/Household Items/Rocking chair"
-        },
-        {
-            "id": "fc2c0cc309870c04aa1d2a5aca5bb834",
-            "name": "Root",
-            "japanese": "根",
-            "reading": "ね",
-            "category": "Nature Items",
-            "resourcePath": "VocabularyBoxes/Nature Items/Root"
-        },
-        {
-            "id": "0e86d28044780584585bd14eb4a9919f",
-            "name": "Rope",
-            "japanese": "ロープ",
-            "reading": "ろーぷ",
-            "category": "Tools",
-            "resourcePath": "VocabularyBoxes/Tools/Rope"
         },
         {
             "id": "1316d426721e2d1479a5bebee9a6a717",
@@ -1058,14 +842,6 @@
             "resourcePath": "VocabularyBoxes/Farm Items/Scarecrow"
         },
         {
-            "id": "dc7ccd5d3f44430458601093876dc532",
-            "name": "Screen",
-            "japanese": "画面",
-            "reading": "がめん",
-            "category": "Office Items",
-            "resourcePath": "VocabularyBoxes/Office Items/Screen"
-        },
-        {
             "id": "08a2d75f0198d68479dff4dd98c626d0",
             "name": "Scythe",
             "japanese": "大鎌",
@@ -1078,8 +854,8 @@
             "name": "Seaweed",
             "japanese": "海藻",
             "reading": "かいそう",
-            "category": "Nature-Water",
-            "resourcePath": "VocabularyBoxes/Nature-Water/Seaweed"
+            "category": "Nature Items",
+            "resourcePath": "VocabularyBoxes/Nature Items/Seaweed"
         },
         {
             "id": "9fbd1e3dbe2089b4a8f5b9d0fb49e17f",
@@ -1090,28 +866,12 @@
             "resourcePath": "VocabularyBoxes/Household Items/Security camera"
         },
         {
-            "id": "f804fc87eff51344caf757af60baa8a6",
-            "name": "Seed packet",
-            "japanese": "種の袋",
-            "reading": "たねのふくろ",
-            "category": "Farm Items",
-            "resourcePath": "VocabularyBoxes/Farm Items/Seed packet"
-        },
-        {
-            "id": "af6d04878740144468b532ca8279f265",
-            "name": "Shack",
-            "japanese": "小屋",
-            "reading": "こや",
-            "category": "Places-Buildings",
-            "resourcePath": "VocabularyBoxes/Places-Buildings/Shack"
-        },
-        {
             "id": "cb86f6d39e7e6c24188461fba446c547",
             "name": "Shelf",
             "japanese": "棚",
             "reading": "たな",
-            "category": "Office Items",
-            "resourcePath": "VocabularyBoxes/Office Items/Shelf"
+            "category": "Household Items",
+            "resourcePath": "VocabularyBoxes/Household Items/Shelf"
         },
         {
             "id": "64b3880fe665afe4ba8d0c36e0b3e2bf",
@@ -1128,14 +888,6 @@
             "reading": "しゃべる",
             "category": "Tools",
             "resourcePath": "VocabularyBoxes/Tools/Shovel"
-        },
-        {
-            "id": "7ec960e4a355629499f0f8510873142c",
-            "name": "Silo",
-            "japanese": "サイロ",
-            "reading": "さいろ",
-            "category": "Places-Buildings",
-            "resourcePath": "VocabularyBoxes/Places-Buildings/Silo"
         },
         {
             "id": "a15f56dee4486624eb7b8ceab421a10c",
@@ -1174,16 +926,8 @@
             "name": "Starfish",
             "japanese": "ヒトデ",
             "reading": "ひとで",
-            "category": "Animals",
-            "resourcePath": "VocabularyBoxes/Animals/Starfish"
-        },
-        {
-            "id": "1d5577c2c4743024ebbfa3b71b6f4595",
-            "name": "Statue",
-            "japanese": "像",
-            "reading": "ぞう",
-            "category": "People",
-            "resourcePath": "VocabularyBoxes/People/Statue"
+            "category": "Nature Items",
+            "resourcePath": "VocabularyBoxes/Nature Items/Starfish"
         },
         {
             "id": "733e19c50536b9c4aae3e8b0529cdf11",
@@ -1192,14 +936,6 @@
             "reading": "はんどる",
             "category": "Traffic",
             "resourcePath": "VocabularyBoxes/Traffic/Steering wheel"
-        },
-        {
-            "id": "743c96dbde8dcb148b7edd411ba1c740",
-            "name": "Stone archway",
-            "japanese": "岩のアーチ",
-            "reading": "いわのあーち",
-            "category": "Nature-Land",
-            "resourcePath": "VocabularyBoxes/Nature-Land/Stone archway"
         },
         {
             "id": "9fe3270b5878ba941b47203976ca627b",
@@ -1290,14 +1026,6 @@
             "resourcePath": "VocabularyBoxes/Traffic/Traffic light"
         },
         {
-            "id": "aa94340c23022fd42ab0b54c28230c0d",
-            "name": "Train station",
-            "japanese": "駅",
-            "reading": "えき",
-            "category": "Places-Buildings",
-            "resourcePath": "VocabularyBoxes/Places-Buildings/Train station"
-        },
-        {
             "id": "a84f69530995c214dac3c0d0ff49bb6a",
             "name": "Trash bag",
             "japanese": "ごみ袋",
@@ -1346,14 +1074,6 @@
             "resourcePath": "VocabularyBoxes/Traffic/Truck"
         },
         {
-            "id": "4302312f3478990478f862186ef6ba34",
-            "name": "Twig",
-            "japanese": "小枝",
-            "reading": "こえだ",
-            "category": "Nature Items",
-            "resourcePath": "VocabularyBoxes/Nature Items/Twig"
-        },
-        {
             "id": "572eabc40c6721f48bcb25facfcad9f1",
             "name": "Umbrella",
             "japanese": "傘",
@@ -1370,28 +1090,12 @@
             "resourcePath": "VocabularyBoxes/Traffic/Van"
         },
         {
-            "id": "65ebffead89d45948ae3fd828a773c59",
-            "name": "Vise",
-            "japanese": "万力",
-            "reading": "まんりき",
-            "category": "Tools",
-            "resourcePath": "VocabularyBoxes/Tools/Vise"
-        },
-        {
             "id": "e1abbe040075c1e418608659f89bf186",
             "name": "Volcano",
             "japanese": "火山",
             "reading": "かざん",
-            "category": "Nature-Land",
-            "resourcePath": "VocabularyBoxes/Nature-Land/Volcano"
-        },
-        {
-            "id": "22ac84d6e90fb5541bc603a5b0a71b9c",
-            "name": "Water tower",
-            "japanese": "給水塔",
-            "reading": "きゅうすいとう",
-            "category": "Places-Buildings",
-            "resourcePath": "VocabularyBoxes/Places-Buildings/Water tower"
+            "category": "Nature Items",
+            "resourcePath": "VocabularyBoxes/Nature Items/Volcano"
         },
         {
             "id": "46d6adbbb5c84834ca7e9fe73ef1c376",

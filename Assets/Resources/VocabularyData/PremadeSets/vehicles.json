@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "id": "premade:vehicles",
+  "name": "Vehicles",
+  "description": "Road and water vehicles.",
+  "sortOrder": 10,
+  "itemIds": [
+    "dfc1a3ff232f34e40a42666c606e6577",
+    "9c6eee6a5a209994eb8ce039627c7d10",
+    "7842364cd153b3549ba67af0927779cb",
+    "52eb42e8954635c4fa2408324f6865b0",
+    "fb7af1cebc80ae1428a44253debee307",
+    "bf7af536ba0a7a9458147b470e88dd0a",
+    "89ce046490941544a89f63bc14c55490"
+  ]
+}
