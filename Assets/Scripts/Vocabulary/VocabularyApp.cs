@@ -272,7 +272,7 @@ namespace XRDiscovery.Vocabulary
             if (studyItems.Length == 0) return;
             selected = new SetChoice { Name = name, Items = studyItems };
             studyIndex = 0;
-            spawner.Recenter();
+            spawner.Recenter(view.PlacementOrigin, view.PlacementForward);
             ShowStudyItem();
         }
 
@@ -307,7 +307,7 @@ namespace XRDiscovery.Vocabulary
             if (valid.Length == 0) return;
             selected = new SetChoice { Name = name, Items = valid };
             session = new TestSession(valid, library.AllItemIds, new System.Random(), id => Prompt(library.Get(id)));
-            spawner.Recenter();
+            spawner.Recenter(view.PlacementOrigin, view.PlacementForward);
             ShowQuestion();
         }
 
@@ -385,7 +385,7 @@ namespace XRDiscovery.Vocabulary
         {
             StopInitialPositioning();
             view.Recenter();
-            spawner.Recenter();
+            spawner.Recenter(view.PlacementOrigin, view.PlacementForward);
         }
 
         private void OpenEditor(string id, string name, IEnumerable<string> items)

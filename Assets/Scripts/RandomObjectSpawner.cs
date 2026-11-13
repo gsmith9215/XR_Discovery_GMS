@@ -30,6 +30,8 @@ public class RandomObjectSpawner : MonoBehaviour
     private bool presentationIsTest;
     private Vector3 displayPosition;
     private Quaternion displayRotation;
+    private Vector3 placementOrigin;
+    private Vector3 placementForward;
     public event Action<string> BoxSelected;
     public Transform PlayerCamera => playerCamera;
     public Transform RightHandAnchor => rightHandAnchor;
@@ -57,7 +59,8 @@ public class RandomObjectSpawner : MonoBehaviour
         if (playerCamera == null) throw new InvalidOperationException("Player camera is not assigned.");
         bool modeChanged = presentationIsTest != allowAnswers;
         presentationIsTest = allowAnswers;
-        if (!positioned || modeChanged) Recenter();
+        if (!positioned) Recenter();
+        else if (modeChanged) UpdateDisplayPosition();
         presentationRoot = new GameObject("Vocabulary display").transform;
         presentationRoot.SetParent(transform, false);
         presentationRoot.SetPositionAndRotation(displayPosition, displayRotation);
@@ -96,9 +99,22 @@ public class RandomObjectSpawner : MonoBehaviour
         if (playerCamera == null) return;
         var forward = Vector3.ProjectOnPlane(playerCamera.forward, Vector3.up).normalized;
         if (forward.sqrMagnitude < .001f) forward = Vector3.forward;
-        displayPosition = playerCamera.position + forward * (presentationIsTest ? spawnDistance : studyDistance)
+        Recenter(playerCamera.position, forward);
+    }
+
+    public void Recenter(Vector3 origin, Vector3 forward)
+    {
+        placementOrigin = origin;
+        placementForward = Vector3.ProjectOnPlane(forward, Vector3.up).normalized;
+        if (placementForward.sqrMagnitude < .001f) placementForward = Vector3.forward;
+        UpdateDisplayPosition();
+    }
+
+    private void UpdateDisplayPosition()
+    {
+        displayPosition = placementOrigin + placementForward * (presentationIsTest ? spawnDistance : studyDistance)
             - Vector3.up * (presentationIsTest ? heightBelowEyes : studyHeightBelowEyes);
-        displayRotation = Quaternion.LookRotation(forward, Vector3.up);
+        displayRotation = Quaternion.LookRotation(placementForward, Vector3.up);
         positioned = true;
         if (presentationRoot != null) presentationRoot.SetPositionAndRotation(displayPosition, displayRotation);
     }

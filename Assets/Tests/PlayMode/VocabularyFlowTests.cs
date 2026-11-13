@@ -201,12 +201,18 @@ namespace XRDiscovery.Vocabulary.Tests
             Navigate("Study");
             Navigate("Set_premade:all");
             Navigate("StartSet");
+            Vector3 studyCenter = spawner.ActiveObjects[0].transform.parent.position;
+            Assert.That(Vector3.Distance(studyCenter, position - menu.forward * .2f - Vector3.up * .04f),
+                Is.LessThan(.001f), "Study objects should use the menu's placement pose.");
             Navigate("NextItem");
             Navigate("PreviousItem");
             Navigate("Back");
             Navigate("Test");
             Navigate("Set_premade:all");
             Navigate("StartSet");
+            Vector3 testCenter = spawner.ActiveObjects[0].transform.parent.position;
+            Assert.That(Vector3.Distance(testCenter, position - menu.forward * .7f - Vector3.up * .19f),
+                Is.LessThan(.001f), "Test objects should stay centered below the scoreboard.");
             Navigate("Back");
             Navigate("Cancel");
             Navigate("Back");

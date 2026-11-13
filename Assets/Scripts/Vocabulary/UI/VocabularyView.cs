@@ -20,6 +20,9 @@ namespace XRDiscovery.Vocabulary
         public Canvas Canvas { get; private set; }
         public VocabularyKeyboard Keyboard { get; private set; }
         public RectTransform Page => page;
+        // Reuse the menu's last placement pose when presenting study and test objects.
+        public Vector3 PlacementOrigin { get; private set; }
+        public Vector3 PlacementForward { get; private set; }
 
         public void Initialize(Transform cameraAnchor, Transform rightHand)
         {
@@ -72,7 +75,9 @@ namespace XRDiscovery.Vocabulary
         {
             var forward = Vector3.ProjectOnPlane(cameraTransform.forward, Vector3.up).normalized;
             if (forward.sqrMagnitude < .001f) forward = Vector3.forward;
-            Canvas.transform.SetPositionAndRotation(cameraTransform.position + forward * 1.7f - Vector3.up * .06f,
+            PlacementOrigin = cameraTransform.position;
+            PlacementForward = forward;
+            Canvas.transform.SetPositionAndRotation(PlacementOrigin + forward * 1.7f - Vector3.up * .06f,
                 Quaternion.LookRotation(forward, Vector3.up));
         }
 
