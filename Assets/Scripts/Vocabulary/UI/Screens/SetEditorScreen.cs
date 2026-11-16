@@ -10,51 +10,193 @@ namespace XRDiscovery.Vocabulary
         private readonly VocabularyView view;
         private readonly VocabularyScreens screens;
         private RectTransform itemArea;
+        private RectTransform itemContent;
+        private RectTransform filterMenu;
+        private UnityEngine.UI.ScrollRect itemScroll;
         private TMP_Text count, status;
         public SetEditorScreen(VocabularyView view, VocabularyScreens screens) { this.view = view; this.screens = screens; }
 
-        public void Draw(bool creating, string name, string search, string category, bool selectedOnly,
-            Action back, Action<string> rename, Action<string> searchChanged, Action toggleSelection, Action nextCategory)
+        public void DrawSet(bool creating, string name, IReadOnlyList<VocabularyEntry> selected, int unavailable,
+            Action back, Action<string> rename, Action addWords, Action save)
         {
+            filterMenu = null;
             screens.Header(creating ? "Create a custom set" : "Edit your set", back);
             view.Text("NameLabel", "SET NAME", 48, 118, 1104, 35, 22, VocabularyView.Muted);
             view.Input("SetName", name, "Name your set", 48, 155, 1104, rename);
-            view.Input("ItemSearch", search, "Search English, Japanese or reading", 48, 240, 745, searchChanged);
-            view.Button("SelectedOnly", selectedOnly ? "Showing: selected" : "Showing: all", 820, 240, 332, 60, toggleSelection);
-            view.Button("CategoryFilter", "Category: " + (string.IsNullOrEmpty(category) ? "All items" : category) + "  →", 48, 320, 745, 60, nextCategory);
-            count = view.Text("SelectedCount", "", 820, 320, 332, 60, 28);
-            itemArea = view.Area("ItemSelection", 0, 405, 1200, 485);
+            view.Button("AddWords", "Add Words", 48, 240, 1104, 65, addWords, true);
+            view.Text("SelectedCount", selected.Count + unavailable + " words in this set", 48, 325, 1104, 45, 28);
+            itemArea = view.Area("SelectedWords", 0, 385, 1200, 515);
+            view.ScrollArea("SelectedWords", 48, 0, 1104, 385, out var content, itemArea);
+            const float rowHeight = 52;
+            content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+                24 + Mathf.Max(1, selected.Count + (unavailable > 0 ? 1 : 0)) * rowHeight);
+            for (int i = 0; i < selected.Count; i++)
+            {
+                var entry = selected[i];
+                view.Text("Selected_" + entry.Id, entry.Name + "  /  " + entry.Japanese,
+                    22, 12 + i * rowHeight, 1000, 46, 27, parent: content);
+            }
+            if (selected.Count + unavailable == 0)
+                view.Text("EmptySet", "No words yet. Select Add Words to choose some.", 22, 12, 1000, 65, 30, parent: content);
+            else if (unavailable > 0)
+                view.Text("Unavailable", unavailable + " unavailable words are retained in this set.",
+                    22, 12 + selected.Count * rowHeight, 1000, 46, 23, VocabularyView.Muted, content);
+            status = view.Text("EditStatus", "", 48, 390, 1104, 30, 23, VocabularyView.Muted, itemArea);
+            view.Button("SaveSet", "Save set", 48, 425, 1104, 70, save, true, parent: itemArea);
+            SetKeyboardVisible(view.Keyboard.IsVisible);
         }
 
-        public void Items(VocabularyEntry[] visible, HashSet<string> selected, int page, int pages, int matchCount,
-            Action<string> toggle, Action<int> changePage, Action addMatching, Action removeMatching, Action save)
+        public void DrawWords(bool addBySet, string search, string filter, bool selectedOnly, int selectedCount,
+            Action back, Action<string> searchChanged, Action toggleSelection, Action toggleMode, Action toggleFilters)
         {
-            for (int i = itemArea.childCount - 1; i >= 0; i--)
+            filterMenu = null;
+            screens.Header(addBySet ? "Add Sets" : "Add Words", back);
+            count = view.Text("SelectedCount", selectedCount + " selected", 820, 35, 332, 60, 26);
+            view.Input("ItemSearch", search, addBySet ? "Search sets" : "Search English or Japanese", 48, 135, 745, searchChanged);
+            view.Button("SelectedOnly", selectedOnly ? (addBySet ? "Showing: Added" : "Showing: Selected") : "Showing: All",
+                820, 135, 332, 60, toggleSelection);
+            view.Button("CategoryFilter", "Filter: " + (string.IsNullOrEmpty(filter) ? (addBySet ? "All Sets" : "All Words") : filter),
+                48, 215, 530, 60, toggleFilters);
+            view.Button("AddBy", addBySet ? "Add/Remove By: Set" : "Add/Remove By: Word", 622, 215, 530, 60, toggleMode);
+            itemArea = view.Area("ItemSelection", 0, 295, 1200, 575);
+            itemScroll = view.ScrollArea("ItemSelection", 48, 0, 1104, 440, out itemContent, itemArea);
+        }
+
+        public void ShowFilters(IReadOnlyList<string> categories, string current, string allLabel, Action<string> select)
+        {
+            var scroll = view.ScrollArea("FilterOptions", 48, 295, 1104, 440, out var content);
+            filterMenu = (RectTransform)scroll.transform;
+            filterMenu.GetComponent<UnityEngine.UI.Image>().color = new Color32(255, 249, 228, 255);
+            content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 16 + (categories.Count + 1) * 65);
+            view.Button("Filter_All", allLabel, 18, 8, 1000, 56,
+                () => select(""), string.IsNullOrEmpty(current), parent: content);
+            for (int i = 0; i < categories.Count; i++)
+            {
+                var category = categories[i];
+                view.Button("Filter_" + i, category, 18, 8 + (i + 1) * 65, 1000, 56,
+                    () => select(category), category == current, parent: content);
+            }
+            filterMenu.gameObject.SetActive(!view.Keyboard.IsVisible);
+        }
+
+        public void Sets(IReadOnlyList<SetChoice> sets, Action<SetChoice> add)
+        {
+            float scrollOffset = itemContent.anchoredPosition.y;
+            itemScroll.StopMovement();
+            for (int i = itemContent.childCount - 1; i >= 0; i--)
+            {
+                var child = itemContent.GetChild(i).gameObject;
+                child.SetActive(false);
+                UnityEngine.Object.Destroy(child);
+            }
+            for (int i = itemArea.childCount - 1; i >= 1; i--)
+            {
+                var child = itemArea.GetChild(i).gameObject;
+                child.SetActive(false);
+                UnityEngine.Object.Destroy(child);
+            }
+            const float rowHeight = 112;
+            itemContent.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+                24 + Mathf.Max(1, (sets.Count + 1) / 2) * rowHeight);
+            for (int i = 0; i < sets.Count; i++)
+            {
+                var choice = sets[i];
+                view.Button("SourceSet_" + choice.Id,
+                    choice.Name + "\n" + (choice.Custom ? "CUSTOM" : "PREMADE") + " · " + choice.Items.Count + " words",
+                    22 + i % 2 * 504, 12 + i / 2 * rowHeight, 480, 100,
+                    () => add(choice), parent: itemContent);
+            }
+            if (sets.Count == 0)
+                view.Text("NoSets", "No sets match this filter.", 22, 12, 1000, 65, 30, parent: itemContent);
+            itemContent.anchoredPosition = new Vector2(0,
+                Mathf.Clamp(scrollOffset, 0, Mathf.Max(0, itemContent.rect.height - 440)));
+            status = view.Text("PickerStatus", "Select a set to add or remove it.",
+                48, 455, 1104, 65, 27, VocabularyView.Muted, itemArea);
+            SetKeyboardVisible(view.Keyboard.IsVisible);
+        }
+
+        public void SetPreview(SetChoice choice, VocabularyEntry[] available, int unavailable,
+            HashSet<string> selected, Action back, Action add, Action remove)
+        {
+            itemArea = null;
+            filterMenu = null;
+            screens.Header(choice.Name, back);
+            int alreadyAdded = 0;
+            foreach (var entry in available)
+                if (selected.Contains(entry.Id)) alreadyAdded++;
+            int newWords = available.Length - alreadyAdded;
+            view.Text("PreviewSummary",
+                (choice.Custom ? "CUSTOM SET" : "PREMADE SET") + "  ·  " + available.Length +
+                " words  ·  " + alreadyAdded + " already added", 48, 125, 1104, 45, 27, VocabularyView.Muted);
+            view.ScrollArea("SetWords", 48, 185, 1104, 515, out var content);
+            const float rowHeight = 52;
+            content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+                24 + Mathf.Max(1, available.Length) * rowHeight);
+            for (int i = 0; i < available.Length; i++)
+            {
+                var entry = available[i];
+                view.Text("PreviewWord_" + entry.Id,
+                    (selected.Contains(entry.Id) ? "✓  " : "+  ") + entry.Name + "  /  " + entry.Japanese,
+                    22, 12 + i * rowHeight, 1000, 46, 27, parent: content);
+            }
+            if (available.Length == 0)
+                view.Text("NoPreviewWords", "This set has no available words.", 22, 12, 1000, 65, 30, parent: content);
+            if (unavailable > 0)
+                view.Text("UnavailableWords", unavailable + " unavailable words will be skipped.",
+                    48, 715, 1104, 45, 23, VocabularyView.Muted);
+            view.Button("AddSetWords", newWords > 0 ? "Add " + newWords + " New Words" : "All Words Already Added",
+                48, 785, 530, 80, add, true, newWords > 0);
+            view.Button("RemoveSetWords", alreadyAdded > 0 ? "Remove " + alreadyAdded + " Words" : "No Words to Remove",
+                622, 785, 530, 80, remove, enabled: alreadyAdded > 0);
+        }
+
+        public void Words(VocabularyEntry[] visible, HashSet<string> selected,
+            Action<string> toggle, Action addMatching, Action removeMatching)
+        {
+            float scrollOffset = itemContent.anchoredPosition.y;
+            itemScroll.StopMovement();
+            for (int i = itemContent.childCount - 1; i >= 0; i--)
+            {
+                var child = itemContent.GetChild(i).gameObject;
+                child.SetActive(false);
+                UnityEngine.Object.Destroy(child);
+            }
+            for (int i = itemArea.childCount - 1; i >= 1; i--)
             {
                 var child = itemArea.GetChild(i).gameObject;
                 child.SetActive(false);
                 UnityEngine.Object.Destroy(child);
             }
             count.text = selected.Count + " selected";
+            const float rowHeight = 78;
+            itemContent.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+                24 + Mathf.Max(1, visible.Length) * rowHeight);
             for (int i = 0; i < visible.Length; i++)
             {
                 var entry = visible[i];
                 bool included = selected.Contains(entry.Id);
                 view.Button("Item_" + entry.Id, (included ? "✓  " : "+  ") + entry.Name + "  /  " + entry.Japanese,
-                    48 + i % 2 * 574, i / 2 * 78, 530, 65, () => toggle(entry.Id), included, parent: itemArea);
+                    22, 12 + i * rowHeight, 1000, 65,
+                    () => toggle(entry.Id), included, parent: itemContent);
             }
-            if (visible.Length == 0) view.Text("NoMatches", "No items match this filter.", 48, 20, 1104, 160, 32, parent: itemArea);
-            view.Button("PreviousPage", "←", 48, 245, 100, 55, () => changePage(page - 1), enabled: page > 0, parent: itemArea);
-            view.Text("PageCount", $"{page + 1} / {pages}  ·  {matchCount} matching", 175, 245, 500, 55, 26, parent: itemArea);
-            view.Button("NextPage", "→", 680, 245, 100, 55, () => changePage(page + 1), enabled: page + 1 < pages, parent: itemArea);
-            view.Button("AddFiltered", "Add matching", 810, 245, 342, 55, addMatching, parent: itemArea);
-            view.Button("RemoveFiltered", "Remove matching", 810, 312, 342, 55, removeMatching, parent: itemArea);
-            status = view.Text("EditStatus", "Templates and other sets stay unchanged.", 48, 315, 735, 55, 23, VocabularyView.Muted, itemArea);
-            view.Button("SaveSet", "Save set", 48, 392, 1104, 75, save, true, parent: itemArea);
+            if (visible.Length == 0) view.Text("NoMatches", "No items match this filter.", 22, 12, 1000, 65, 32, parent: itemContent);
+            itemContent.anchoredPosition = new Vector2(0,
+                Mathf.Clamp(scrollOffset, 0, Mathf.Max(0, itemContent.rect.height - 440)));
+            view.Button("AddFiltered", "Add All Displayed", 48, 455, 530, 65, addMatching, parent: itemArea);
+            view.Button("RemoveFiltered", "Remove All Displayed", 622, 455, 530, 65, removeMatching, parent: itemArea);
             SetKeyboardVisible(view.Keyboard.IsVisible);
         }
 
         public void Status(string message) { if (status != null) status.text = message; }
-        public void SetKeyboardVisible(bool visible) { if (itemArea != null) itemArea.gameObject.SetActive(!visible); }
+        public void ScrollToTop()
+        {
+            if (itemScroll != null) itemScroll.StopMovement();
+            if (itemContent != null) itemContent.anchoredPosition = Vector2.zero;
+        }
+        public void SetKeyboardVisible(bool visible)
+        {
+            if (itemArea != null) itemArea.gameObject.SetActive(!visible);
+            if (filterMenu != null) filterMenu.gameObject.SetActive(!visible);
+        }
     }
 }

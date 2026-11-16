@@ -11,7 +11,10 @@ namespace XRDiscovery.Vocabulary
         private string id, name, search = "", category = "";
         private HashSet<string> items;
         private bool selectedOnly;
-        private int page;
+        private bool filterOpen;
+        private bool addBySet;
+        private string setFilter = "", setSearch = "";
+        private SetChoice previewSet;
 
         public SetEditorController(VocabularyApp app)
         { this.app = app; screen = new SetEditorScreen(app.View, app.Screens); }
@@ -19,39 +22,90 @@ namespace XRDiscovery.Vocabulary
         public void Open(string setId, string setName, IEnumerable<string> itemIds)
         {
             id = setId; name = setName; items = new HashSet<string>(itemIds);
-            search = ""; category = ""; selectedOnly = false; page = 0;
-            Draw();
+            search = ""; category = ""; selectedOnly = false; filterOpen = false;
+            addBySet = false; setFilter = ""; setSearch = ""; previewSet = null;
+            DrawSet();
         }
 
-        private void Draw()
+        private void DrawSet()
         {
+            filterOpen = false;
+            previewSet = null;
             app.NewPage(VocabularyScreen.Editor);
-            screen.Draw(id == null, name, search, category, selectedOnly,
-                () => app.Confirm("Discard these edits?", "Changes are saved only when you select Save set.", app.ManageSets, Draw),
-                value => name = value,
-                value => { search = value; page = 0; RefreshItems(); },
-                () => { selectedOnly = !selectedOnly; page = 0; Draw(); },
-                () =>
+            var selected = app.Library.Entries.Where(e => items.Contains(e.Id)).ToArray();
+            screen.DrawSet(id == null, name, selected, items.Count - selected.Length,
+                () => app.Confirm("Discard these edits?", "Changes are saved only when you select Save set.", app.ManageSets, DrawSet),
+                value => name = value, DrawWords, Save);
+        }
+
+        private void DrawWords()
+        {
+            app.NewPage(VocabularyScreen.EditorWords);
+            if (addBySet && previewSet != null)
+            {
+                var choice = previewSet;
+                var available = choice.Items.Select(app.Library.Get).Where(entry => entry != null).ToArray();
+                screen.SetPreview(choice, available, choice.Items.Count - available.Length, items,
+                    () => { previewSet = null; DrawWords(); },
+                    () =>
+                    {
+                        foreach (var entry in available) items.Add(entry.Id);
+                        previewSet = null;
+                        DrawWords();
+                    },
+                    () =>
+                    {
+                        foreach (var entry in available) items.Remove(entry.Id);
+                        previewSet = null;
+                        DrawWords();
+                    });
+                return;
+            }
+            string activeFilter = addBySet ? setFilter : category;
+            screen.DrawWords(addBySet, addBySet ? setSearch : search, activeFilter, selectedOnly, items.Count, DrawSet,
+                value =>
                 {
-                    var categories = new[] { "" }.Concat(app.Library.Categories).ToArray();
-                    category = categories[(Array.IndexOf(categories, category) + 1) % categories.Length];
-                    page = 0; Draw();
-                });
+                    if (addBySet) { setSearch = value; screen.ScrollToTop(); RefreshItems(); }
+                    else { search = value; screen.ScrollToTop(); RefreshItems(); }
+                },
+                () => { selectedOnly = !selectedOnly; DrawWords(); },
+                () => { addBySet = !addBySet; filterOpen = false; previewSet = null; DrawWords(); },
+                () => { filterOpen = !filterOpen; DrawWords(); });
             RefreshItems();
+            if (filterOpen)
+                screen.ShowFilters(addBySet ? (IReadOnlyList<string>)new[] { "Premade Sets", "Custom Sets" } : app.Library.Categories,
+                    activeFilter, addBySet ? "All Sets" : "All Words", value =>
+                {
+                    if (addBySet) setFilter = value;
+                    else category = value;
+                    filterOpen = false;
+                    DrawWords();
+                });
         }
 
         private void RefreshItems()
         {
-            if (app.Screen != VocabularyScreen.Editor) return;
+            if (app.Screen != VocabularyScreen.EditorWords) return;
+            if (addBySet)
+            {
+                var sets = app.PremadeSets.Sets.Select(s => new SetChoice(s.Set))
+                    .Concat(app.StorageAvailable ? app.CustomSets.Sets
+                        .Where(s => s.Id != id).Select(s => new SetChoice(s, true)) : Enumerable.Empty<SetChoice>())
+                    .Where(s => (setFilter == "" || (setFilter == "Custom Sets") == s.Custom)
+                        && (string.IsNullOrWhiteSpace(setSearch)
+                            || s.Name.IndexOf(setSearch, StringComparison.OrdinalIgnoreCase) >= 0)
+                        && (!selectedOnly || (app.ValidIds(s.Items).Length > 0
+                            && app.ValidIds(s.Items).All(items.Contains))))
+                    .ToArray();
+                screen.Sets(sets, choice => { previewSet = choice; DrawWords(); });
+                return;
+            }
             var entries = app.Library.Entries.Where(e => (string.IsNullOrEmpty(category) || e.Category == category)
                 && (!selectedOnly || items.Contains(e.Id)) && MatchesSearch(e)).ToArray();
-            int pages = Math.Max(1, (entries.Length + 5) / 6);
-            page = Math.Clamp(page, 0, pages - 1);
-            screen.Items(entries.Skip(page * 6).Take(6).ToArray(), items, page, pages, entries.Length,
+            screen.Words(entries, items,
                 item => { if (!items.Add(item)) items.Remove(item); RefreshItems(); },
-                value => { page = value; RefreshItems(); },
                 () => { foreach (var entry in entries) items.Add(entry.Id); RefreshItems(); },
-                () => { foreach (var entry in entries) items.Remove(entry.Id); RefreshItems(); }, Save);
+                () => { foreach (var entry in entries) items.Remove(entry.Id); RefreshItems(); });
         }
 
         private bool MatchesSearch(VocabularyEntry e) => string.IsNullOrWhiteSpace(search)

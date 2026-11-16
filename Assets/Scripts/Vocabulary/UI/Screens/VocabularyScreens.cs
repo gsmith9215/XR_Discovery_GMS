@@ -15,7 +15,7 @@ namespace XRDiscovery.Vocabulary
                 study);
             view.MenuButton("Test", "Games", "Test you knowledge with vocabulary games.", 620, 310, 520, 220,
                 test);
-            view.Button("CustomSets", "My Custom Vocabulary Sets", 60, 550, 1080, 80, manage, enabled: storageAvailable);
+            view.Button("CustomSets", "Custom Sets", 60, 550, 1080, 80, manage, enabled: storageAvailable);
             view.Button("PromptLanguage", "Test prompts: " + (japanese ? "Japanese" : "English"), 60, 665, 700, 65, toggleLanguage);
             view.Button("Recenter", "Recenter", 800, 665, 340, 65, recenter);
             var help = view.Text("Help", string.IsNullOrEmpty(storageNotice) ? "Point and press the trigger to select. Mouse and keyboard work in the Editor." : storageNotice,

@@ -11,14 +11,13 @@ namespace XRDiscovery.Vocabulary
         public SetBrowserScreen(VocabularyView view, VocabularyScreens screens) { this.view = view; this.screens = screens; }
         public void Browse(BrowsePurpose purpose, bool customTab, bool storageAvailable, IReadOnlyList<SetChoice> sets,
             int browserPage, int pages, Func<SetChoice, int> availableCount, Action back, Action create,
-            Action template, Action<bool> tab, Action<SetChoice> select, Action<int> changePage)
+            Action<bool> tab, Action<SetChoice> select, Action<int> changePage)
         {
-            string title = purpose == BrowsePurpose.Manage ? "My custom sets" : purpose == BrowsePurpose.Template ? "Choose a starting template" : "Choose a set to " + purpose.ToString().ToLowerInvariant();
+            string title = purpose == BrowsePurpose.Manage ? "Custom Sets" : "Choose a set to " + purpose.ToString().ToLowerInvariant();
             screens.Header(title, back);
             if (purpose == BrowsePurpose.Manage)
             {
-                view.Button("NewBlankSet", "Create empty set", 48, 132, 530, 65, create, true);
-                view.Button("NewFromTemplate", "Create from a template", 622, 132, 530, 65, template, true);
+                view.Button("CreateCustomSet", "Create Custom Set", 48, 132, 1104, 65, create, true);
             }
             else
             {
@@ -33,7 +32,7 @@ namespace XRDiscovery.Vocabulary
                 view.Button("Set_" + choice.Id, choice.Name + "\n" + available + " items", 48 + (i % 2) * 574, 230 + (i / 2) * 126, 530, 106,
                     () => select(choice));
             }
-            if (sets.Count == 0) view.Text("Empty", "No custom sets yet. Create one from the main menu, or start from a premade template.", 70, 300, 1060, 200, 34);
+            if (sets.Count == 0) view.Text("Empty", "No custom sets yet. Select Create Custom Set to make one.", 70, 300, 1060, 200, 34);
             screens.Pager(browserPage, pages, changePage, 770);
             view.Text("NamespaceHelp", customTab ? "Your sets are saved separately. Names can match any premade set." : "All items includes every available vocabulary box.", 48, 847, 1104, 35, 23, VocabularyView.Muted);
         }

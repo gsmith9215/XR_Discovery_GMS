@@ -144,7 +144,7 @@ namespace XRDiscovery.Vocabulary.Tests
             Click("Back");
             Click("CustomSets");
             CheckButtons();
-            Click("NewBlankSet");
+            Click("CreateCustomSet");
             CheckButtons();
             app.View.Keyboard.Show(Input("SetName"));
             Canvas.ForceUpdateCanvases();
@@ -253,7 +253,7 @@ namespace XRDiscovery.Vocabulary.Tests
             Navigate("Back");
             Navigate("Confirm");
             Navigate("CustomSets");
-            Navigate("NewBlankSet");
+            Navigate("CreateCustomSet");
             Navigate("Back");
             Navigate("Confirm");
             Navigate("Back");
@@ -396,7 +396,7 @@ namespace XRDiscovery.Vocabulary.Tests
         }
 
         [UnityTest]
-        public IEnumerator CustomSetTemplateDuplicateRenameMembershipAndDeletePersistThroughUi()
+        public IEnumerator CustomSetCreateDuplicateRenameMembershipAndDeletePersistThroughUi()
         {
             var premade = app.PremadeSets.Sets.First().Set;
             string category = premade.Name;
@@ -404,8 +404,13 @@ namespace XRDiscovery.Vocabulary.Tests
             Assert.That(template.Length, Is.GreaterThan(0));
 
             Click("CustomSets");
-            Click("NewFromTemplate");
-            Click("Set_" + premade.Id);
+            Assert.That(app.View.Page.Find("NewFromTemplate"), Is.Null);
+            Click("CreateCustomSet");
+            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.Editor));
+            Assert.That(app.View.Page.Find("SelectedCount").GetComponent<TMP_Text>().text, Is.EqualTo("0 words in this set"));
+            Click("AddWords");
+            foreach (string itemId in template) Click("Item_" + itemId);
+            Click("Back");
             Input("SetName").text = category; // Same name as its premade template is explicitly allowed.
             Click("SaveSet");
             yield return null;
@@ -418,9 +423,11 @@ namespace XRDiscovery.Vocabulary.Tests
             Click("DuplicateSet");
             Input("SetName").text = "私の練習セット";
             string removedId = template[0];
+            Click("AddWords");
             Input("ItemSearch").text = app.Library.Get(removedId).Name;
             yield return null;
             Click("Item_" + removedId);
+            Click("Back");
             Click("SaveSet");
             yield return null;
             VocabularySet duplicate = app.CustomSets.Sets.Single(set => set.Id != original.Id);
@@ -432,9 +439,11 @@ namespace XRDiscovery.Vocabulary.Tests
             Click("EditSet");
             Input("SetName").text = category;
             string addedId = app.Library.AllItemIds.First(id => !template.Contains(id));
+            Click("AddWords");
             Input("ItemSearch").text = app.Library.Get(addedId).Name;
             yield return null;
             Click("Item_" + addedId);
+            Click("Back");
             Click("SaveSet");
             yield return null;
             IReadOnlyList<VocabularySet> reloaded = new CustomSetRepository(savePath).Load();
@@ -475,7 +484,7 @@ namespace XRDiscovery.Vocabulary.Tests
         public IEnumerator EmptyAndInvalidDraftsAreHandledWithoutDiscardingSavedItems()
         {
             Click("CustomSets");
-            Click("NewBlankSet");
+            Click("CreateCustomSet");
             Input("SetName").text = "  ";
             Click("SaveSet");
             Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.Editor));
@@ -507,7 +516,7 @@ namespace XRDiscovery.Vocabulary.Tests
         public IEnumerator WorldKeyboardPreservesSelectionAndDeletesWholeUnicodeTextElements()
         {
             Click("CustomSets");
-            Click("NewBlankSet");
+            Click("CreateCustomSet");
             TMP_InputField field = Input("SetName");
             VocabularyKeyboard keyboard = app.View.Keyboard;
             var visibility = new List<bool>();
@@ -548,7 +557,7 @@ namespace XRDiscovery.Vocabulary.Tests
         public IEnumerator ChangingScreenClosesKeyboardAndClearsItsInputTarget()
         {
             Click("CustomSets");
-            Click("NewBlankSet");
+            Click("CreateCustomSet");
             TMP_InputField field = Input("SetName");
             app.View.Keyboard.Show(field);
             Assert.That(app.View.Keyboard.IsVisible, Is.True);

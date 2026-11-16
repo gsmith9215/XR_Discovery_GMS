@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace XRDiscovery.Vocabulary
 {
-    public enum VocabularyScreen { MainMenu, Sets, SetDetails, Editor, Study, Test, Results, Confirmation, Error }
+    public enum VocabularyScreen { MainMenu, Sets, SetDetails, Editor, EditorWords, Study, Test, Results, Confirmation, Error }
 
     /// <summary>Scene entry point: connects services, owns navigation and coordinates screen exit.</summary>
     public sealed class VocabularyApp : MonoBehaviour

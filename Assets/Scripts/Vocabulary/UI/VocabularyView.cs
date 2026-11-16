@@ -122,9 +122,9 @@ namespace XRDiscovery.Vocabulary
         }
 
         public UnityEngine.UI.ScrollRect ScrollArea(string name, float x, float y, float width, float height,
-            out RectTransform content)
+            out RectTransform content, Transform parent = null)
         {
-            var viewport = Area(name + "Viewport", x, y, width, height);
+            var viewport = Area(name + "Viewport", x, y, width, height, parent);
             var image = viewport.gameObject.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.Apply(image, true);
             image.color = new Color32(255, 249, 228, 245);

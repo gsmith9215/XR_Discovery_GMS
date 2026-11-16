@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace XRDiscovery.Vocabulary
 {
-    internal enum BrowsePurpose { Study, Test, Manage, Template }
+    internal enum BrowsePurpose { Study, Test, Manage }
 
     internal sealed class SetChoice
     {
@@ -33,7 +33,6 @@ namespace XRDiscovery.Vocabulary
         {
             purpose = nextPurpose;
             if (reset) { customTab = purpose == BrowsePurpose.Manage; page = 0; }
-            // Returning from a premade template must always show the player's saved copy.
             if (purpose == BrowsePurpose.Manage) customTab = true;
             app.NewPage(VocabularyScreen.Sets);
             var sets = AvailableSets();
@@ -42,9 +41,8 @@ namespace XRDiscovery.Vocabulary
             screen.Browse(purpose, customTab, app.StorageAvailable, sets, page, pages,
                 choice => app.ValidIds(choice.Items).Length, app.ShowMainMenu,
                 () => app.EditSet(null, "My vocabulary", Array.Empty<string>()),
-                () => Browse(BrowsePurpose.Template),
                 custom => { customTab = custom; page = 0; Browse(purpose, false); },
-                choice => { if (purpose == BrowsePurpose.Template) app.EditSet(null, choice.Name + " copy", choice.Items); else ShowSet(choice); },
+                ShowSet,
                 value => { page = value; Browse(purpose, false); });
         }
 
