@@ -99,6 +99,7 @@ namespace XRDiscovery.Vocabulary
             Vector3 endpoint = ray.GetPoint(maximumDistance);
             var plane = new Plane(canvas.transform.forward, canvas.transform.position);
             bool hitsPlane = plane.Raycast(ray, out float distance) && distance <= maximumDistance;
+            bool hitsCanvas = false;
             GameObject hitObject = null;
             RaycastResult hitResult = default;
             pointer.delta = Vector2.zero;
@@ -109,6 +110,9 @@ namespace XRDiscovery.Vocabulary
                 Vector3 screenPoint = viewCamera.WorldToScreenPoint(endpoint);
                 if (screenPoint.z > viewCamera.nearClipPlane)
                 {
+                    var canvasRect = (RectTransform)canvas.transform;
+                    Vector3 localPoint = canvasRect.InverseTransformPoint(endpoint);
+                    hitsCanvas = canvasRect.rect.Contains(new Vector2(localPoint.x, localPoint.y));
                     Vector2 position = screenPoint;
                     pointer.delta = position - pointer.position;
                     pointer.position = position;
@@ -149,7 +153,7 @@ namespace XRDiscovery.Vocabulary
 
             wasPressed = pressed;
             if (canvas != null && canvas.isActiveAndEnabled && isActiveAndEnabled)
-                ShowBeam(ray.origin, endpoint, hitObject != null, pressed);
+                ShowBeam(ray.origin, endpoint, hitsCanvas, pressed);
             else
                 Suspend();
         }
@@ -299,6 +303,8 @@ namespace XRDiscovery.Vocabulary
                 beam.positionCount = 2;
                 beam.startWidth = beamWidth;
                 beam.endWidth = beamWidth * 0.55f;
+                beam.sortingLayerID = canvas.sortingLayerID;
+                beam.sortingOrder = canvas.sortingOrder + 1;
                 beam.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 beam.receiveShadows = false;
                 // Reuse the uGUI shader already included for this canvas. A Shader.Find
@@ -317,6 +323,8 @@ namespace XRDiscovery.Vocabulary
                 collider.enabled = false;
                 Destroy(collider);
                 var tipRenderer = tip.GetComponent<Renderer>();
+                tipRenderer.sortingLayerID = canvas.sortingLayerID;
+                tipRenderer.sortingOrder = canvas.sortingOrder + 1;
                 tipRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 tipRenderer.receiveShadows = false;
                 if (pointerMaterial != null)
