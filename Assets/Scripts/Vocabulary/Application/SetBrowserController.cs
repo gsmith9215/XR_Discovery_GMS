@@ -58,7 +58,7 @@ namespace XRDiscovery.Vocabulary
         {
             app.NewPage(VocabularyScreen.SetDetails);
             var valid = app.ValidIds(choice.Items);
-            screen.Details(choice, purpose, valid.Select(id => app.Library.Get(id).Name).ToArray(), choice.Items.Count - valid.Length,
+            screen.Details(choice, purpose, valid.Select(app.Library.Get).ToArray(), choice.Items.Count - valid.Length,
                 () => Browse(purpose, false),
                 () => app.EditSet(choice.Id, choice.Name, choice.Items),
                 () => app.EditSet(null, choice.Name + " copy", choice.Items),

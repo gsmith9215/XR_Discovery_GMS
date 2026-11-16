@@ -36,27 +36,22 @@ namespace XRDiscovery.Vocabulary
             screens.Pager(browserPage, pages, changePage, 770);
             view.Text("NamespaceHelp", customTab ? "Your sets are saved separately. Names can match any premade set." : "All items includes every available vocabulary box.", 48, 847, 1104, 35, 23, VocabularyView.Muted);
         }
-        public void Details(SetChoice choice, BrowsePurpose purpose, string[] itemNames, int missing,
+        public void Details(SetChoice choice, BrowsePurpose purpose, VocabularyEntry[] entries, int missing,
             Action back, Action edit, Action duplicate, Action delete, Action start)
         {
             screens.Header(choice.Name, back, centerTitle: true);
-            view.Text("SetType", (choice.Custom ? "MY CUSTOM SET" : "PREMADE SET") + "  ·  " + itemNames.Length + " items", 48, 125, 1104, 35, 29, VocabularyView.Muted);
+            view.Text("SetType", (choice.Custom ? "MY CUSTOM SET" : "PREMADE SET") + "  ·  " + entries.Length + " items", 48, 125, 1104, 35, 29, VocabularyView.Muted);
             view.ScrollArea("Preview", 48, 145, 1104, 470, out var content);
-            const float columnWidth = 500;
-            const float rowHeight = 48;
-            const float columnGap = 24;
-            const float horizontalPadding = 22;
+            const float rowHeight = 52;
             const float verticalPadding = 12;
-            int rows = Mathf.Max(1, (itemNames.Length + 1) / 2);
-            content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, verticalPadding * 2 + rows * rowHeight);
-            for (int i = 0; i < itemNames.Length; i++)
+            content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
+                verticalPadding * 2 + Mathf.Max(1, entries.Length) * rowHeight);
+            for (int i = 0; i < entries.Length; i++)
             {
-                int column = i % 2;
-                int row = i / 2;
-                var item = view.Text("PreviewItem_" + i, itemNames[i],
-                    horizontalPadding + column * (columnWidth + columnGap),
-                    verticalPadding + row * rowHeight,
-                    columnWidth, rowHeight - 4, 27, parent: content);
+                var entry = entries[i];
+                var item = view.Text("PreviewItem_" + i, entry.Name + "  /  " + entry.Japanese,
+                    22, verticalPadding + i * rowHeight,
+                    1000, rowHeight - 4, 27, parent: content);
                 item.alignment = TMPro.TextAlignmentOptions.MidlineLeft;
             }
             if (missing > 0) view.Text("Missing", $"{missing} unavailable items will be skipped. They remain in your saved set.", 48, 145, 1104, 30, 20, VocabularyView.Muted);
@@ -70,7 +65,7 @@ namespace XRDiscovery.Vocabulary
             else
             {
                 view.Button("StartSet", purpose == BrowsePurpose.Study ? "Begin studying" : "Begin test", 48, 650, 1104, 100,
-                    start, true, itemNames.Length > 0);
+                    start, true, entries.Length > 0);
                 view.Text("Rules", string.IsNullOrWhiteSpace(choice.Description)
                     ? (purpose == BrowsePurpose.Study ? "Use Previous and Next to cycle through every item." : "Every word is asked once. After the round, retest everything or practice only the words you missed.")
                     : choice.Description, 48, 770, 1104, 95, 26, VocabularyView.Muted);
