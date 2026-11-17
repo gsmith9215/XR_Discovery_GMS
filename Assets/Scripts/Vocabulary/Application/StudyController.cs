@@ -5,6 +5,7 @@ namespace XRDiscovery.Vocabulary
 {
     internal sealed class StudyController
     {
+        private static readonly int[] VoiceSpeedPercents = { 100, 75, 50 };
         private readonly VocabularyApp app;
         private readonly StudyScreen screen;
         private StudySession session;
@@ -13,6 +14,7 @@ namespace XRDiscovery.Vocabulary
         private bool revealed;
         private readonly AudioSource audio;
         private AudioClip clip;
+        private int voiceSpeedIndex;
         public int Index => session?.Index ?? 0;
 
         public StudyController(VocabularyApp app)
@@ -22,6 +24,7 @@ namespace XRDiscovery.Vocabulary
             audio = app.gameObject.AddComponent<AudioSource>();
             audio.playOnAwake = false;
             audio.spatialBlend = 0;
+            audio.pitch = 1f;
         }
 
         public void StopAudio() => audio.Stop();
@@ -29,8 +32,9 @@ namespace XRDiscovery.Vocabulary
         private void LoadAudio()
         {
             StopAudio();
+            var speedFolder = voiceSpeedIndex == 0 ? string.Empty : VoiceSpeedPercents[voiceSpeedIndex] + "/";
             clip = Resources.Load<AudioClip>("VocabularyAudio/" +
-                (app.JapaneseMaleVoice ? "Male/" : "Female/") + session.CurrentItemId);
+                (app.JapaneseMaleVoice ? "Male/" : "Female/") + speedFolder + session.CurrentItemId);
             audio.clip = clip;
         }
 
@@ -98,10 +102,19 @@ namespace XRDiscovery.Vocabulary
             PlayAutomaticAudio();
         }
 
+        private void ToggleVoiceSpeed()
+        {
+            voiceSpeedIndex = (voiceSpeedIndex + 1) % VoiceSpeedPercents.Length;
+            LoadAudio();
+            RefreshControls();
+            PlayAutomaticAudio();
+        }
+
         private void RefreshControls()
         {
             screen.Update(name, session.Index, session.ItemIds.Count, app.Library.Get(session.CurrentItemId),
-                showJapaneseImmediately, revealed, app.JapaneseAudioEnabled, app.JapaneseMaleVoice, clip != null);
+                showJapaneseImmediately, revealed, app.JapaneseAudioEnabled, app.JapaneseMaleVoice,
+                VoiceSpeedPercents[voiceSpeedIndex], clip != null);
         }
 
         private void Show()
@@ -119,8 +132,9 @@ namespace XRDiscovery.Vocabulary
         {
             var entry = app.Library.Get(session.CurrentItemId);
             screen.Draw(name, session.Index, session.ItemIds.Count, entry, showJapaneseImmediately, revealed,
-                app.JapaneseAudioEnabled, app.JapaneseMaleVoice, clip != null,
-                app.ShowMainMenu, Move, app.Recenter, ToggleImmediate, ToggleReveal, ToggleAudio, ToggleVoice, PlayAudio);
+                app.JapaneseAudioEnabled, app.JapaneseMaleVoice, VoiceSpeedPercents[voiceSpeedIndex], clip != null,
+                app.ShowMainMenu, Move, app.Recenter, ToggleImmediate, ToggleReveal, ToggleAudio, ToggleVoice,
+                ToggleVoiceSpeed, PlayAudio);
         }
     }
 }

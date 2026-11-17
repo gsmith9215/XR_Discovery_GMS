@@ -365,8 +365,26 @@ namespace XRDiscovery.Vocabulary.Tests
             Assert.That(japanese.activeSelf, Is.True);
             Click("JapaneseAudio");
             Click("JapaneseVoice");
+            var audioSource = app.GetComponent<AudioSource>();
+            var normalClip = audioSource.clip;
+            Assert.That(Button("VoiceSpeed").GetComponentInChildren<TMP_Text>().text,
+                Is.EqualTo("Voice Speed: 100%"));
+            Assert.That(audioSource.pitch, Is.EqualTo(1f));
+            Click("VoiceSpeed");
+            Assert.That(Button("VoiceSpeed").GetComponentInChildren<TMP_Text>().text,
+                Is.EqualTo("Voice Speed: 75%"));
+            Assert.That(audioSource.pitch, Is.EqualTo(1f));
+            Assert.That(audioSource.clip, Is.Not.SameAs(normalClip));
+            Assert.That(audioSource.clip.length, Is.GreaterThan(normalClip.length));
+            var slowerClip = audioSource.clip;
+            Click("VoiceSpeed");
+            Assert.That(audioSource.pitch, Is.EqualTo(1f));
+            Assert.That(audioSource.clip.length, Is.GreaterThan(slowerClip.length));
             Click("NextItem");
             yield return null;
+            Assert.That(Button("VoiceSpeed").GetComponentInChildren<TMP_Text>().text,
+                Is.EqualTo("Voice Speed: 50%"));
+            Assert.That(audioSource.pitch, Is.EqualTo(1f));
 
             foreach (var control in controls)
                 Assert.That(Button(control.Key), Is.SameAs(control.Value), "Study must retain " + control.Key);

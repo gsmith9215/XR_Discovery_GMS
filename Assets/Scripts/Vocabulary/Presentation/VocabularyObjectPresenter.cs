@@ -18,7 +18,7 @@ public class VocabularyObjectPresenter : MonoBehaviour
     [SerializeField] private float heightBelowEyes = 0.25f;
     [Header("Study Display")]
     [SerializeField] private float studyDistance = 1.5f;
-    [SerializeField] private float studyHeightBelowEyes = 0.1f;
+    [SerializeField] private float studyHeightBelowEyes = 0.13f;
     [Header("Legacy Scoreboard")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text targetText;

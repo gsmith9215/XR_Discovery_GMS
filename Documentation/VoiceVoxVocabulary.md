@@ -1,15 +1,18 @@
 # VoiceVox vocabulary audio
 
-The 142 vocabulary entries have two Japanese WAV clips each (284 total) under
-`Assets/Resources/VocabularyAudio/Female` and `Assets/Resources/VocabularyAudio/Male`.
-`Assets/Resources/VocabularyAudio/manifest.json` maps each stable vocabulary ID to both
-clips, the English name, Japanese text, reading, category, and VoiceVox style.
+The 142 vocabulary entries have Japanese WAV clips for two voices at three speech speeds
+(852 total) under `Assets/Resources/VocabularyAudio/Female` and
+`Assets/Resources/VocabularyAudio/Male`. Each voice's root folder holds the 100% clips;
+its `75` and `50` subfolders hold slower versions. `manifest.json` maps each stable
+vocabulary ID to all six clips, the English name, Japanese text, reading, category,
+and VoiceVox style.
 
 The clips were synthesized from the `reading` field in
 `Assets/Resources/VocabularyData/Library.json`. The female voice is
 VOICEVOX:四国めたん (Shikoku Metan), normal style, speaker ID 2; the male voice is
 VOICEVOX:玄野武宏 (Kurono Takehiro), normal style, speaker ID 11. The WAVs are
-24 kHz mono PCM. Neither the VoiceVox engine nor the voice models are bundled.
+24 kHz mono PCM. VOICEVOX `speedScale` is 1, 0.75, or 0.5 while its pitch
+setting stays unchanged. Neither the VoiceVox engine nor the voice models are bundled.
 
 To regenerate, run `node Tools/generate-voicevox-vocabulary.mjs` while the
 desktop VoiceVox app or engine is running at `http://127.0.0.1:50021`.

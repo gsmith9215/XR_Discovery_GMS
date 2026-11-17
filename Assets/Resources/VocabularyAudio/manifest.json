@@ -4,6 +4,7 @@
   "voices": [
     {
       "key": "female",
+      "folder": "Female",
       "name": "四国めたん",
       "style": "ノーマル",
       "speakerId": 2,
@@ -11,10 +12,25 @@
     },
     {
       "key": "male",
+      "folder": "Male",
       "name": "玄野武宏",
       "style": "ノーマル",
       "speakerId": 11,
       "credit": "VOICEVOX:玄野武宏"
+    }
+  ],
+  "speeds": [
+    {
+      "percent": 100,
+      "scale": 1
+    },
+    {
+      "percent": 75,
+      "scale": 0.75
+    },
+    {
+      "percent": 50,
+      "scale": 0.5
     }
   ],
   "entries": [
@@ -26,7 +42,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/dfc1a3ff232f34e40a42666c606e6577.wav",
-        "male": "Male/dfc1a3ff232f34e40a42666c606e6577.wav"
+        "female75": "Female/75/dfc1a3ff232f34e40a42666c606e6577.wav",
+        "female50": "Female/50/dfc1a3ff232f34e40a42666c606e6577.wav",
+        "male": "Male/dfc1a3ff232f34e40a42666c606e6577.wav",
+        "male75": "Male/75/dfc1a3ff232f34e40a42666c606e6577.wav",
+        "male50": "Male/50/dfc1a3ff232f34e40a42666c606e6577.wav"
       }
     },
     {
@@ -37,7 +57,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/d910386731412e74a93c5e3187c5c484.wav",
-        "male": "Male/d910386731412e74a93c5e3187c5c484.wav"
+        "female75": "Female/75/d910386731412e74a93c5e3187c5c484.wav",
+        "female50": "Female/50/d910386731412e74a93c5e3187c5c484.wav",
+        "male": "Male/d910386731412e74a93c5e3187c5c484.wav",
+        "male75": "Male/75/d910386731412e74a93c5e3187c5c484.wav",
+        "male50": "Male/50/d910386731412e74a93c5e3187c5c484.wav"
       }
     },
     {
@@ -48,7 +72,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/7fe0ecbbb2cde4b469cf3e9a8d172be9.wav",
-        "male": "Male/7fe0ecbbb2cde4b469cf3e9a8d172be9.wav"
+        "female75": "Female/75/7fe0ecbbb2cde4b469cf3e9a8d172be9.wav",
+        "female50": "Female/50/7fe0ecbbb2cde4b469cf3e9a8d172be9.wav",
+        "male": "Male/7fe0ecbbb2cde4b469cf3e9a8d172be9.wav",
+        "male75": "Male/75/7fe0ecbbb2cde4b469cf3e9a8d172be9.wav",
+        "male50": "Male/50/7fe0ecbbb2cde4b469cf3e9a8d172be9.wav"
       }
     },
     {
@@ -59,7 +87,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/8cf8aea9b66252546a652cfbb9cc6423.wav",
-        "male": "Male/8cf8aea9b66252546a652cfbb9cc6423.wav"
+        "female75": "Female/75/8cf8aea9b66252546a652cfbb9cc6423.wav",
+        "female50": "Female/50/8cf8aea9b66252546a652cfbb9cc6423.wav",
+        "male": "Male/8cf8aea9b66252546a652cfbb9cc6423.wav",
+        "male75": "Male/75/8cf8aea9b66252546a652cfbb9cc6423.wav",
+        "male50": "Male/50/8cf8aea9b66252546a652cfbb9cc6423.wav"
       }
     },
     {
@@ -70,7 +102,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/f6d750d1c141089468f46c0313009f27.wav",
-        "male": "Male/f6d750d1c141089468f46c0313009f27.wav"
+        "female75": "Female/75/f6d750d1c141089468f46c0313009f27.wav",
+        "female50": "Female/50/f6d750d1c141089468f46c0313009f27.wav",
+        "male": "Male/f6d750d1c141089468f46c0313009f27.wav",
+        "male75": "Male/75/f6d750d1c141089468f46c0313009f27.wav",
+        "male50": "Male/50/f6d750d1c141089468f46c0313009f27.wav"
       }
     },
     {
@@ -81,7 +117,11 @@
       "category": "People",
       "audio": {
         "female": "Female/1bda1014b240b2d4f923634e2983a943.wav",
-        "male": "Male/1bda1014b240b2d4f923634e2983a943.wav"
+        "female75": "Female/75/1bda1014b240b2d4f923634e2983a943.wav",
+        "female50": "Female/50/1bda1014b240b2d4f923634e2983a943.wav",
+        "male": "Male/1bda1014b240b2d4f923634e2983a943.wav",
+        "male75": "Male/75/1bda1014b240b2d4f923634e2983a943.wav",
+        "male50": "Male/50/1bda1014b240b2d4f923634e2983a943.wav"
       }
     },
     {
@@ -92,7 +132,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/ad38b34a1ee6b894c888549fb6d1b8a6.wav",
-        "male": "Male/ad38b34a1ee6b894c888549fb6d1b8a6.wav"
+        "female75": "Female/75/ad38b34a1ee6b894c888549fb6d1b8a6.wav",
+        "female50": "Female/50/ad38b34a1ee6b894c888549fb6d1b8a6.wav",
+        "male": "Male/ad38b34a1ee6b894c888549fb6d1b8a6.wav",
+        "male75": "Male/75/ad38b34a1ee6b894c888549fb6d1b8a6.wav",
+        "male50": "Male/50/ad38b34a1ee6b894c888549fb6d1b8a6.wav"
       }
     },
     {
@@ -103,7 +147,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/49047f224c83c464f882d7bdb8f6f0ce.wav",
-        "male": "Male/49047f224c83c464f882d7bdb8f6f0ce.wav"
+        "female75": "Female/75/49047f224c83c464f882d7bdb8f6f0ce.wav",
+        "female50": "Female/50/49047f224c83c464f882d7bdb8f6f0ce.wav",
+        "male": "Male/49047f224c83c464f882d7bdb8f6f0ce.wav",
+        "male75": "Male/75/49047f224c83c464f882d7bdb8f6f0ce.wav",
+        "male50": "Male/50/49047f224c83c464f882d7bdb8f6f0ce.wav"
       }
     },
     {
@@ -114,7 +162,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/dd22260a2ed2175409ffd9de28b06f0d.wav",
-        "male": "Male/dd22260a2ed2175409ffd9de28b06f0d.wav"
+        "female75": "Female/75/dd22260a2ed2175409ffd9de28b06f0d.wav",
+        "female50": "Female/50/dd22260a2ed2175409ffd9de28b06f0d.wav",
+        "male": "Male/dd22260a2ed2175409ffd9de28b06f0d.wav",
+        "male75": "Male/75/dd22260a2ed2175409ffd9de28b06f0d.wav",
+        "male50": "Male/50/dd22260a2ed2175409ffd9de28b06f0d.wav"
       }
     },
     {
@@ -125,7 +177,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/9ad0d86edf5010444bb520dc4cbdaf5d.wav",
-        "male": "Male/9ad0d86edf5010444bb520dc4cbdaf5d.wav"
+        "female75": "Female/75/9ad0d86edf5010444bb520dc4cbdaf5d.wav",
+        "female50": "Female/50/9ad0d86edf5010444bb520dc4cbdaf5d.wav",
+        "male": "Male/9ad0d86edf5010444bb520dc4cbdaf5d.wav",
+        "male75": "Male/75/9ad0d86edf5010444bb520dc4cbdaf5d.wav",
+        "male50": "Male/50/9ad0d86edf5010444bb520dc4cbdaf5d.wav"
       }
     },
     {
@@ -136,7 +192,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/22e5c7be402f62045a4b344468f9d741.wav",
-        "male": "Male/22e5c7be402f62045a4b344468f9d741.wav"
+        "female75": "Female/75/22e5c7be402f62045a4b344468f9d741.wav",
+        "female50": "Female/50/22e5c7be402f62045a4b344468f9d741.wav",
+        "male": "Male/22e5c7be402f62045a4b344468f9d741.wav",
+        "male75": "Male/75/22e5c7be402f62045a4b344468f9d741.wav",
+        "male50": "Male/50/22e5c7be402f62045a4b344468f9d741.wav"
       }
     },
     {
@@ -147,7 +207,11 @@
       "category": "Clothing",
       "audio": {
         "female": "Female/7d753f29dea3977408ed0b73b666c878.wav",
-        "male": "Male/7d753f29dea3977408ed0b73b666c878.wav"
+        "female75": "Female/75/7d753f29dea3977408ed0b73b666c878.wav",
+        "female50": "Female/50/7d753f29dea3977408ed0b73b666c878.wav",
+        "male": "Male/7d753f29dea3977408ed0b73b666c878.wav",
+        "male75": "Male/75/7d753f29dea3977408ed0b73b666c878.wav",
+        "male50": "Male/50/7d753f29dea3977408ed0b73b666c878.wav"
       }
     },
     {
@@ -158,7 +222,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/c8a2d104c9f3b5146988e835e319413b.wav",
-        "male": "Male/c8a2d104c9f3b5146988e835e319413b.wav"
+        "female75": "Female/75/c8a2d104c9f3b5146988e835e319413b.wav",
+        "female50": "Female/50/c8a2d104c9f3b5146988e835e319413b.wav",
+        "male": "Male/c8a2d104c9f3b5146988e835e319413b.wav",
+        "male75": "Male/75/c8a2d104c9f3b5146988e835e319413b.wav",
+        "male50": "Male/50/c8a2d104c9f3b5146988e835e319413b.wav"
       }
     },
     {
@@ -169,7 +237,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/e07f9b2990e2e684a95ea92fab83ccd7.wav",
-        "male": "Male/e07f9b2990e2e684a95ea92fab83ccd7.wav"
+        "female75": "Female/75/e07f9b2990e2e684a95ea92fab83ccd7.wav",
+        "female50": "Female/50/e07f9b2990e2e684a95ea92fab83ccd7.wav",
+        "male": "Male/e07f9b2990e2e684a95ea92fab83ccd7.wav",
+        "male75": "Male/75/e07f9b2990e2e684a95ea92fab83ccd7.wav",
+        "male50": "Male/50/e07f9b2990e2e684a95ea92fab83ccd7.wav"
       }
     },
     {
@@ -180,7 +252,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/1fb217dee3915974ea6c7fc47331f42b.wav",
-        "male": "Male/1fb217dee3915974ea6c7fc47331f42b.wav"
+        "female75": "Female/75/1fb217dee3915974ea6c7fc47331f42b.wav",
+        "female50": "Female/50/1fb217dee3915974ea6c7fc47331f42b.wav",
+        "male": "Male/1fb217dee3915974ea6c7fc47331f42b.wav",
+        "male75": "Male/75/1fb217dee3915974ea6c7fc47331f42b.wav",
+        "male50": "Male/50/1fb217dee3915974ea6c7fc47331f42b.wav"
       }
     },
     {
@@ -191,7 +267,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/dc524130b14ca404fac9f48146d4d977.wav",
-        "male": "Male/dc524130b14ca404fac9f48146d4d977.wav"
+        "female75": "Female/75/dc524130b14ca404fac9f48146d4d977.wav",
+        "female50": "Female/50/dc524130b14ca404fac9f48146d4d977.wav",
+        "male": "Male/dc524130b14ca404fac9f48146d4d977.wav",
+        "male75": "Male/75/dc524130b14ca404fac9f48146d4d977.wav",
+        "male50": "Male/50/dc524130b14ca404fac9f48146d4d977.wav"
       }
     },
     {
@@ -202,7 +282,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/f08f74c7b6d8c1b4f9a1f456c8975a5f.wav",
-        "male": "Male/f08f74c7b6d8c1b4f9a1f456c8975a5f.wav"
+        "female75": "Female/75/f08f74c7b6d8c1b4f9a1f456c8975a5f.wav",
+        "female50": "Female/50/f08f74c7b6d8c1b4f9a1f456c8975a5f.wav",
+        "male": "Male/f08f74c7b6d8c1b4f9a1f456c8975a5f.wav",
+        "male75": "Male/75/f08f74c7b6d8c1b4f9a1f456c8975a5f.wav",
+        "male50": "Male/50/f08f74c7b6d8c1b4f9a1f456c8975a5f.wav"
       }
     },
     {
@@ -213,7 +297,11 @@
       "category": "Personal Items",
       "audio": {
         "female": "Female/c8c0d628ff8101448ad4989a36c7ac6e.wav",
-        "male": "Male/c8c0d628ff8101448ad4989a36c7ac6e.wav"
+        "female75": "Female/75/c8c0d628ff8101448ad4989a36c7ac6e.wav",
+        "female50": "Female/50/c8c0d628ff8101448ad4989a36c7ac6e.wav",
+        "male": "Male/c8c0d628ff8101448ad4989a36c7ac6e.wav",
+        "male75": "Male/75/c8c0d628ff8101448ad4989a36c7ac6e.wav",
+        "male50": "Male/50/c8c0d628ff8101448ad4989a36c7ac6e.wav"
       }
     },
     {
@@ -224,7 +312,11 @@
       "category": "People",
       "audio": {
         "female": "Female/f22d687c8ed5d5b4fba66b613bf058db.wav",
-        "male": "Male/f22d687c8ed5d5b4fba66b613bf058db.wav"
+        "female75": "Female/75/f22d687c8ed5d5b4fba66b613bf058db.wav",
+        "female50": "Female/50/f22d687c8ed5d5b4fba66b613bf058db.wav",
+        "male": "Male/f22d687c8ed5d5b4fba66b613bf058db.wav",
+        "male75": "Male/75/f22d687c8ed5d5b4fba66b613bf058db.wav",
+        "male50": "Male/50/f22d687c8ed5d5b4fba66b613bf058db.wav"
       }
     },
     {
@@ -235,7 +327,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/bfe2d9839966910429234f18e4262c81.wav",
-        "male": "Male/bfe2d9839966910429234f18e4262c81.wav"
+        "female75": "Female/75/bfe2d9839966910429234f18e4262c81.wav",
+        "female50": "Female/50/bfe2d9839966910429234f18e4262c81.wav",
+        "male": "Male/bfe2d9839966910429234f18e4262c81.wav",
+        "male75": "Male/75/bfe2d9839966910429234f18e4262c81.wav",
+        "male50": "Male/50/bfe2d9839966910429234f18e4262c81.wav"
       }
     },
     {
@@ -246,7 +342,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/19be8db3392cc8744b67a8ae10cd8785.wav",
-        "male": "Male/19be8db3392cc8744b67a8ae10cd8785.wav"
+        "female75": "Female/75/19be8db3392cc8744b67a8ae10cd8785.wav",
+        "female50": "Female/50/19be8db3392cc8744b67a8ae10cd8785.wav",
+        "male": "Male/19be8db3392cc8744b67a8ae10cd8785.wav",
+        "male75": "Male/75/19be8db3392cc8744b67a8ae10cd8785.wav",
+        "male50": "Male/50/19be8db3392cc8744b67a8ae10cd8785.wav"
       }
     },
     {
@@ -257,7 +357,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/b0097fa3a2f029447a448db594f5d390.wav",
-        "male": "Male/b0097fa3a2f029447a448db594f5d390.wav"
+        "female75": "Female/75/b0097fa3a2f029447a448db594f5d390.wav",
+        "female50": "Female/50/b0097fa3a2f029447a448db594f5d390.wav",
+        "male": "Male/b0097fa3a2f029447a448db594f5d390.wav",
+        "male75": "Male/75/b0097fa3a2f029447a448db594f5d390.wav",
+        "male50": "Male/50/b0097fa3a2f029447a448db594f5d390.wav"
       }
     },
     {
@@ -268,7 +372,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/f14f8402016cbeb44a4ce8fcf20ea045.wav",
-        "male": "Male/f14f8402016cbeb44a4ce8fcf20ea045.wav"
+        "female75": "Female/75/f14f8402016cbeb44a4ce8fcf20ea045.wav",
+        "female50": "Female/50/f14f8402016cbeb44a4ce8fcf20ea045.wav",
+        "male": "Male/f14f8402016cbeb44a4ce8fcf20ea045.wav",
+        "male75": "Male/75/f14f8402016cbeb44a4ce8fcf20ea045.wav",
+        "male50": "Male/50/f14f8402016cbeb44a4ce8fcf20ea045.wav"
       }
     },
     {
@@ -279,7 +387,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/9c6eee6a5a209994eb8ce039627c7d10.wav",
-        "male": "Male/9c6eee6a5a209994eb8ce039627c7d10.wav"
+        "female75": "Female/75/9c6eee6a5a209994eb8ce039627c7d10.wav",
+        "female50": "Female/50/9c6eee6a5a209994eb8ce039627c7d10.wav",
+        "male": "Male/9c6eee6a5a209994eb8ce039627c7d10.wav",
+        "male75": "Male/75/9c6eee6a5a209994eb8ce039627c7d10.wav",
+        "male50": "Male/50/9c6eee6a5a209994eb8ce039627c7d10.wav"
       }
     },
     {
@@ -290,7 +402,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/c39b9a80655ad11449a5da092c08a6b9.wav",
-        "male": "Male/c39b9a80655ad11449a5da092c08a6b9.wav"
+        "female75": "Female/75/c39b9a80655ad11449a5da092c08a6b9.wav",
+        "female50": "Female/50/c39b9a80655ad11449a5da092c08a6b9.wav",
+        "male": "Male/c39b9a80655ad11449a5da092c08a6b9.wav",
+        "male75": "Male/75/c39b9a80655ad11449a5da092c08a6b9.wav",
+        "male50": "Male/50/c39b9a80655ad11449a5da092c08a6b9.wav"
       }
     },
     {
@@ -301,7 +417,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/26674c15987e0b947a516bbfa9246ece.wav",
-        "male": "Male/26674c15987e0b947a516bbfa9246ece.wav"
+        "female75": "Female/75/26674c15987e0b947a516bbfa9246ece.wav",
+        "female50": "Female/50/26674c15987e0b947a516bbfa9246ece.wav",
+        "male": "Male/26674c15987e0b947a516bbfa9246ece.wav",
+        "male75": "Male/75/26674c15987e0b947a516bbfa9246ece.wav",
+        "male50": "Male/50/26674c15987e0b947a516bbfa9246ece.wav"
       }
     },
     {
@@ -312,7 +432,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/fa56d9e734700984785e016132e292f7.wav",
-        "male": "Male/fa56d9e734700984785e016132e292f7.wav"
+        "female75": "Female/75/fa56d9e734700984785e016132e292f7.wav",
+        "female50": "Female/50/fa56d9e734700984785e016132e292f7.wav",
+        "male": "Male/fa56d9e734700984785e016132e292f7.wav",
+        "male75": "Male/75/fa56d9e734700984785e016132e292f7.wav",
+        "male50": "Male/50/fa56d9e734700984785e016132e292f7.wav"
       }
     },
     {
@@ -323,7 +447,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/c3ec9171edd9db64098d0731be6888e6.wav",
-        "male": "Male/c3ec9171edd9db64098d0731be6888e6.wav"
+        "female75": "Female/75/c3ec9171edd9db64098d0731be6888e6.wav",
+        "female50": "Female/50/c3ec9171edd9db64098d0731be6888e6.wav",
+        "male": "Male/c3ec9171edd9db64098d0731be6888e6.wav",
+        "male75": "Male/75/c3ec9171edd9db64098d0731be6888e6.wav",
+        "male50": "Male/50/c3ec9171edd9db64098d0731be6888e6.wav"
       }
     },
     {
@@ -334,7 +462,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/86c8bad2cfa7c304cae9b680e7a52436.wav",
-        "male": "Male/86c8bad2cfa7c304cae9b680e7a52436.wav"
+        "female75": "Female/75/86c8bad2cfa7c304cae9b680e7a52436.wav",
+        "female50": "Female/50/86c8bad2cfa7c304cae9b680e7a52436.wav",
+        "male": "Male/86c8bad2cfa7c304cae9b680e7a52436.wav",
+        "male75": "Male/75/86c8bad2cfa7c304cae9b680e7a52436.wav",
+        "male50": "Male/50/86c8bad2cfa7c304cae9b680e7a52436.wav"
       }
     },
     {
@@ -345,7 +477,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/c5323996965d02343ad72a1bdb077844.wav",
-        "male": "Male/c5323996965d02343ad72a1bdb077844.wav"
+        "female75": "Female/75/c5323996965d02343ad72a1bdb077844.wav",
+        "female50": "Female/50/c5323996965d02343ad72a1bdb077844.wav",
+        "male": "Male/c5323996965d02343ad72a1bdb077844.wav",
+        "male75": "Male/75/c5323996965d02343ad72a1bdb077844.wav",
+        "male50": "Male/50/c5323996965d02343ad72a1bdb077844.wav"
       }
     },
     {
@@ -356,7 +492,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/88430571999a5de4da559119211e4e1d.wav",
-        "male": "Male/88430571999a5de4da559119211e4e1d.wav"
+        "female75": "Female/75/88430571999a5de4da559119211e4e1d.wav",
+        "female50": "Female/50/88430571999a5de4da559119211e4e1d.wav",
+        "male": "Male/88430571999a5de4da559119211e4e1d.wav",
+        "male75": "Male/75/88430571999a5de4da559119211e4e1d.wav",
+        "male50": "Male/50/88430571999a5de4da559119211e4e1d.wav"
       }
     },
     {
@@ -367,7 +507,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/f16c2e08dfcf55b4c809079e333c7089.wav",
-        "male": "Male/f16c2e08dfcf55b4c809079e333c7089.wav"
+        "female75": "Female/75/f16c2e08dfcf55b4c809079e333c7089.wav",
+        "female50": "Female/50/f16c2e08dfcf55b4c809079e333c7089.wav",
+        "male": "Male/f16c2e08dfcf55b4c809079e333c7089.wav",
+        "male75": "Male/75/f16c2e08dfcf55b4c809079e333c7089.wav",
+        "male50": "Male/50/f16c2e08dfcf55b4c809079e333c7089.wav"
       }
     },
     {
@@ -378,7 +522,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/df3ee50fee187b142aec258eea29b797.wav",
-        "male": "Male/df3ee50fee187b142aec258eea29b797.wav"
+        "female75": "Female/75/df3ee50fee187b142aec258eea29b797.wav",
+        "female50": "Female/50/df3ee50fee187b142aec258eea29b797.wav",
+        "male": "Male/df3ee50fee187b142aec258eea29b797.wav",
+        "male75": "Male/75/df3ee50fee187b142aec258eea29b797.wav",
+        "male50": "Male/50/df3ee50fee187b142aec258eea29b797.wav"
       }
     },
     {
@@ -389,7 +537,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/2490b11e00bca9e4d8db67b3ee359c6e.wav",
-        "male": "Male/2490b11e00bca9e4d8db67b3ee359c6e.wav"
+        "female75": "Female/75/2490b11e00bca9e4d8db67b3ee359c6e.wav",
+        "female50": "Female/50/2490b11e00bca9e4d8db67b3ee359c6e.wav",
+        "male": "Male/2490b11e00bca9e4d8db67b3ee359c6e.wav",
+        "male75": "Male/75/2490b11e00bca9e4d8db67b3ee359c6e.wav",
+        "male50": "Male/50/2490b11e00bca9e4d8db67b3ee359c6e.wav"
       }
     },
     {
@@ -400,7 +552,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/e442c82cc9451bc4cafa8687dc885940.wav",
-        "male": "Male/e442c82cc9451bc4cafa8687dc885940.wav"
+        "female75": "Female/75/e442c82cc9451bc4cafa8687dc885940.wav",
+        "female50": "Female/50/e442c82cc9451bc4cafa8687dc885940.wav",
+        "male": "Male/e442c82cc9451bc4cafa8687dc885940.wav",
+        "male75": "Male/75/e442c82cc9451bc4cafa8687dc885940.wav",
+        "male50": "Male/50/e442c82cc9451bc4cafa8687dc885940.wav"
       }
     },
     {
@@ -411,7 +567,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/3c1616bde8b6fcd40be70578963539d6.wav",
-        "male": "Male/3c1616bde8b6fcd40be70578963539d6.wav"
+        "female75": "Female/75/3c1616bde8b6fcd40be70578963539d6.wav",
+        "female50": "Female/50/3c1616bde8b6fcd40be70578963539d6.wav",
+        "male": "Male/3c1616bde8b6fcd40be70578963539d6.wav",
+        "male75": "Male/75/3c1616bde8b6fcd40be70578963539d6.wav",
+        "male50": "Male/50/3c1616bde8b6fcd40be70578963539d6.wav"
       }
     },
     {
@@ -422,7 +582,11 @@
       "category": "Personal Items",
       "audio": {
         "female": "Female/398fa938ca0a14c42b43119cf4363f64.wav",
-        "male": "Male/398fa938ca0a14c42b43119cf4363f64.wav"
+        "female75": "Female/75/398fa938ca0a14c42b43119cf4363f64.wav",
+        "female50": "Female/50/398fa938ca0a14c42b43119cf4363f64.wav",
+        "male": "Male/398fa938ca0a14c42b43119cf4363f64.wav",
+        "male75": "Male/75/398fa938ca0a14c42b43119cf4363f64.wav",
+        "male50": "Male/50/398fa938ca0a14c42b43119cf4363f64.wav"
       }
     },
     {
@@ -433,7 +597,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/bdf41ecce0250994dbb3d8fcc435bc4d.wav",
-        "male": "Male/bdf41ecce0250994dbb3d8fcc435bc4d.wav"
+        "female75": "Female/75/bdf41ecce0250994dbb3d8fcc435bc4d.wav",
+        "female50": "Female/50/bdf41ecce0250994dbb3d8fcc435bc4d.wav",
+        "male": "Male/bdf41ecce0250994dbb3d8fcc435bc4d.wav",
+        "male75": "Male/75/bdf41ecce0250994dbb3d8fcc435bc4d.wav",
+        "male50": "Male/50/bdf41ecce0250994dbb3d8fcc435bc4d.wav"
       }
     },
     {
@@ -444,7 +612,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/74926d2136445fa41acae10c190c4679.wav",
-        "male": "Male/74926d2136445fa41acae10c190c4679.wav"
+        "female75": "Female/75/74926d2136445fa41acae10c190c4679.wav",
+        "female50": "Female/50/74926d2136445fa41acae10c190c4679.wav",
+        "male": "Male/74926d2136445fa41acae10c190c4679.wav",
+        "male75": "Male/75/74926d2136445fa41acae10c190c4679.wav",
+        "male50": "Male/50/74926d2136445fa41acae10c190c4679.wav"
       }
     },
     {
@@ -455,7 +627,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/d6b9f503ad5ae904e865b3942192e92f.wav",
-        "male": "Male/d6b9f503ad5ae904e865b3942192e92f.wav"
+        "female75": "Female/75/d6b9f503ad5ae904e865b3942192e92f.wav",
+        "female50": "Female/50/d6b9f503ad5ae904e865b3942192e92f.wav",
+        "male": "Male/d6b9f503ad5ae904e865b3942192e92f.wav",
+        "male75": "Male/75/d6b9f503ad5ae904e865b3942192e92f.wav",
+        "male50": "Male/50/d6b9f503ad5ae904e865b3942192e92f.wav"
       }
     },
     {
@@ -466,7 +642,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/44ecc159ce2d77943b47fc6cf7b6d98d.wav",
-        "male": "Male/44ecc159ce2d77943b47fc6cf7b6d98d.wav"
+        "female75": "Female/75/44ecc159ce2d77943b47fc6cf7b6d98d.wav",
+        "female50": "Female/50/44ecc159ce2d77943b47fc6cf7b6d98d.wav",
+        "male": "Male/44ecc159ce2d77943b47fc6cf7b6d98d.wav",
+        "male75": "Male/75/44ecc159ce2d77943b47fc6cf7b6d98d.wav",
+        "male50": "Male/50/44ecc159ce2d77943b47fc6cf7b6d98d.wav"
       }
     },
     {
@@ -477,7 +657,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/8db7410e287ffc5439224e1315338f2d.wav",
-        "male": "Male/8db7410e287ffc5439224e1315338f2d.wav"
+        "female75": "Female/75/8db7410e287ffc5439224e1315338f2d.wav",
+        "female50": "Female/50/8db7410e287ffc5439224e1315338f2d.wav",
+        "male": "Male/8db7410e287ffc5439224e1315338f2d.wav",
+        "male75": "Male/75/8db7410e287ffc5439224e1315338f2d.wav",
+        "male50": "Male/50/8db7410e287ffc5439224e1315338f2d.wav"
       }
     },
     {
@@ -488,7 +672,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/a8b9adb676251f548aa625e470ce1502.wav",
-        "male": "Male/a8b9adb676251f548aa625e470ce1502.wav"
+        "female75": "Female/75/a8b9adb676251f548aa625e470ce1502.wav",
+        "female50": "Female/50/a8b9adb676251f548aa625e470ce1502.wav",
+        "male": "Male/a8b9adb676251f548aa625e470ce1502.wav",
+        "male75": "Male/75/a8b9adb676251f548aa625e470ce1502.wav",
+        "male50": "Male/50/a8b9adb676251f548aa625e470ce1502.wav"
       }
     },
     {
@@ -499,7 +687,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/4a09995b8b29c9d45ba79fa8a07c8473.wav",
-        "male": "Male/4a09995b8b29c9d45ba79fa8a07c8473.wav"
+        "female75": "Female/75/4a09995b8b29c9d45ba79fa8a07c8473.wav",
+        "female50": "Female/50/4a09995b8b29c9d45ba79fa8a07c8473.wav",
+        "male": "Male/4a09995b8b29c9d45ba79fa8a07c8473.wav",
+        "male75": "Male/75/4a09995b8b29c9d45ba79fa8a07c8473.wav",
+        "male50": "Male/50/4a09995b8b29c9d45ba79fa8a07c8473.wav"
       }
     },
     {
@@ -510,7 +702,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/3e02468fb3708ec43b9178f08a2cff87.wav",
-        "male": "Male/3e02468fb3708ec43b9178f08a2cff87.wav"
+        "female75": "Female/75/3e02468fb3708ec43b9178f08a2cff87.wav",
+        "female50": "Female/50/3e02468fb3708ec43b9178f08a2cff87.wav",
+        "male": "Male/3e02468fb3708ec43b9178f08a2cff87.wav",
+        "male75": "Male/75/3e02468fb3708ec43b9178f08a2cff87.wav",
+        "male50": "Male/50/3e02468fb3708ec43b9178f08a2cff87.wav"
       }
     },
     {
@@ -521,7 +717,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/232da5d832f29a24f82e614c2ac53182.wav",
-        "male": "Male/232da5d832f29a24f82e614c2ac53182.wav"
+        "female75": "Female/75/232da5d832f29a24f82e614c2ac53182.wav",
+        "female50": "Female/50/232da5d832f29a24f82e614c2ac53182.wav",
+        "male": "Male/232da5d832f29a24f82e614c2ac53182.wav",
+        "male75": "Male/75/232da5d832f29a24f82e614c2ac53182.wav",
+        "male50": "Male/50/232da5d832f29a24f82e614c2ac53182.wav"
       }
     },
     {
@@ -532,7 +732,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/b61ff96c590c3334cbd72368c3c3703c.wav",
-        "male": "Male/b61ff96c590c3334cbd72368c3c3703c.wav"
+        "female75": "Female/75/b61ff96c590c3334cbd72368c3c3703c.wav",
+        "female50": "Female/50/b61ff96c590c3334cbd72368c3c3703c.wav",
+        "male": "Male/b61ff96c590c3334cbd72368c3c3703c.wav",
+        "male75": "Male/75/b61ff96c590c3334cbd72368c3c3703c.wav",
+        "male50": "Male/50/b61ff96c590c3334cbd72368c3c3703c.wav"
       }
     },
     {
@@ -543,7 +747,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/fc4f58c7b8b69734ea8a2edba7512c95.wav",
-        "male": "Male/fc4f58c7b8b69734ea8a2edba7512c95.wav"
+        "female75": "Female/75/fc4f58c7b8b69734ea8a2edba7512c95.wav",
+        "female50": "Female/50/fc4f58c7b8b69734ea8a2edba7512c95.wav",
+        "male": "Male/fc4f58c7b8b69734ea8a2edba7512c95.wav",
+        "male75": "Male/75/fc4f58c7b8b69734ea8a2edba7512c95.wav",
+        "male50": "Male/50/fc4f58c7b8b69734ea8a2edba7512c95.wav"
       }
     },
     {
@@ -554,7 +762,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/283989b4b4b4c7c4288d6ef75a48fa34.wav",
-        "male": "Male/283989b4b4b4c7c4288d6ef75a48fa34.wav"
+        "female75": "Female/75/283989b4b4b4c7c4288d6ef75a48fa34.wav",
+        "female50": "Female/50/283989b4b4b4c7c4288d6ef75a48fa34.wav",
+        "male": "Male/283989b4b4b4c7c4288d6ef75a48fa34.wav",
+        "male75": "Male/75/283989b4b4b4c7c4288d6ef75a48fa34.wav",
+        "male50": "Male/50/283989b4b4b4c7c4288d6ef75a48fa34.wav"
       }
     },
     {
@@ -565,7 +777,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/289640f1916199446942c481fc4c9b30.wav",
-        "male": "Male/289640f1916199446942c481fc4c9b30.wav"
+        "female75": "Female/75/289640f1916199446942c481fc4c9b30.wav",
+        "female50": "Female/50/289640f1916199446942c481fc4c9b30.wav",
+        "male": "Male/289640f1916199446942c481fc4c9b30.wav",
+        "male75": "Male/75/289640f1916199446942c481fc4c9b30.wav",
+        "male50": "Male/50/289640f1916199446942c481fc4c9b30.wav"
       }
     },
     {
@@ -576,7 +792,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/a7daafe53384237478a971d64322e12a.wav",
-        "male": "Male/a7daafe53384237478a971d64322e12a.wav"
+        "female75": "Female/75/a7daafe53384237478a971d64322e12a.wav",
+        "female50": "Female/50/a7daafe53384237478a971d64322e12a.wav",
+        "male": "Male/a7daafe53384237478a971d64322e12a.wav",
+        "male75": "Male/75/a7daafe53384237478a971d64322e12a.wav",
+        "male50": "Male/50/a7daafe53384237478a971d64322e12a.wav"
       }
     },
     {
@@ -587,7 +807,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/69cf9af9675a0bf4b87971ed5a72b127.wav",
-        "male": "Male/69cf9af9675a0bf4b87971ed5a72b127.wav"
+        "female75": "Female/75/69cf9af9675a0bf4b87971ed5a72b127.wav",
+        "female50": "Female/50/69cf9af9675a0bf4b87971ed5a72b127.wav",
+        "male": "Male/69cf9af9675a0bf4b87971ed5a72b127.wav",
+        "male75": "Male/75/69cf9af9675a0bf4b87971ed5a72b127.wav",
+        "male50": "Male/50/69cf9af9675a0bf4b87971ed5a72b127.wav"
       }
     },
     {
@@ -598,7 +822,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/587e3ffd952658346913fde3a398ae11.wav",
-        "male": "Male/587e3ffd952658346913fde3a398ae11.wav"
+        "female75": "Female/75/587e3ffd952658346913fde3a398ae11.wav",
+        "female50": "Female/50/587e3ffd952658346913fde3a398ae11.wav",
+        "male": "Male/587e3ffd952658346913fde3a398ae11.wav",
+        "male75": "Male/75/587e3ffd952658346913fde3a398ae11.wav",
+        "male50": "Male/50/587e3ffd952658346913fde3a398ae11.wav"
       }
     },
     {
@@ -609,7 +837,11 @@
       "category": "Personal Items",
       "audio": {
         "female": "Female/cba6b4bb7065cd141b00112213deb7ac.wav",
-        "male": "Male/cba6b4bb7065cd141b00112213deb7ac.wav"
+        "female75": "Female/75/cba6b4bb7065cd141b00112213deb7ac.wav",
+        "female50": "Female/50/cba6b4bb7065cd141b00112213deb7ac.wav",
+        "male": "Male/cba6b4bb7065cd141b00112213deb7ac.wav",
+        "male75": "Male/75/cba6b4bb7065cd141b00112213deb7ac.wav",
+        "male50": "Male/50/cba6b4bb7065cd141b00112213deb7ac.wav"
       }
     },
     {
@@ -620,7 +852,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/0f566025edb000f44816b122aacc4819.wav",
-        "male": "Male/0f566025edb000f44816b122aacc4819.wav"
+        "female75": "Female/75/0f566025edb000f44816b122aacc4819.wav",
+        "female50": "Female/50/0f566025edb000f44816b122aacc4819.wav",
+        "male": "Male/0f566025edb000f44816b122aacc4819.wav",
+        "male75": "Male/75/0f566025edb000f44816b122aacc4819.wav",
+        "male50": "Male/50/0f566025edb000f44816b122aacc4819.wav"
       }
     },
     {
@@ -631,7 +867,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/dc864b747921c884fa94ade41f6058e8.wav",
-        "male": "Male/dc864b747921c884fa94ade41f6058e8.wav"
+        "female75": "Female/75/dc864b747921c884fa94ade41f6058e8.wav",
+        "female50": "Female/50/dc864b747921c884fa94ade41f6058e8.wav",
+        "male": "Male/dc864b747921c884fa94ade41f6058e8.wav",
+        "male75": "Male/75/dc864b747921c884fa94ade41f6058e8.wav",
+        "male50": "Male/50/dc864b747921c884fa94ade41f6058e8.wav"
       }
     },
     {
@@ -642,7 +882,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/72f450f8a3ca9844ca6b311b17ba6985.wav",
-        "male": "Male/72f450f8a3ca9844ca6b311b17ba6985.wav"
+        "female75": "Female/75/72f450f8a3ca9844ca6b311b17ba6985.wav",
+        "female50": "Female/50/72f450f8a3ca9844ca6b311b17ba6985.wav",
+        "male": "Male/72f450f8a3ca9844ca6b311b17ba6985.wav",
+        "male75": "Male/75/72f450f8a3ca9844ca6b311b17ba6985.wav",
+        "male50": "Male/50/72f450f8a3ca9844ca6b311b17ba6985.wav"
       }
     },
     {
@@ -653,7 +897,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/ee2ed5cdd5bc78f4aaf4779558362ca4.wav",
-        "male": "Male/ee2ed5cdd5bc78f4aaf4779558362ca4.wav"
+        "female75": "Female/75/ee2ed5cdd5bc78f4aaf4779558362ca4.wav",
+        "female50": "Female/50/ee2ed5cdd5bc78f4aaf4779558362ca4.wav",
+        "male": "Male/ee2ed5cdd5bc78f4aaf4779558362ca4.wav",
+        "male75": "Male/75/ee2ed5cdd5bc78f4aaf4779558362ca4.wav",
+        "male50": "Male/50/ee2ed5cdd5bc78f4aaf4779558362ca4.wav"
       }
     },
     {
@@ -664,7 +912,11 @@
       "category": "People",
       "audio": {
         "female": "Female/6150d0d1bf560394883eb964cd650fc7.wav",
-        "male": "Male/6150d0d1bf560394883eb964cd650fc7.wav"
+        "female75": "Female/75/6150d0d1bf560394883eb964cd650fc7.wav",
+        "female50": "Female/50/6150d0d1bf560394883eb964cd650fc7.wav",
+        "male": "Male/6150d0d1bf560394883eb964cd650fc7.wav",
+        "male75": "Male/75/6150d0d1bf560394883eb964cd650fc7.wav",
+        "male50": "Male/50/6150d0d1bf560394883eb964cd650fc7.wav"
       }
     },
     {
@@ -675,7 +927,11 @@
       "category": "Clothing",
       "audio": {
         "female": "Female/b1aa7dd139fc61647adb5e3bbc453105.wav",
-        "male": "Male/b1aa7dd139fc61647adb5e3bbc453105.wav"
+        "female75": "Female/75/b1aa7dd139fc61647adb5e3bbc453105.wav",
+        "female50": "Female/50/b1aa7dd139fc61647adb5e3bbc453105.wav",
+        "male": "Male/b1aa7dd139fc61647adb5e3bbc453105.wav",
+        "male75": "Male/75/b1aa7dd139fc61647adb5e3bbc453105.wav",
+        "male50": "Male/50/b1aa7dd139fc61647adb5e3bbc453105.wav"
       }
     },
     {
@@ -686,7 +942,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/5affd748b322f1140b3e80fcca2ea04e.wav",
-        "male": "Male/5affd748b322f1140b3e80fcca2ea04e.wav"
+        "female75": "Female/75/5affd748b322f1140b3e80fcca2ea04e.wav",
+        "female50": "Female/50/5affd748b322f1140b3e80fcca2ea04e.wav",
+        "male": "Male/5affd748b322f1140b3e80fcca2ea04e.wav",
+        "male75": "Male/75/5affd748b322f1140b3e80fcca2ea04e.wav",
+        "male50": "Male/50/5affd748b322f1140b3e80fcca2ea04e.wav"
       }
     },
     {
@@ -697,7 +957,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/6cb5fb555863a384fa0d18767df2f423.wav",
-        "male": "Male/6cb5fb555863a384fa0d18767df2f423.wav"
+        "female75": "Female/75/6cb5fb555863a384fa0d18767df2f423.wav",
+        "female50": "Female/50/6cb5fb555863a384fa0d18767df2f423.wav",
+        "male": "Male/6cb5fb555863a384fa0d18767df2f423.wav",
+        "male75": "Male/75/6cb5fb555863a384fa0d18767df2f423.wav",
+        "male50": "Male/50/6cb5fb555863a384fa0d18767df2f423.wav"
       }
     },
     {
@@ -708,7 +972,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/b94e19a042b0e704c864d6dddebc9b10.wav",
-        "male": "Male/b94e19a042b0e704c864d6dddebc9b10.wav"
+        "female75": "Female/75/b94e19a042b0e704c864d6dddebc9b10.wav",
+        "female50": "Female/50/b94e19a042b0e704c864d6dddebc9b10.wav",
+        "male": "Male/b94e19a042b0e704c864d6dddebc9b10.wav",
+        "male75": "Male/75/b94e19a042b0e704c864d6dddebc9b10.wav",
+        "male50": "Male/50/b94e19a042b0e704c864d6dddebc9b10.wav"
       }
     },
     {
@@ -719,7 +987,11 @@
       "category": "Clothing",
       "audio": {
         "female": "Female/fa4678bc0a37a3444bed0f109050d5ef.wav",
-        "male": "Male/fa4678bc0a37a3444bed0f109050d5ef.wav"
+        "female75": "Female/75/fa4678bc0a37a3444bed0f109050d5ef.wav",
+        "female50": "Female/50/fa4678bc0a37a3444bed0f109050d5ef.wav",
+        "male": "Male/fa4678bc0a37a3444bed0f109050d5ef.wav",
+        "male75": "Male/75/fa4678bc0a37a3444bed0f109050d5ef.wav",
+        "male50": "Male/50/fa4678bc0a37a3444bed0f109050d5ef.wav"
       }
     },
     {
@@ -730,7 +1002,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/8650744a833f2094e94a965fb6386bc0.wav",
-        "male": "Male/8650744a833f2094e94a965fb6386bc0.wav"
+        "female75": "Female/75/8650744a833f2094e94a965fb6386bc0.wav",
+        "female50": "Female/50/8650744a833f2094e94a965fb6386bc0.wav",
+        "male": "Male/8650744a833f2094e94a965fb6386bc0.wav",
+        "male75": "Male/75/8650744a833f2094e94a965fb6386bc0.wav",
+        "male50": "Male/50/8650744a833f2094e94a965fb6386bc0.wav"
       }
     },
     {
@@ -741,7 +1017,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/402034f1029002b43b873d78799f2b68.wav",
-        "male": "Male/402034f1029002b43b873d78799f2b68.wav"
+        "female75": "Female/75/402034f1029002b43b873d78799f2b68.wav",
+        "female50": "Female/50/402034f1029002b43b873d78799f2b68.wav",
+        "male": "Male/402034f1029002b43b873d78799f2b68.wav",
+        "male75": "Male/75/402034f1029002b43b873d78799f2b68.wav",
+        "male50": "Male/50/402034f1029002b43b873d78799f2b68.wav"
       }
     },
     {
@@ -752,7 +1032,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/86e8b746ebc524740b02fa8776f7bed9.wav",
-        "male": "Male/86e8b746ebc524740b02fa8776f7bed9.wav"
+        "female75": "Female/75/86e8b746ebc524740b02fa8776f7bed9.wav",
+        "female50": "Female/50/86e8b746ebc524740b02fa8776f7bed9.wav",
+        "male": "Male/86e8b746ebc524740b02fa8776f7bed9.wav",
+        "male75": "Male/75/86e8b746ebc524740b02fa8776f7bed9.wav",
+        "male50": "Male/50/86e8b746ebc524740b02fa8776f7bed9.wav"
       }
     },
     {
@@ -763,7 +1047,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/51cf59158bf166d43b77511ba49bf1be.wav",
-        "male": "Male/51cf59158bf166d43b77511ba49bf1be.wav"
+        "female75": "Female/75/51cf59158bf166d43b77511ba49bf1be.wav",
+        "female50": "Female/50/51cf59158bf166d43b77511ba49bf1be.wav",
+        "male": "Male/51cf59158bf166d43b77511ba49bf1be.wav",
+        "male75": "Male/75/51cf59158bf166d43b77511ba49bf1be.wav",
+        "male50": "Male/50/51cf59158bf166d43b77511ba49bf1be.wav"
       }
     },
     {
@@ -774,7 +1062,11 @@
       "category": "Personal Items",
       "audio": {
         "female": "Female/fa96ab4bd2dcfa842826f2205f03e2ed.wav",
-        "male": "Male/fa96ab4bd2dcfa842826f2205f03e2ed.wav"
+        "female75": "Female/75/fa96ab4bd2dcfa842826f2205f03e2ed.wav",
+        "female50": "Female/50/fa96ab4bd2dcfa842826f2205f03e2ed.wav",
+        "male": "Male/fa96ab4bd2dcfa842826f2205f03e2ed.wav",
+        "male75": "Male/75/fa96ab4bd2dcfa842826f2205f03e2ed.wav",
+        "male50": "Male/50/fa96ab4bd2dcfa842826f2205f03e2ed.wav"
       }
     },
     {
@@ -785,7 +1077,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/5833286e6f7886644a558792f15da681.wav",
-        "male": "Male/5833286e6f7886644a558792f15da681.wav"
+        "female75": "Female/75/5833286e6f7886644a558792f15da681.wav",
+        "female50": "Female/50/5833286e6f7886644a558792f15da681.wav",
+        "male": "Male/5833286e6f7886644a558792f15da681.wav",
+        "male75": "Male/75/5833286e6f7886644a558792f15da681.wav",
+        "male50": "Male/50/5833286e6f7886644a558792f15da681.wav"
       }
     },
     {
@@ -796,7 +1092,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/5eb29808572ac0c489f244a3bc51fb2e.wav",
-        "male": "Male/5eb29808572ac0c489f244a3bc51fb2e.wav"
+        "female75": "Female/75/5eb29808572ac0c489f244a3bc51fb2e.wav",
+        "female50": "Female/50/5eb29808572ac0c489f244a3bc51fb2e.wav",
+        "male": "Male/5eb29808572ac0c489f244a3bc51fb2e.wav",
+        "male75": "Male/75/5eb29808572ac0c489f244a3bc51fb2e.wav",
+        "male50": "Male/50/5eb29808572ac0c489f244a3bc51fb2e.wav"
       }
     },
     {
@@ -807,7 +1107,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/57a35808302f8d04a88242bb5c4453e1.wav",
-        "male": "Male/57a35808302f8d04a88242bb5c4453e1.wav"
+        "female75": "Female/75/57a35808302f8d04a88242bb5c4453e1.wav",
+        "female50": "Female/50/57a35808302f8d04a88242bb5c4453e1.wav",
+        "male": "Male/57a35808302f8d04a88242bb5c4453e1.wav",
+        "male75": "Male/75/57a35808302f8d04a88242bb5c4453e1.wav",
+        "male50": "Male/50/57a35808302f8d04a88242bb5c4453e1.wav"
       }
     },
     {
@@ -818,7 +1122,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/13a59ed818790f84dabf655daf59eaae.wav",
-        "male": "Male/13a59ed818790f84dabf655daf59eaae.wav"
+        "female75": "Female/75/13a59ed818790f84dabf655daf59eaae.wav",
+        "female50": "Female/50/13a59ed818790f84dabf655daf59eaae.wav",
+        "male": "Male/13a59ed818790f84dabf655daf59eaae.wav",
+        "male75": "Male/75/13a59ed818790f84dabf655daf59eaae.wav",
+        "male50": "Male/50/13a59ed818790f84dabf655daf59eaae.wav"
       }
     },
     {
@@ -829,7 +1137,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/864e7286dbd2081459cb842b77a2d1b0.wav",
-        "male": "Male/864e7286dbd2081459cb842b77a2d1b0.wav"
+        "female75": "Female/75/864e7286dbd2081459cb842b77a2d1b0.wav",
+        "female50": "Female/50/864e7286dbd2081459cb842b77a2d1b0.wav",
+        "male": "Male/864e7286dbd2081459cb842b77a2d1b0.wav",
+        "male75": "Male/75/864e7286dbd2081459cb842b77a2d1b0.wav",
+        "male50": "Male/50/864e7286dbd2081459cb842b77a2d1b0.wav"
       }
     },
     {
@@ -840,7 +1152,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/97b21ae1e9c9df348b719e68fd3b3e41.wav",
-        "male": "Male/97b21ae1e9c9df348b719e68fd3b3e41.wav"
+        "female75": "Female/75/97b21ae1e9c9df348b719e68fd3b3e41.wav",
+        "female50": "Female/50/97b21ae1e9c9df348b719e68fd3b3e41.wav",
+        "male": "Male/97b21ae1e9c9df348b719e68fd3b3e41.wav",
+        "male75": "Male/75/97b21ae1e9c9df348b719e68fd3b3e41.wav",
+        "male50": "Male/50/97b21ae1e9c9df348b719e68fd3b3e41.wav"
       }
     },
     {
@@ -851,7 +1167,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/2eb4063d65dc08848b7cb937660e9694.wav",
-        "male": "Male/2eb4063d65dc08848b7cb937660e9694.wav"
+        "female75": "Female/75/2eb4063d65dc08848b7cb937660e9694.wav",
+        "female50": "Female/50/2eb4063d65dc08848b7cb937660e9694.wav",
+        "male": "Male/2eb4063d65dc08848b7cb937660e9694.wav",
+        "male75": "Male/75/2eb4063d65dc08848b7cb937660e9694.wav",
+        "male50": "Male/50/2eb4063d65dc08848b7cb937660e9694.wav"
       }
     },
     {
@@ -862,7 +1182,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/1c68e715b916c97479f9e81ff1657a35.wav",
-        "male": "Male/1c68e715b916c97479f9e81ff1657a35.wav"
+        "female75": "Female/75/1c68e715b916c97479f9e81ff1657a35.wav",
+        "female50": "Female/50/1c68e715b916c97479f9e81ff1657a35.wav",
+        "male": "Male/1c68e715b916c97479f9e81ff1657a35.wav",
+        "male75": "Male/75/1c68e715b916c97479f9e81ff1657a35.wav",
+        "male50": "Male/50/1c68e715b916c97479f9e81ff1657a35.wav"
       }
     },
     {
@@ -873,7 +1197,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/4b94095381c633b429275d4547c4ecb7.wav",
-        "male": "Male/4b94095381c633b429275d4547c4ecb7.wav"
+        "female75": "Female/75/4b94095381c633b429275d4547c4ecb7.wav",
+        "female50": "Female/50/4b94095381c633b429275d4547c4ecb7.wav",
+        "male": "Male/4b94095381c633b429275d4547c4ecb7.wav",
+        "male75": "Male/75/4b94095381c633b429275d4547c4ecb7.wav",
+        "male50": "Male/50/4b94095381c633b429275d4547c4ecb7.wav"
       }
     },
     {
@@ -884,7 +1212,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/7842364cd153b3549ba67af0927779cb.wav",
-        "male": "Male/7842364cd153b3549ba67af0927779cb.wav"
+        "female75": "Female/75/7842364cd153b3549ba67af0927779cb.wav",
+        "female50": "Female/50/7842364cd153b3549ba67af0927779cb.wav",
+        "male": "Male/7842364cd153b3549ba67af0927779cb.wav",
+        "male75": "Male/75/7842364cd153b3549ba67af0927779cb.wav",
+        "male50": "Male/50/7842364cd153b3549ba67af0927779cb.wav"
       }
     },
     {
@@ -895,7 +1227,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/fd8c333c67bead04e9b8eaada0f5d7fd.wav",
-        "male": "Male/fd8c333c67bead04e9b8eaada0f5d7fd.wav"
+        "female75": "Female/75/fd8c333c67bead04e9b8eaada0f5d7fd.wav",
+        "female50": "Female/50/fd8c333c67bead04e9b8eaada0f5d7fd.wav",
+        "male": "Male/fd8c333c67bead04e9b8eaada0f5d7fd.wav",
+        "male75": "Male/75/fd8c333c67bead04e9b8eaada0f5d7fd.wav",
+        "male50": "Male/50/fd8c333c67bead04e9b8eaada0f5d7fd.wav"
       }
     },
     {
@@ -906,7 +1242,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/fa8315c5c957ad446873370f3ad8d59e.wav",
-        "male": "Male/fa8315c5c957ad446873370f3ad8d59e.wav"
+        "female75": "Female/75/fa8315c5c957ad446873370f3ad8d59e.wav",
+        "female50": "Female/50/fa8315c5c957ad446873370f3ad8d59e.wav",
+        "male": "Male/fa8315c5c957ad446873370f3ad8d59e.wav",
+        "male75": "Male/75/fa8315c5c957ad446873370f3ad8d59e.wav",
+        "male50": "Male/50/fa8315c5c957ad446873370f3ad8d59e.wav"
       }
     },
     {
@@ -917,7 +1257,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/dcb865a882d233e4d827363ec666fdf1.wav",
-        "male": "Male/dcb865a882d233e4d827363ec666fdf1.wav"
+        "female75": "Female/75/dcb865a882d233e4d827363ec666fdf1.wav",
+        "female50": "Female/50/dcb865a882d233e4d827363ec666fdf1.wav",
+        "male": "Male/dcb865a882d233e4d827363ec666fdf1.wav",
+        "male75": "Male/75/dcb865a882d233e4d827363ec666fdf1.wav",
+        "male50": "Male/50/dcb865a882d233e4d827363ec666fdf1.wav"
       }
     },
     {
@@ -928,7 +1272,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/cbdb09a4f1ff21f4481b8432ea879eec.wav",
-        "male": "Male/cbdb09a4f1ff21f4481b8432ea879eec.wav"
+        "female75": "Female/75/cbdb09a4f1ff21f4481b8432ea879eec.wav",
+        "female50": "Female/50/cbdb09a4f1ff21f4481b8432ea879eec.wav",
+        "male": "Male/cbdb09a4f1ff21f4481b8432ea879eec.wav",
+        "male75": "Male/75/cbdb09a4f1ff21f4481b8432ea879eec.wav",
+        "male50": "Male/50/cbdb09a4f1ff21f4481b8432ea879eec.wav"
       }
     },
     {
@@ -939,7 +1287,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/f65c793fb1f2dd747b3da03357750625.wav",
-        "male": "Male/f65c793fb1f2dd747b3da03357750625.wav"
+        "female75": "Female/75/f65c793fb1f2dd747b3da03357750625.wav",
+        "female50": "Female/50/f65c793fb1f2dd747b3da03357750625.wav",
+        "male": "Male/f65c793fb1f2dd747b3da03357750625.wav",
+        "male75": "Male/75/f65c793fb1f2dd747b3da03357750625.wav",
+        "male50": "Male/50/f65c793fb1f2dd747b3da03357750625.wav"
       }
     },
     {
@@ -950,7 +1302,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/aa9feb72a952862408a92de99037b80e.wav",
-        "male": "Male/aa9feb72a952862408a92de99037b80e.wav"
+        "female75": "Female/75/aa9feb72a952862408a92de99037b80e.wav",
+        "female50": "Female/50/aa9feb72a952862408a92de99037b80e.wav",
+        "male": "Male/aa9feb72a952862408a92de99037b80e.wav",
+        "male75": "Male/75/aa9feb72a952862408a92de99037b80e.wav",
+        "male50": "Male/50/aa9feb72a952862408a92de99037b80e.wav"
       }
     },
     {
@@ -961,7 +1317,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/532f6977547e4984f901a275bbedc3ca.wav",
-        "male": "Male/532f6977547e4984f901a275bbedc3ca.wav"
+        "female75": "Female/75/532f6977547e4984f901a275bbedc3ca.wav",
+        "female50": "Female/50/532f6977547e4984f901a275bbedc3ca.wav",
+        "male": "Male/532f6977547e4984f901a275bbedc3ca.wav",
+        "male75": "Male/75/532f6977547e4984f901a275bbedc3ca.wav",
+        "male50": "Male/50/532f6977547e4984f901a275bbedc3ca.wav"
       }
     },
     {
@@ -972,7 +1332,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/0627fe5aec67c3649bbc445341a132c7.wav",
-        "male": "Male/0627fe5aec67c3649bbc445341a132c7.wav"
+        "female75": "Female/75/0627fe5aec67c3649bbc445341a132c7.wav",
+        "female50": "Female/50/0627fe5aec67c3649bbc445341a132c7.wav",
+        "male": "Male/0627fe5aec67c3649bbc445341a132c7.wav",
+        "male75": "Male/75/0627fe5aec67c3649bbc445341a132c7.wav",
+        "male50": "Male/50/0627fe5aec67c3649bbc445341a132c7.wav"
       }
     },
     {
@@ -983,7 +1347,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/26cb28d30de523b45acc9bfec21e677e.wav",
-        "male": "Male/26cb28d30de523b45acc9bfec21e677e.wav"
+        "female75": "Female/75/26cb28d30de523b45acc9bfec21e677e.wav",
+        "female50": "Female/50/26cb28d30de523b45acc9bfec21e677e.wav",
+        "male": "Male/26cb28d30de523b45acc9bfec21e677e.wav",
+        "male75": "Male/75/26cb28d30de523b45acc9bfec21e677e.wav",
+        "male50": "Male/50/26cb28d30de523b45acc9bfec21e677e.wav"
       }
     },
     {
@@ -994,7 +1362,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/e8536ba321fafce468c74a9736397d75.wav",
-        "male": "Male/e8536ba321fafce468c74a9736397d75.wav"
+        "female75": "Female/75/e8536ba321fafce468c74a9736397d75.wav",
+        "female50": "Female/50/e8536ba321fafce468c74a9736397d75.wav",
+        "male": "Male/e8536ba321fafce468c74a9736397d75.wav",
+        "male75": "Male/75/e8536ba321fafce468c74a9736397d75.wav",
+        "male50": "Male/50/e8536ba321fafce468c74a9736397d75.wav"
       }
     },
     {
@@ -1005,7 +1377,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/fe42368133a068549ba4d0136f735ac2.wav",
-        "male": "Male/fe42368133a068549ba4d0136f735ac2.wav"
+        "female75": "Female/75/fe42368133a068549ba4d0136f735ac2.wav",
+        "female50": "Female/50/fe42368133a068549ba4d0136f735ac2.wav",
+        "male": "Male/fe42368133a068549ba4d0136f735ac2.wav",
+        "male75": "Male/75/fe42368133a068549ba4d0136f735ac2.wav",
+        "male50": "Male/50/fe42368133a068549ba4d0136f735ac2.wav"
       }
     },
     {
@@ -1016,7 +1392,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/52eb42e8954635c4fa2408324f6865b0.wav",
-        "male": "Male/52eb42e8954635c4fa2408324f6865b0.wav"
+        "female75": "Female/75/52eb42e8954635c4fa2408324f6865b0.wav",
+        "female50": "Female/50/52eb42e8954635c4fa2408324f6865b0.wav",
+        "male": "Male/52eb42e8954635c4fa2408324f6865b0.wav",
+        "male75": "Male/75/52eb42e8954635c4fa2408324f6865b0.wav",
+        "male50": "Male/50/52eb42e8954635c4fa2408324f6865b0.wav"
       }
     },
     {
@@ -1027,7 +1407,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/791e8c70d22801b48bc3403f568f1fc6.wav",
-        "male": "Male/791e8c70d22801b48bc3403f568f1fc6.wav"
+        "female75": "Female/75/791e8c70d22801b48bc3403f568f1fc6.wav",
+        "female50": "Female/50/791e8c70d22801b48bc3403f568f1fc6.wav",
+        "male": "Male/791e8c70d22801b48bc3403f568f1fc6.wav",
+        "male75": "Male/75/791e8c70d22801b48bc3403f568f1fc6.wav",
+        "male50": "Male/50/791e8c70d22801b48bc3403f568f1fc6.wav"
       }
     },
     {
@@ -1038,7 +1422,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/7c75d8947203c9d49ae9eec57dd55270.wav",
-        "male": "Male/7c75d8947203c9d49ae9eec57dd55270.wav"
+        "female75": "Female/75/7c75d8947203c9d49ae9eec57dd55270.wav",
+        "female50": "Female/50/7c75d8947203c9d49ae9eec57dd55270.wav",
+        "male": "Male/7c75d8947203c9d49ae9eec57dd55270.wav",
+        "male75": "Male/75/7c75d8947203c9d49ae9eec57dd55270.wav",
+        "male50": "Male/50/7c75d8947203c9d49ae9eec57dd55270.wav"
       }
     },
     {
@@ -1049,7 +1437,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/263d71938e2694d4d89cb560d0568297.wav",
-        "male": "Male/263d71938e2694d4d89cb560d0568297.wav"
+        "female75": "Female/75/263d71938e2694d4d89cb560d0568297.wav",
+        "female50": "Female/50/263d71938e2694d4d89cb560d0568297.wav",
+        "male": "Male/263d71938e2694d4d89cb560d0568297.wav",
+        "male75": "Male/75/263d71938e2694d4d89cb560d0568297.wav",
+        "male50": "Male/50/263d71938e2694d4d89cb560d0568297.wav"
       }
     },
     {
@@ -1060,7 +1452,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/b2cdc72697e8fc6439a143ee5fbae58b.wav",
-        "male": "Male/b2cdc72697e8fc6439a143ee5fbae58b.wav"
+        "female75": "Female/75/b2cdc72697e8fc6439a143ee5fbae58b.wav",
+        "female50": "Female/50/b2cdc72697e8fc6439a143ee5fbae58b.wav",
+        "male": "Male/b2cdc72697e8fc6439a143ee5fbae58b.wav",
+        "male75": "Male/75/b2cdc72697e8fc6439a143ee5fbae58b.wav",
+        "male50": "Male/50/b2cdc72697e8fc6439a143ee5fbae58b.wav"
       }
     },
     {
@@ -1071,7 +1467,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/2769b40565841f841b8f481fd6bcd45c.wav",
-        "male": "Male/2769b40565841f841b8f481fd6bcd45c.wav"
+        "female75": "Female/75/2769b40565841f841b8f481fd6bcd45c.wav",
+        "female50": "Female/50/2769b40565841f841b8f481fd6bcd45c.wav",
+        "male": "Male/2769b40565841f841b8f481fd6bcd45c.wav",
+        "male75": "Male/75/2769b40565841f841b8f481fd6bcd45c.wav",
+        "male50": "Male/50/2769b40565841f841b8f481fd6bcd45c.wav"
       }
     },
     {
@@ -1082,7 +1482,11 @@
       "category": "People",
       "audio": {
         "female": "Female/11354fb668d37f2469262230e26252b1.wav",
-        "male": "Male/11354fb668d37f2469262230e26252b1.wav"
+        "female75": "Female/75/11354fb668d37f2469262230e26252b1.wav",
+        "female50": "Female/50/11354fb668d37f2469262230e26252b1.wav",
+        "male": "Male/11354fb668d37f2469262230e26252b1.wav",
+        "male75": "Male/75/11354fb668d37f2469262230e26252b1.wav",
+        "male50": "Male/50/11354fb668d37f2469262230e26252b1.wav"
       }
     },
     {
@@ -1093,7 +1497,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/57c0cad64fe05c049885e482f3cc521f.wav",
-        "male": "Male/57c0cad64fe05c049885e482f3cc521f.wav"
+        "female75": "Female/75/57c0cad64fe05c049885e482f3cc521f.wav",
+        "female50": "Female/50/57c0cad64fe05c049885e482f3cc521f.wav",
+        "male": "Male/57c0cad64fe05c049885e482f3cc521f.wav",
+        "male75": "Male/75/57c0cad64fe05c049885e482f3cc521f.wav",
+        "male50": "Male/50/57c0cad64fe05c049885e482f3cc521f.wav"
       }
     },
     {
@@ -1104,7 +1512,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/be517b999c225bf4a96ed2d1c04d316a.wav",
-        "male": "Male/be517b999c225bf4a96ed2d1c04d316a.wav"
+        "female75": "Female/75/be517b999c225bf4a96ed2d1c04d316a.wav",
+        "female50": "Female/50/be517b999c225bf4a96ed2d1c04d316a.wav",
+        "male": "Male/be517b999c225bf4a96ed2d1c04d316a.wav",
+        "male75": "Male/75/be517b999c225bf4a96ed2d1c04d316a.wav",
+        "male50": "Male/50/be517b999c225bf4a96ed2d1c04d316a.wav"
       }
     },
     {
@@ -1115,7 +1527,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/1316d426721e2d1479a5bebee9a6a717.wav",
-        "male": "Male/1316d426721e2d1479a5bebee9a6a717.wav"
+        "female75": "Female/75/1316d426721e2d1479a5bebee9a6a717.wav",
+        "female50": "Female/50/1316d426721e2d1479a5bebee9a6a717.wav",
+        "male": "Male/1316d426721e2d1479a5bebee9a6a717.wav",
+        "male75": "Male/75/1316d426721e2d1479a5bebee9a6a717.wav",
+        "male50": "Male/50/1316d426721e2d1479a5bebee9a6a717.wav"
       }
     },
     {
@@ -1126,7 +1542,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/29e0c3a4202ea2540b07dacea7047c58.wav",
-        "male": "Male/29e0c3a4202ea2540b07dacea7047c58.wav"
+        "female75": "Female/75/29e0c3a4202ea2540b07dacea7047c58.wav",
+        "female50": "Female/50/29e0c3a4202ea2540b07dacea7047c58.wav",
+        "male": "Male/29e0c3a4202ea2540b07dacea7047c58.wav",
+        "male75": "Male/75/29e0c3a4202ea2540b07dacea7047c58.wav",
+        "male50": "Male/50/29e0c3a4202ea2540b07dacea7047c58.wav"
       }
     },
     {
@@ -1137,7 +1557,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/f4a433d5844a5494d99a5652db85c502.wav",
-        "male": "Male/f4a433d5844a5494d99a5652db85c502.wav"
+        "female75": "Female/75/f4a433d5844a5494d99a5652db85c502.wav",
+        "female50": "Female/50/f4a433d5844a5494d99a5652db85c502.wav",
+        "male": "Male/f4a433d5844a5494d99a5652db85c502.wav",
+        "male75": "Male/75/f4a433d5844a5494d99a5652db85c502.wav",
+        "male50": "Male/50/f4a433d5844a5494d99a5652db85c502.wav"
       }
     },
     {
@@ -1148,7 +1572,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/08a2d75f0198d68479dff4dd98c626d0.wav",
-        "male": "Male/08a2d75f0198d68479dff4dd98c626d0.wav"
+        "female75": "Female/75/08a2d75f0198d68479dff4dd98c626d0.wav",
+        "female50": "Female/50/08a2d75f0198d68479dff4dd98c626d0.wav",
+        "male": "Male/08a2d75f0198d68479dff4dd98c626d0.wav",
+        "male75": "Male/75/08a2d75f0198d68479dff4dd98c626d0.wav",
+        "male50": "Male/50/08a2d75f0198d68479dff4dd98c626d0.wav"
       }
     },
     {
@@ -1159,7 +1587,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/22d789b5c7e374d47a0fb71ca067fdc1.wav",
-        "male": "Male/22d789b5c7e374d47a0fb71ca067fdc1.wav"
+        "female75": "Female/75/22d789b5c7e374d47a0fb71ca067fdc1.wav",
+        "female50": "Female/50/22d789b5c7e374d47a0fb71ca067fdc1.wav",
+        "male": "Male/22d789b5c7e374d47a0fb71ca067fdc1.wav",
+        "male75": "Male/75/22d789b5c7e374d47a0fb71ca067fdc1.wav",
+        "male50": "Male/50/22d789b5c7e374d47a0fb71ca067fdc1.wav"
       }
     },
     {
@@ -1170,7 +1602,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/9fbd1e3dbe2089b4a8f5b9d0fb49e17f.wav",
-        "male": "Male/9fbd1e3dbe2089b4a8f5b9d0fb49e17f.wav"
+        "female75": "Female/75/9fbd1e3dbe2089b4a8f5b9d0fb49e17f.wav",
+        "female50": "Female/50/9fbd1e3dbe2089b4a8f5b9d0fb49e17f.wav",
+        "male": "Male/9fbd1e3dbe2089b4a8f5b9d0fb49e17f.wav",
+        "male75": "Male/75/9fbd1e3dbe2089b4a8f5b9d0fb49e17f.wav",
+        "male50": "Male/50/9fbd1e3dbe2089b4a8f5b9d0fb49e17f.wav"
       }
     },
     {
@@ -1181,7 +1617,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/cb86f6d39e7e6c24188461fba446c547.wav",
-        "male": "Male/cb86f6d39e7e6c24188461fba446c547.wav"
+        "female75": "Female/75/cb86f6d39e7e6c24188461fba446c547.wav",
+        "female50": "Female/50/cb86f6d39e7e6c24188461fba446c547.wav",
+        "male": "Male/cb86f6d39e7e6c24188461fba446c547.wav",
+        "male75": "Male/75/cb86f6d39e7e6c24188461fba446c547.wav",
+        "male50": "Male/50/cb86f6d39e7e6c24188461fba446c547.wav"
       }
     },
     {
@@ -1192,7 +1632,11 @@
       "category": "Places-Buildings",
       "audio": {
         "female": "Female/64b3880fe665afe4ba8d0c36e0b3e2bf.wav",
-        "male": "Male/64b3880fe665afe4ba8d0c36e0b3e2bf.wav"
+        "female75": "Female/75/64b3880fe665afe4ba8d0c36e0b3e2bf.wav",
+        "female50": "Female/50/64b3880fe665afe4ba8d0c36e0b3e2bf.wav",
+        "male": "Male/64b3880fe665afe4ba8d0c36e0b3e2bf.wav",
+        "male75": "Male/75/64b3880fe665afe4ba8d0c36e0b3e2bf.wav",
+        "male50": "Male/50/64b3880fe665afe4ba8d0c36e0b3e2bf.wav"
       }
     },
     {
@@ -1203,7 +1647,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/fbb3fc2d1d5d163448e1c0151ad398b0.wav",
-        "male": "Male/fbb3fc2d1d5d163448e1c0151ad398b0.wav"
+        "female75": "Female/75/fbb3fc2d1d5d163448e1c0151ad398b0.wav",
+        "female50": "Female/50/fbb3fc2d1d5d163448e1c0151ad398b0.wav",
+        "male": "Male/fbb3fc2d1d5d163448e1c0151ad398b0.wav",
+        "male75": "Male/75/fbb3fc2d1d5d163448e1c0151ad398b0.wav",
+        "male50": "Male/50/fbb3fc2d1d5d163448e1c0151ad398b0.wav"
       }
     },
     {
@@ -1214,7 +1662,11 @@
       "category": "People",
       "audio": {
         "female": "Female/a15f56dee4486624eb7b8ceab421a10c.wav",
-        "male": "Male/a15f56dee4486624eb7b8ceab421a10c.wav"
+        "female75": "Female/75/a15f56dee4486624eb7b8ceab421a10c.wav",
+        "female50": "Female/50/a15f56dee4486624eb7b8ceab421a10c.wav",
+        "male": "Male/a15f56dee4486624eb7b8ceab421a10c.wav",
+        "male75": "Male/75/a15f56dee4486624eb7b8ceab421a10c.wav",
+        "male50": "Male/50/a15f56dee4486624eb7b8ceab421a10c.wav"
       }
     },
     {
@@ -1225,7 +1677,11 @@
       "category": "People",
       "audio": {
         "female": "Female/c6ad68f4008c8294786bb1122d581300.wav",
-        "male": "Male/c6ad68f4008c8294786bb1122d581300.wav"
+        "female75": "Female/75/c6ad68f4008c8294786bb1122d581300.wav",
+        "female50": "Female/50/c6ad68f4008c8294786bb1122d581300.wav",
+        "male": "Male/c6ad68f4008c8294786bb1122d581300.wav",
+        "male75": "Male/75/c6ad68f4008c8294786bb1122d581300.wav",
+        "male50": "Male/50/c6ad68f4008c8294786bb1122d581300.wav"
       }
     },
     {
@@ -1236,7 +1692,11 @@
       "category": "Personal Items",
       "audio": {
         "female": "Female/00ef6acae3674034d99a64e34466b7b6.wav",
-        "male": "Male/00ef6acae3674034d99a64e34466b7b6.wav"
+        "female75": "Female/75/00ef6acae3674034d99a64e34466b7b6.wav",
+        "female50": "Female/50/00ef6acae3674034d99a64e34466b7b6.wav",
+        "male": "Male/00ef6acae3674034d99a64e34466b7b6.wav",
+        "male75": "Male/75/00ef6acae3674034d99a64e34466b7b6.wav",
+        "male50": "Male/50/00ef6acae3674034d99a64e34466b7b6.wav"
       }
     },
     {
@@ -1247,7 +1707,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/5142db8a9557ea847b19a55c6dd51976.wav",
-        "male": "Male/5142db8a9557ea847b19a55c6dd51976.wav"
+        "female75": "Female/75/5142db8a9557ea847b19a55c6dd51976.wav",
+        "female50": "Female/50/5142db8a9557ea847b19a55c6dd51976.wav",
+        "male": "Male/5142db8a9557ea847b19a55c6dd51976.wav",
+        "male75": "Male/75/5142db8a9557ea847b19a55c6dd51976.wav",
+        "male50": "Male/50/5142db8a9557ea847b19a55c6dd51976.wav"
       }
     },
     {
@@ -1258,7 +1722,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/99ce77aa628676044af6966142e4f469.wav",
-        "male": "Male/99ce77aa628676044af6966142e4f469.wav"
+        "female75": "Female/75/99ce77aa628676044af6966142e4f469.wav",
+        "female50": "Female/50/99ce77aa628676044af6966142e4f469.wav",
+        "male": "Male/99ce77aa628676044af6966142e4f469.wav",
+        "male75": "Male/75/99ce77aa628676044af6966142e4f469.wav",
+        "male50": "Male/50/99ce77aa628676044af6966142e4f469.wav"
       }
     },
     {
@@ -1269,7 +1737,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/733e19c50536b9c4aae3e8b0529cdf11.wav",
-        "male": "Male/733e19c50536b9c4aae3e8b0529cdf11.wav"
+        "female75": "Female/75/733e19c50536b9c4aae3e8b0529cdf11.wav",
+        "female50": "Female/50/733e19c50536b9c4aae3e8b0529cdf11.wav",
+        "male": "Male/733e19c50536b9c4aae3e8b0529cdf11.wav",
+        "male75": "Male/75/733e19c50536b9c4aae3e8b0529cdf11.wav",
+        "male50": "Male/50/733e19c50536b9c4aae3e8b0529cdf11.wav"
       }
     },
     {
@@ -1280,7 +1752,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/9fe3270b5878ba941b47203976ca627b.wav",
-        "male": "Male/9fe3270b5878ba941b47203976ca627b.wav"
+        "female75": "Female/75/9fe3270b5878ba941b47203976ca627b.wav",
+        "female50": "Female/50/9fe3270b5878ba941b47203976ca627b.wav",
+        "male": "Male/9fe3270b5878ba941b47203976ca627b.wav",
+        "male75": "Male/75/9fe3270b5878ba941b47203976ca627b.wav",
+        "male50": "Male/50/9fe3270b5878ba941b47203976ca627b.wav"
       }
     },
     {
@@ -1291,7 +1767,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/bcbbfce61787d604e84669bea7a03fc6.wav",
-        "male": "Male/bcbbfce61787d604e84669bea7a03fc6.wav"
+        "female75": "Female/75/bcbbfce61787d604e84669bea7a03fc6.wav",
+        "female50": "Female/50/bcbbfce61787d604e84669bea7a03fc6.wav",
+        "male": "Male/bcbbfce61787d604e84669bea7a03fc6.wav",
+        "male75": "Male/75/bcbbfce61787d604e84669bea7a03fc6.wav",
+        "male50": "Male/50/bcbbfce61787d604e84669bea7a03fc6.wav"
       }
     },
     {
@@ -1302,7 +1782,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/f7fce509129295c4bb2cb9bab18886d0.wav",
-        "male": "Male/f7fce509129295c4bb2cb9bab18886d0.wav"
+        "female75": "Female/75/f7fce509129295c4bb2cb9bab18886d0.wav",
+        "female50": "Female/50/f7fce509129295c4bb2cb9bab18886d0.wav",
+        "male": "Male/f7fce509129295c4bb2cb9bab18886d0.wav",
+        "male75": "Male/75/f7fce509129295c4bb2cb9bab18886d0.wav",
+        "male50": "Male/50/f7fce509129295c4bb2cb9bab18886d0.wav"
       }
     },
     {
@@ -1313,7 +1797,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/3ba652d68bfbc1b4e934fb4cc9af5999.wav",
-        "male": "Male/3ba652d68bfbc1b4e934fb4cc9af5999.wav"
+        "female75": "Female/75/3ba652d68bfbc1b4e934fb4cc9af5999.wav",
+        "female50": "Female/50/3ba652d68bfbc1b4e934fb4cc9af5999.wav",
+        "male": "Male/3ba652d68bfbc1b4e934fb4cc9af5999.wav",
+        "male75": "Male/75/3ba652d68bfbc1b4e934fb4cc9af5999.wav",
+        "male50": "Male/50/3ba652d68bfbc1b4e934fb4cc9af5999.wav"
       }
     },
     {
@@ -1324,7 +1812,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/fb7af1cebc80ae1428a44253debee307.wav",
-        "male": "Male/fb7af1cebc80ae1428a44253debee307.wav"
+        "female75": "Female/75/fb7af1cebc80ae1428a44253debee307.wav",
+        "female50": "Female/50/fb7af1cebc80ae1428a44253debee307.wav",
+        "male": "Male/fb7af1cebc80ae1428a44253debee307.wav",
+        "male75": "Male/75/fb7af1cebc80ae1428a44253debee307.wav",
+        "male50": "Male/50/fb7af1cebc80ae1428a44253debee307.wav"
       }
     },
     {
@@ -1335,7 +1827,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/7d952ef0803a79d4ba32a6dc11f8d3c7.wav",
-        "male": "Male/7d952ef0803a79d4ba32a6dc11f8d3c7.wav"
+        "female75": "Female/75/7d952ef0803a79d4ba32a6dc11f8d3c7.wav",
+        "female50": "Female/50/7d952ef0803a79d4ba32a6dc11f8d3c7.wav",
+        "male": "Male/7d952ef0803a79d4ba32a6dc11f8d3c7.wav",
+        "male75": "Male/75/7d952ef0803a79d4ba32a6dc11f8d3c7.wav",
+        "male50": "Male/50/7d952ef0803a79d4ba32a6dc11f8d3c7.wav"
       }
     },
     {
@@ -1346,7 +1842,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/6abbe6196c05eb141ad78a2a620ca67f.wav",
-        "male": "Male/6abbe6196c05eb141ad78a2a620ca67f.wav"
+        "female75": "Female/75/6abbe6196c05eb141ad78a2a620ca67f.wav",
+        "female50": "Female/50/6abbe6196c05eb141ad78a2a620ca67f.wav",
+        "male": "Male/6abbe6196c05eb141ad78a2a620ca67f.wav",
+        "male75": "Male/75/6abbe6196c05eb141ad78a2a620ca67f.wav",
+        "male50": "Male/50/6abbe6196c05eb141ad78a2a620ca67f.wav"
       }
     },
     {
@@ -1357,7 +1857,11 @@
       "category": "Tools",
       "audio": {
         "female": "Female/3497ac464d7c57c4dab3e129a278223e.wav",
-        "male": "Male/3497ac464d7c57c4dab3e129a278223e.wav"
+        "female75": "Female/75/3497ac464d7c57c4dab3e129a278223e.wav",
+        "female50": "Female/50/3497ac464d7c57c4dab3e129a278223e.wav",
+        "male": "Male/3497ac464d7c57c4dab3e129a278223e.wav",
+        "male75": "Male/75/3497ac464d7c57c4dab3e129a278223e.wav",
+        "male50": "Male/50/3497ac464d7c57c4dab3e129a278223e.wav"
       }
     },
     {
@@ -1368,7 +1872,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/cb838e83086305149bbb8772b937f5a8.wav",
-        "male": "Male/cb838e83086305149bbb8772b937f5a8.wav"
+        "female75": "Female/75/cb838e83086305149bbb8772b937f5a8.wav",
+        "female50": "Female/50/cb838e83086305149bbb8772b937f5a8.wav",
+        "male": "Male/cb838e83086305149bbb8772b937f5a8.wav",
+        "male75": "Male/75/cb838e83086305149bbb8772b937f5a8.wav",
+        "male50": "Male/50/cb838e83086305149bbb8772b937f5a8.wav"
       }
     },
     {
@@ -1379,7 +1887,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/c91ce42c95ce53e4082a76d05eaa5695.wav",
-        "male": "Male/c91ce42c95ce53e4082a76d05eaa5695.wav"
+        "female75": "Female/75/c91ce42c95ce53e4082a76d05eaa5695.wav",
+        "female50": "Female/50/c91ce42c95ce53e4082a76d05eaa5695.wav",
+        "male": "Male/c91ce42c95ce53e4082a76d05eaa5695.wav",
+        "male75": "Male/75/c91ce42c95ce53e4082a76d05eaa5695.wav",
+        "male50": "Male/50/c91ce42c95ce53e4082a76d05eaa5695.wav"
       }
     },
     {
@@ -1390,7 +1902,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/876d54a10f4a6d64d9cfd5552bf587a2.wav",
-        "male": "Male/876d54a10f4a6d64d9cfd5552bf587a2.wav"
+        "female75": "Female/75/876d54a10f4a6d64d9cfd5552bf587a2.wav",
+        "female50": "Female/50/876d54a10f4a6d64d9cfd5552bf587a2.wav",
+        "male": "Male/876d54a10f4a6d64d9cfd5552bf587a2.wav",
+        "male75": "Male/75/876d54a10f4a6d64d9cfd5552bf587a2.wav",
+        "male50": "Male/50/876d54a10f4a6d64d9cfd5552bf587a2.wav"
       }
     },
     {
@@ -1401,7 +1917,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/a84f69530995c214dac3c0d0ff49bb6a.wav",
-        "male": "Male/a84f69530995c214dac3c0d0ff49bb6a.wav"
+        "female75": "Female/75/a84f69530995c214dac3c0d0ff49bb6a.wav",
+        "female50": "Female/50/a84f69530995c214dac3c0d0ff49bb6a.wav",
+        "male": "Male/a84f69530995c214dac3c0d0ff49bb6a.wav",
+        "male75": "Male/75/a84f69530995c214dac3c0d0ff49bb6a.wav",
+        "male50": "Male/50/a84f69530995c214dac3c0d0ff49bb6a.wav"
       }
     },
     {
@@ -1412,7 +1932,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/1553b4480a6c54440a24df529bd6cede.wav",
-        "male": "Male/1553b4480a6c54440a24df529bd6cede.wav"
+        "female75": "Female/75/1553b4480a6c54440a24df529bd6cede.wav",
+        "female50": "Female/50/1553b4480a6c54440a24df529bd6cede.wav",
+        "male": "Male/1553b4480a6c54440a24df529bd6cede.wav",
+        "male75": "Male/75/1553b4480a6c54440a24df529bd6cede.wav",
+        "male50": "Male/50/1553b4480a6c54440a24df529bd6cede.wav"
       }
     },
     {
@@ -1423,7 +1947,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/6c86d2d4357032e4b8224005cf3d3b36.wav",
-        "male": "Male/6c86d2d4357032e4b8224005cf3d3b36.wav"
+        "female75": "Female/75/6c86d2d4357032e4b8224005cf3d3b36.wav",
+        "female50": "Female/50/6c86d2d4357032e4b8224005cf3d3b36.wav",
+        "male": "Male/6c86d2d4357032e4b8224005cf3d3b36.wav",
+        "male75": "Male/75/6c86d2d4357032e4b8224005cf3d3b36.wav",
+        "male50": "Male/50/6c86d2d4357032e4b8224005cf3d3b36.wav"
       }
     },
     {
@@ -1434,7 +1962,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/c88e6e92e3c6c5c4389ceab11bbfe071.wav",
-        "male": "Male/c88e6e92e3c6c5c4389ceab11bbfe071.wav"
+        "female75": "Female/75/c88e6e92e3c6c5c4389ceab11bbfe071.wav",
+        "female50": "Female/50/c88e6e92e3c6c5c4389ceab11bbfe071.wav",
+        "male": "Male/c88e6e92e3c6c5c4389ceab11bbfe071.wav",
+        "male75": "Male/75/c88e6e92e3c6c5c4389ceab11bbfe071.wav",
+        "male50": "Male/50/c88e6e92e3c6c5c4389ceab11bbfe071.wav"
       }
     },
     {
@@ -1445,7 +1977,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/577413b4afba02a46b00fd5b92c04868.wav",
-        "male": "Male/577413b4afba02a46b00fd5b92c04868.wav"
+        "female75": "Female/75/577413b4afba02a46b00fd5b92c04868.wav",
+        "female50": "Female/50/577413b4afba02a46b00fd5b92c04868.wav",
+        "male": "Male/577413b4afba02a46b00fd5b92c04868.wav",
+        "male75": "Male/75/577413b4afba02a46b00fd5b92c04868.wav",
+        "male50": "Male/50/577413b4afba02a46b00fd5b92c04868.wav"
       }
     },
     {
@@ -1456,7 +1992,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/bf7af536ba0a7a9458147b470e88dd0a.wav",
-        "male": "Male/bf7af536ba0a7a9458147b470e88dd0a.wav"
+        "female75": "Female/75/bf7af536ba0a7a9458147b470e88dd0a.wav",
+        "female50": "Female/50/bf7af536ba0a7a9458147b470e88dd0a.wav",
+        "male": "Male/bf7af536ba0a7a9458147b470e88dd0a.wav",
+        "male75": "Male/75/bf7af536ba0a7a9458147b470e88dd0a.wav",
+        "male50": "Male/50/bf7af536ba0a7a9458147b470e88dd0a.wav"
       }
     },
     {
@@ -1467,7 +2007,11 @@
       "category": "Personal Items",
       "audio": {
         "female": "Female/572eabc40c6721f48bcb25facfcad9f1.wav",
-        "male": "Male/572eabc40c6721f48bcb25facfcad9f1.wav"
+        "female75": "Female/75/572eabc40c6721f48bcb25facfcad9f1.wav",
+        "female50": "Female/50/572eabc40c6721f48bcb25facfcad9f1.wav",
+        "male": "Male/572eabc40c6721f48bcb25facfcad9f1.wav",
+        "male75": "Male/75/572eabc40c6721f48bcb25facfcad9f1.wav",
+        "male50": "Male/50/572eabc40c6721f48bcb25facfcad9f1.wav"
       }
     },
     {
@@ -1478,7 +2022,11 @@
       "category": "Traffic",
       "audio": {
         "female": "Female/89ce046490941544a89f63bc14c55490.wav",
-        "male": "Male/89ce046490941544a89f63bc14c55490.wav"
+        "female75": "Female/75/89ce046490941544a89f63bc14c55490.wav",
+        "female50": "Female/50/89ce046490941544a89f63bc14c55490.wav",
+        "male": "Male/89ce046490941544a89f63bc14c55490.wav",
+        "male75": "Male/75/89ce046490941544a89f63bc14c55490.wav",
+        "male50": "Male/50/89ce046490941544a89f63bc14c55490.wav"
       }
     },
     {
@@ -1489,7 +2037,11 @@
       "category": "Nature Items",
       "audio": {
         "female": "Female/e1abbe040075c1e418608659f89bf186.wav",
-        "male": "Male/e1abbe040075c1e418608659f89bf186.wav"
+        "female75": "Female/75/e1abbe040075c1e418608659f89bf186.wav",
+        "female50": "Female/50/e1abbe040075c1e418608659f89bf186.wav",
+        "male": "Male/e1abbe040075c1e418608659f89bf186.wav",
+        "male75": "Male/75/e1abbe040075c1e418608659f89bf186.wav",
+        "male50": "Male/50/e1abbe040075c1e418608659f89bf186.wav"
       }
     },
     {
@@ -1500,7 +2052,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/46d6adbbb5c84834ca7e9fe73ef1c376.wav",
-        "male": "Male/46d6adbbb5c84834ca7e9fe73ef1c376.wav"
+        "female75": "Female/75/46d6adbbb5c84834ca7e9fe73ef1c376.wav",
+        "female50": "Female/50/46d6adbbb5c84834ca7e9fe73ef1c376.wav",
+        "male": "Male/46d6adbbb5c84834ca7e9fe73ef1c376.wav",
+        "male75": "Male/75/46d6adbbb5c84834ca7e9fe73ef1c376.wav",
+        "male50": "Male/50/46d6adbbb5c84834ca7e9fe73ef1c376.wav"
       }
     },
     {
@@ -1511,7 +2067,11 @@
       "category": "Food",
       "audio": {
         "female": "Female/a836e312b3951f64a99d3282132fb406.wav",
-        "male": "Male/a836e312b3951f64a99d3282132fb406.wav"
+        "female75": "Female/75/a836e312b3951f64a99d3282132fb406.wav",
+        "female50": "Female/50/a836e312b3951f64a99d3282132fb406.wav",
+        "male": "Male/a836e312b3951f64a99d3282132fb406.wav",
+        "male75": "Male/75/a836e312b3951f64a99d3282132fb406.wav",
+        "male50": "Male/50/a836e312b3951f64a99d3282132fb406.wav"
       }
     },
     {
@@ -1522,7 +2082,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/a0ec05d69a6239e49ad1a458d406e488.wav",
-        "male": "Male/a0ec05d69a6239e49ad1a458d406e488.wav"
+        "female75": "Female/75/a0ec05d69a6239e49ad1a458d406e488.wav",
+        "female50": "Female/50/a0ec05d69a6239e49ad1a458d406e488.wav",
+        "male": "Male/a0ec05d69a6239e49ad1a458d406e488.wav",
+        "male75": "Male/75/a0ec05d69a6239e49ad1a458d406e488.wav",
+        "male50": "Male/50/a0ec05d69a6239e49ad1a458d406e488.wav"
       }
     },
     {
@@ -1533,7 +2097,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/4fcbccfebbc862745bb54eca27ca3ba5.wav",
-        "male": "Male/4fcbccfebbc862745bb54eca27ca3ba5.wav"
+        "female75": "Female/75/4fcbccfebbc862745bb54eca27ca3ba5.wav",
+        "female50": "Female/50/4fcbccfebbc862745bb54eca27ca3ba5.wav",
+        "male": "Male/4fcbccfebbc862745bb54eca27ca3ba5.wav",
+        "male75": "Male/75/4fcbccfebbc862745bb54eca27ca3ba5.wav",
+        "male50": "Male/50/4fcbccfebbc862745bb54eca27ca3ba5.wav"
       }
     },
     {
@@ -1544,7 +2112,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/556ba3a73f2a5d94eaa6ea27b08a5b33.wav",
-        "male": "Male/556ba3a73f2a5d94eaa6ea27b08a5b33.wav"
+        "female75": "Female/75/556ba3a73f2a5d94eaa6ea27b08a5b33.wav",
+        "female50": "Female/50/556ba3a73f2a5d94eaa6ea27b08a5b33.wav",
+        "male": "Male/556ba3a73f2a5d94eaa6ea27b08a5b33.wav",
+        "male75": "Male/75/556ba3a73f2a5d94eaa6ea27b08a5b33.wav",
+        "male50": "Male/50/556ba3a73f2a5d94eaa6ea27b08a5b33.wav"
       }
     },
     {
@@ -1555,7 +2127,11 @@
       "category": "Farm Items",
       "audio": {
         "female": "Female/77101eeff5653b14fba12db53530184c.wav",
-        "male": "Male/77101eeff5653b14fba12db53530184c.wav"
+        "female75": "Female/75/77101eeff5653b14fba12db53530184c.wav",
+        "female50": "Female/50/77101eeff5653b14fba12db53530184c.wav",
+        "male": "Male/77101eeff5653b14fba12db53530184c.wav",
+        "male75": "Male/75/77101eeff5653b14fba12db53530184c.wav",
+        "male50": "Male/50/77101eeff5653b14fba12db53530184c.wav"
       }
     },
     {
@@ -1566,7 +2142,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/bb53b28a984abe342bcdaf2ce39dee16.wav",
-        "male": "Male/bb53b28a984abe342bcdaf2ce39dee16.wav"
+        "female75": "Female/75/bb53b28a984abe342bcdaf2ce39dee16.wav",
+        "female50": "Female/50/bb53b28a984abe342bcdaf2ce39dee16.wav",
+        "male": "Male/bb53b28a984abe342bcdaf2ce39dee16.wav",
+        "male75": "Male/75/bb53b28a984abe342bcdaf2ce39dee16.wav",
+        "male50": "Male/50/bb53b28a984abe342bcdaf2ce39dee16.wav"
       }
     },
     {
@@ -1577,7 +2157,11 @@
       "category": "Household Items",
       "audio": {
         "female": "Female/67473ed5384656f488b8238a6f61615d.wav",
-        "male": "Male/67473ed5384656f488b8238a6f61615d.wav"
+        "female75": "Female/75/67473ed5384656f488b8238a6f61615d.wav",
+        "female50": "Female/50/67473ed5384656f488b8238a6f61615d.wav",
+        "male": "Male/67473ed5384656f488b8238a6f61615d.wav",
+        "male75": "Male/75/67473ed5384656f488b8238a6f61615d.wav",
+        "male50": "Male/50/67473ed5384656f488b8238a6f61615d.wav"
       }
     }
   ]

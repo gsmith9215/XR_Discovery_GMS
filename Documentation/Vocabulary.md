@@ -4,7 +4,7 @@ Open `Assets/Scenes/SampleScene.unity` and press Play. The scene's `VocabularyAp
 
 ## Player flow
 
-- **Study:** select All items, a premade set, or a custom set. Before starting, choose Word Immediately, Audio Immediately, and Voice (Male/Female). Previous/Next cycles through every object in the set's authored order. When Word Immediately is off, Japanese and its reading stay hidden until Show Word is selected; each item starts hidden again. English stays visible. Say Word remains visible beside the reveal area in either audio mode.
+- **Study:** select All items, a premade set, or a custom set. Before starting, choose Word Immediately, Audio Immediately, and Voice (Male/Female). Previous/Next cycles through every object in the set's authored order. When Word Immediately is off, Japanese and its reading stay hidden until Show Word is selected; each item starts hidden again. English stays visible. In Study, Show Word, Say Word, and Voice Speed sit beneath their related controls. Voice Speed cycles through 100%, 75%, and 50%.
 - **Test:** select a set and hit the matching box with the hammer. Each selected item is the target exactly once per round. The results offer a full retest or another round containing only missed targets. Continue until a round has no misses.
 - **Custom Sets:** create an empty set or duplicate a custom set. The set screen shows its name and selected words; Add Words opens a separate screen for searching, filtering, and changing the selection. Add/Remove By switches between individual words and existing premade or custom sets. Selecting a set previews its words and shows which are already added; the preview can add its remaining words or remove its selected words from the draft. Return to the set screen to save. Open an existing set to rename/edit/delete it. Leaving the set screen prompts before discarding a draft.
 - Premade and custom sets occupy separate tabs. Names are labels, not IDs; matching names are allowed, including between two custom sets.
@@ -25,7 +25,7 @@ The object presenter Inspector has separate display distances for tests and stud
 
 ### Study recordings
 
-Audio playback is implemented; recordings will be supplied later. Word Immediately and Audio Immediately default to Off and reset to Off when Study setup is opened from the main menu. Choices made in the set preview apply to the study session. Voice defaults to Female and is shared between the preview and Study for the app session.
+The bundled VoiceVox recordings cover all 142 words in both voices at 100%, 75%, and 50% speech speed. Word Immediately and Audio Immediately default to Off and reset to Off when Study setup is opened from the main menu. Choices made in the set preview apply to the study session. Voice defaults to Female and is shared between the preview and Study for the app session. Voice Speed defaults to 100% and keeps its selection across Study sets during the app session. Study loads a separate VoiceVox recording for each speed and leaves AudioSource pitch at 1, so slower playback keeps the voice's normal pitch.
 
 Study controls update in place when settings change or words are revealed/hidden. Previous/Next replaces only the vocabulary object and updates the existing UI. Preview settings also update in place, preserving the list's scroll position.
 
