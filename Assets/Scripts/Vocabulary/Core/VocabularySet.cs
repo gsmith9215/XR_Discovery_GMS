@@ -7,6 +7,16 @@ namespace XRDiscovery.Vocabulary
     /// <summary>A snapshot of a named set; identity never depends on its display name.</summary>
     public sealed class VocabularySet
     {
+        public const int MaxNameLength = 60;
+
+        public static string LimitNameLength(string name)
+        {
+            if (name == null || name.Length <= MaxNameLength) return name;
+            int end = MaxNameLength;
+            if (char.IsHighSurrogate(name[end - 1])) end--;
+            return name.Substring(0, end);
+        }
+
         public string Id { get; }
         public string Name { get; }
         public IReadOnlyList<string> ItemIds { get; }

@@ -28,14 +28,16 @@ namespace XRDiscovery.Vocabulary
                 60, 810, 1080, 70, 23, VocabularyView.Muted);
             help.alignment = TextAlignmentOptions.Center;
         }
-        public void Header(string title, Action back, bool centerTitle = false)
+        public TMP_Text Header(string title, Action back, bool centerTitle = false)
         {
             view.Button("Back", "← Back", 48, 35, 175, 60, back);
             RecenterButton(view, recenter);
             var titleText = centerTitle
-                ? view.Text("Title", title, 240, 28, 720, 78, 38)
+                ? view.Text("Title", title, 255, 28, 690, 78, 38)
                 : view.Text("Title", title, 255, 28, 690, 78, 38);
             if (centerTitle) titleText.alignment = TextAlignmentOptions.Center;
+            VocabularyView.FitSingleLine(titleText, title);
+            return titleText;
         }
         public void Pager(int page, int pages, Action<int> change, float y)
         {
@@ -47,7 +49,8 @@ namespace XRDiscovery.Vocabulary
         public void Confirm(string title, string description, Action accept, Action cancel)
         {
             RecenterButton(view, recenter);
-            view.Text("ConfirmTitle", title, 60, 180, 1080, 150, 44);
+            var heading = view.Text("ConfirmTitle", title, 60, 180, 1080, 150, 44);
+            VocabularyView.FitSingleLine(heading, title);
             view.Text("ConfirmDescription", description, 60, 360, 1080, 200, 30, VocabularyView.Muted);
             view.Button("Confirm", "Confirm", 60, 650, 520, 85, accept, true);
             view.Button("Cancel", "Go back", 620, 650, 520, 85, cancel);

@@ -21,7 +21,7 @@ namespace XRDiscovery.Vocabulary
 
         public void Open(string setId, string setName, IEnumerable<string> itemIds)
         {
-            id = setId; name = setName; items = new HashSet<string>(itemIds);
+            id = setId; name = VocabularySet.LimitNameLength(setName); items = new HashSet<string>(itemIds);
             search = ""; category = ""; selectedOnly = false; filterOpen = false;
             addBySet = false; setFilter = ""; setSearch = ""; previewSet = null;
             DrawSet();

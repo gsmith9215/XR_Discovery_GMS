@@ -6,7 +6,7 @@ namespace XRDiscovery.Vocabulary
     internal sealed class StudyScreen
     {
         private readonly VocabularyView view;
-        private TMP_Text title, status, english, japanese, reading;
+        private TMP_Text title, progress, status, english, japanese, reading;
         private UnityEngine.UI.Button wordToggle, audioToggle, voiceToggle, revealButton, sayButton, speedButton;
         public StudyScreen(VocabularyView view) { this.view = view; }
         public void Draw(string setName, int index, int count, VocabularyEntry entry, bool showImmediately, bool revealed,
@@ -17,7 +17,9 @@ namespace XRDiscovery.Vocabulary
             // Keep the middle clear for the object, with one continuous canvas background.
             view.Button("Back", "← Back", 48, 35, 175, 60, back);
             VocabularyScreens.RecenterButton(view, recenter);
-            title = view.Text("Title", "", 255, 28, 690, 78, 38);
+            title = view.Text("Title", "", 255, 28, 490, 78, 38);
+            progress = view.Text("StudyProgress", "", 755, 28, 190, 78, 30);
+            progress.alignment = TextAlignmentOptions.MidlineRight;
             status = view.Text("AudioStatus", "No Recording", 920, 280, 232, 35, 24, VocabularyView.Muted);
             status.alignment = TextAlignmentOptions.MidlineRight;
             wordToggle = view.Button("ShowJapaneseImmediately", "Word Immediately: " + (showImmediately ? "On" : "Off"),
@@ -56,7 +58,8 @@ namespace XRDiscovery.Vocabulary
         public void Update(string setName, int index, int count, VocabularyEntry entry, bool showImmediately,
             bool revealed, bool audioEnabled, bool maleVoice, int voiceSpeedPercent, bool audioAvailable)
         {
-            title.text = setName + "  ·  " + (index + 1) + " / " + count;
+            VocabularyView.FitSingleLine(title, setName);
+            VocabularyView.FitSingleLine(progress, (index + 1) + " / " + count);
             status.gameObject.SetActive(!audioAvailable);
             english.text = entry.Name;
             japanese.text = entry.Japanese;

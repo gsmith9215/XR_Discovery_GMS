@@ -250,6 +250,23 @@ namespace XRDiscovery.Vocabulary.Tests
         }
 
         [Test]
+        public void SetNameLimitAcceptsBoundaryAndRejectsOversizedMutationsWithoutChangingSave()
+        {
+            var repository = new CustomSetRepository(savePath);
+            string allowed = new string('日', VocabularySet.MaxNameLength);
+            var original = repository.Create(allowed, new[] { "apple" });
+            Assert.That(new CustomSetRepository(savePath).Load()[0].Name, Is.EqualTo(allowed));
+            string before = File.ReadAllText(savePath);
+            string oversized = allowed + "a";
+            Assert.Throws<ArgumentException>(() => repository.Create(oversized, new[] { "pear" }));
+            Assert.Throws<ArgumentException>(() => repository.Update(original.Id, oversized, new[] { "pear" }));
+            Assert.Throws<ArgumentException>(() => repository.Duplicate(original.Id, oversized));
+            Assert.That(File.ReadAllText(savePath), Is.EqualTo(before));
+            Assert.That(repository.Sets.Count, Is.EqualTo(1));
+            Assert.That(repository.Sets[0].Name, Is.EqualTo(allowed));
+        }
+
+        [Test]
         public void FailedDiskCommitDoesNotChangeMemoryOrLeaveTemporaryFiles()
         {
             var repository = new CustomSetRepository(savePath);

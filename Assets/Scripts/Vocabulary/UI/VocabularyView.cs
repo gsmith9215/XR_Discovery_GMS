@@ -161,6 +161,47 @@ namespace XRDiscovery.Vocabulary
             return Label(Area(name, x, y, width, height, parent), value, size, color ?? Ink);
         }
 
+        // Measure actual glyphs, preserving text elements (including surrogate pairs) at the cut.
+        public static void FitSingleLine(TMP_Text label, string value)
+        {
+            value = (value ?? "").Replace('\r', ' ').Replace('\n', ' ').Replace('\t', ' ');
+            label.enableAutoSizing = false;
+            label.textWrappingMode = TextWrappingModes.NoWrap;
+            label.overflowMode = TextOverflowModes.Ellipsis;
+            float width = label.rectTransform.rect.width - label.margin.x - label.margin.z;
+            if (label.GetPreferredValues(value, float.PositiveInfinity, float.PositiveInfinity).x <= width)
+            {
+                label.text = value;
+                return;
+            }
+            var starts = System.Globalization.StringInfo.ParseCombiningCharacters(value);
+            int low = 0, high = starts.Length;
+            while (low < high)
+            {
+                int mid = (low + high + 1) / 2;
+                int end = mid == starts.Length ? value.Length : starts[mid];
+                string candidate = value.Substring(0, end).TrimEnd() + "...";
+                if (label.GetPreferredValues(candidate, float.PositiveInfinity, float.PositiveInfinity).x <= width) low = mid;
+                else high = mid - 1;
+            }
+            label.text = value.Substring(0, low == starts.Length ? value.Length : starts[low]).TrimEnd() + "...";
+        }
+
+        public UnityEngine.UI.Button SetButton(string name, string setName, string details,
+            float x, float y, float width, float height, Action clicked, Transform parent = null)
+        {
+            var button = Button(name, "", x, y, width, height, clicked, parent: parent);
+            var label = button.GetComponentInChildren<TMP_Text>();
+            label.rectTransform.anchorMin = new Vector2(0, .5f);
+            label.rectTransform.offsetMin = new Vector2(18, 0);
+            label.rectTransform.offsetMax = new Vector2(-18, -5);
+            FitSingleLine(label, setName);
+            var detail = Text("Details", details, 18, height / 2, width - 36, height / 2 - 5, 24, ButtonInk, button.transform);
+            detail.alignment = TextAlignmentOptions.Midline;
+            detail.textWrappingMode = TextWrappingModes.NoWrap;
+            return button;
+        }
+
         public void Panel(string name, float x, float y, float width, float height)
         {
             var image = Area(name, x, y, width, height).gameObject.AddComponent<UnityEngine.UI.Image>();
@@ -297,7 +338,7 @@ namespace XRDiscovery.Vocabulary
         }
 
         public TMP_InputField Input(string name, string value, string placeholder, float x, float y,
-            float width, Action<string> changed)
+            float width, Action<string> changed, int characterLimit = 80)
         {
             var rect = Area(name, x, y, width, 60);
             var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
@@ -318,7 +359,7 @@ namespace XRDiscovery.Vocabulary
             field.placeholder = placeholderText;
             field.fontAsset = font;
             field.lineType = TMP_InputField.LineType.SingleLine;
-            field.characterLimit = 80;
+            field.characterLimit = characterLimit;
             field.richText = false;
             field.text = value;
             field.onValueChanged.AddListener(s => changed?.Invoke(s));

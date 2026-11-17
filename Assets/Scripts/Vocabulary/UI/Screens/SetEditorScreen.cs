@@ -26,8 +26,8 @@ namespace XRDiscovery.Vocabulary
         {
             filterMenu = null;
             screens.Header(creating ? "Create a custom set" : "Edit your set", back);
-            view.Text("NameLabel", "SET NAME", 48, 118, 1104, 35, 22, VocabularyView.Muted);
-            view.Input("SetName", name, "Name your set", 48, 155, 1104, rename);
+            view.Text("NameLabel", $"SET NAME (MAX {VocabularySet.MaxNameLength} CHARACTERS)", 48, 118, 1104, 35, 22, VocabularyView.Muted);
+            view.Input("SetName", name, "Name your set", 48, 155, 1104, rename, VocabularySet.MaxNameLength);
             view.Button("AddWords", "Add Words", 48, 240, 1104, 65, addWords, true);
             view.Text("SelectedCount", selected.Count + unavailable + " words in this set", 48, 325, 1104, 45, 28);
             itemArea = view.Area("SelectedWords", 0, 385, 1200, 515);
@@ -106,8 +106,8 @@ namespace XRDiscovery.Vocabulary
                 visibleIds.Add(choice.Id);
                 if (!setButtons.TryGetValue(choice.Id, out var button))
                 {
-                    button = view.Button("SourceSet_" + choice.Id,
-                        choice.Name + "\n" + (choice.Custom ? "CUSTOM" : "PREMADE") + " · " + choice.Items.Count + " words",
+                    button = view.SetButton("SourceSet_" + choice.Id,
+                        choice.Name, (choice.Custom ? "CUSTOM" : "PREMADE") + " · " + choice.Items.Count + " words",
                         22 + i % 2 * 504, 12 + i / 2 * rowHeight, 480, 100,
                         () => add(choice), parent: itemContent);
                     setButtons.Add(choice.Id, button);

@@ -70,6 +70,10 @@ namespace XRDiscovery.Vocabulary
                 app.JapaneseAudioEnabled, app.JapaneseMaleVoice,
                 () => { app.JapaneseAudioEnabled = !app.JapaneseAudioEnabled; UpdateStudyOptions(); },
                 () => { app.JapaneseMaleVoice = !app.JapaneseMaleVoice; UpdateStudyOptions(); },
+                app.GamePromptMode, app.GameVoiceSpeedPercent,
+                () => { app.GamePromptMode = (TestPromptMode)(((int)app.GamePromptMode + 1) % 3); UpdateGameOptions(); },
+                () => { app.GameVoiceSpeedPercent = app.GameVoiceSpeedPercent == 100 ? 75 : app.GameVoiceSpeedPercent == 75 ? 50 : 100; UpdateGameOptions(); },
+                () => { app.JapaneseMaleVoice = !app.JapaneseMaleVoice; UpdateGameOptions(); },
                 () => Browse(purpose, false),
                 () => app.EditSet(choice.Id, choice.Name, choice.Items),
                 () => app.EditSet(null, choice.Name + " copy", choice.Items),
@@ -78,10 +82,18 @@ namespace XRDiscovery.Vocabulary
                     try { app.CustomSets.Delete(choice.Id); Browse(BrowsePurpose.Manage, false); }
                     catch (Exception e) { app.ShowFailure("Could not delete the set", e, () => ShowSet(choice)); }
                 }, () => ShowSet(choice)),
-                () => { if (purpose == BrowsePurpose.Study) app.StartStudy(choice.Name, valid, showJapaneseImmediately); else app.StartTest(choice.Name, valid); });
+                () =>
+                {
+                    if (purpose == BrowsePurpose.Study)
+                        app.StartStudy(choice.Name, valid, showJapaneseImmediately, () => ShowSet(choice));
+                    else app.StartTest(choice.Name, valid, () => ShowSet(choice));
+                });
         }
 
         private void UpdateStudyOptions() => screen.UpdateStudyOptions(
             showJapaneseImmediately, app.JapaneseAudioEnabled, app.JapaneseMaleVoice);
+
+        private void UpdateGameOptions() => screen.UpdateGameOptions(
+            app.GamePromptMode, app.JapaneseMaleVoice, app.GameVoiceSpeedPercent);
     }
 }

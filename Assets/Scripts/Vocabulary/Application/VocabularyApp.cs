@@ -33,6 +33,8 @@ namespace XRDiscovery.Vocabulary
         public int StudyIndex => study?.Index ?? 0;
         internal bool JapaneseAudioEnabled { get; set; }
         internal bool JapaneseMaleVoice { get; set; }
+        internal TestPromptMode GamePromptMode { get; set; } = TestPromptMode.Words;
+        internal int GameVoiceSpeedPercent { get; set; } = 100;
         internal VocabularyObjectPresenter Presenter => presenter;
         internal bool StorageAvailable { get; private set; }
         internal string StorageNotice { get; private set; }
@@ -101,6 +103,7 @@ namespace XRDiscovery.Vocabulary
             StopInitialPositioning();
             CancelRecenterCountdown();
             test?.Suspend();
+            test?.StopAudio();
             study?.StopAudio();
             presenter.ClearObjects();
             Screen = screen;
@@ -130,9 +133,9 @@ namespace XRDiscovery.Vocabulary
         internal void EditSet(string id, string name, IEnumerable<string> items) => editor.Open(id, name, items);
         internal void ManageSets() => browser.Browse(BrowsePurpose.Manage, false);
         public void StartStudy(string name, IEnumerable<string> ids) => study.Start(name, ids, false);
-        public void StartStudy(string name, IEnumerable<string> ids, bool showJapaneseImmediately) => study.Start(name, ids, showJapaneseImmediately);
+        public void StartStudy(string name, IEnumerable<string> ids, bool showJapaneseImmediately, Action back = null) => study.Start(name, ids, showJapaneseImmediately, back);
         public void CycleStudy(int delta) => study.Move(delta);
-        public void StartTest(string name, IEnumerable<string> ids) => test.Start(name, ids);
+        public void StartTest(string name, IEnumerable<string> ids, Action back = null) => test.Start(name, ids, back);
         public void NextMissedRound() => test.NextMissedRound();
         public void Retest() => test.Retest();
 

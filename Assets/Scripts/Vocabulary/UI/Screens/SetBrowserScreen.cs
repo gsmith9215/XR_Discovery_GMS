@@ -8,7 +8,7 @@ namespace XRDiscovery.Vocabulary
     {
         private readonly VocabularyView view;
         private readonly VocabularyScreens screens;
-        private UnityEngine.UI.Button wordToggle, audioToggle, voiceToggle;
+        private UnityEngine.UI.Button wordToggle, audioToggle, voiceToggle, gameModeToggle, gameVoiceToggle, gameSpeedToggle;
         public SetBrowserScreen(VocabularyView view, VocabularyScreens screens) { this.view = view; this.screens = screens; }
         public void Browse(BrowsePurpose purpose, bool customTab, bool storageAvailable, IReadOnlyList<SetChoice> sets,
             int browserPage, int pages, Func<SetChoice, int> availableCount, Action back, Action create,
@@ -30,7 +30,7 @@ namespace XRDiscovery.Vocabulary
             {
                 var choice = sets[browserPage * pageSize + i];
                 int available = availableCount(choice);
-                view.Button("Set_" + choice.Id, choice.Name + "\n" + available + " items", 48 + (i % 2) * 574, 230 + (i / 2) * 126, 530, 106,
+                view.SetButton("Set_" + choice.Id, choice.Name, available + " items", 48 + (i % 2) * 574, 230 + (i / 2) * 126, 530, 106,
                     () => select(choice));
             }
             if (sets.Count == 0) view.Text("Empty", "No custom sets yet. Select Create Custom Set to make one.", 70, 300, 1060, 200, 34);
@@ -40,11 +40,12 @@ namespace XRDiscovery.Vocabulary
         public void Details(SetChoice choice, BrowsePurpose purpose, VocabularyEntry[] entries, int missing,
             bool showJapaneseImmediately, Action toggleJapanese,
             bool audioEnabled, bool maleVoice, Action toggleAudio, Action toggleVoice,
+            TestPromptMode gameMode, int gameSpeed, Action toggleGameMode, Action toggleGameSpeed, Action toggleGameVoice,
             Action back, Action edit, Action duplicate, Action delete, Action start)
         {
             screens.Header(choice.Name, back, centerTitle: true);
             view.Text("SetType", (choice.Custom ? "MY CUSTOM SET" : "PREMADE SET") + "  ·  " + entries.Length + " items", 48, 125, 1104, 35, 29, VocabularyView.Muted);
-            view.ScrollArea("Preview", 48, 145, 1104, purpose == BrowsePurpose.Study ? 450 : 470, out var content);
+            view.ScrollArea("Preview", 48, 145, 1104, purpose == BrowsePurpose.Manage ? 470 : 450, out var content);
             const float rowHeight = 52;
             const float verticalPadding = 12;
             content.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
@@ -76,6 +77,15 @@ namespace XRDiscovery.Vocabulary
                     voiceToggle = view.Button("JapaneseVoice", "Voice: " + (maleVoice ? "Male" : "Female"),
                         796, 610, 356, 75, toggleVoice);
                 }
+                else
+                {
+                    gameModeToggle = view.Button("GamePromptMode", "Prompt: " + gameMode,
+                        48, 610, 356, 75, toggleGameMode);
+                    gameVoiceToggle = view.Button("JapaneseVoice", "Voice: " + (maleVoice ? "Male" : "Female"),
+                        422, 610, 356, 75, toggleGameVoice);
+                    gameSpeedToggle = view.Button("GameVoiceSpeed", "Voice Speed: " + gameSpeed + "%",
+                        796, 610, 356, 75, toggleGameSpeed);
+                }
                 view.Button("StartSet", purpose == BrowsePurpose.Study ? "Begin studying" : "Begin test", 48, 700, 1104, 75,
                     start, true, entries.Length > 0);
                 view.Text("Rules", string.IsNullOrWhiteSpace(choice.Description)
@@ -89,6 +99,13 @@ namespace XRDiscovery.Vocabulary
             view.UpdateButton(wordToggle, "Word Immediately: " + (showImmediately ? "On" : "Off"), showImmediately);
             view.UpdateButton(audioToggle, "Audio Immediately: " + (audioEnabled ? "On" : "Off"), audioEnabled);
             view.UpdateButton(voiceToggle, "Voice: " + (maleVoice ? "Male" : "Female"));
+        }
+
+        public void UpdateGameOptions(TestPromptMode mode, bool maleVoice, int speed)
+        {
+            view.UpdateButton(gameModeToggle, "Prompt: " + mode);
+            view.UpdateButton(gameVoiceToggle, "Voice: " + (maleVoice ? "Male" : "Female"));
+            view.UpdateButton(gameSpeedToggle, "Voice Speed: " + speed + "%");
         }
     }
 }

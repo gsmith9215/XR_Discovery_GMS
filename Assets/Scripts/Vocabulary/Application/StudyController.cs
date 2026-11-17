@@ -10,6 +10,7 @@ namespace XRDiscovery.Vocabulary
         private readonly StudyScreen screen;
         private StudySession session;
         private string name;
+        private System.Action back;
         private bool showJapaneseImmediately;
         private bool revealed;
         private readonly AudioSource audio;
@@ -50,11 +51,12 @@ namespace XRDiscovery.Vocabulary
             if (app.JapaneseAudioEnabled) PlayAudio();
         }
 
-        public void Start(string setName, IEnumerable<string> ids, bool showImmediately)
+        public void Start(string setName, IEnumerable<string> ids, bool showImmediately, System.Action returnToPreview = null)
         {
             var valid = app.ValidIds(ids);
             if (valid.Length == 0) return;
             name = setName;
+            back = returnToPreview ?? app.ShowMainMenu;
             showJapaneseImmediately = showImmediately;
             revealed = showJapaneseImmediately;
             session = new StudySession(valid);
@@ -133,7 +135,7 @@ namespace XRDiscovery.Vocabulary
             var entry = app.Library.Get(session.CurrentItemId);
             screen.Draw(name, session.Index, session.ItemIds.Count, entry, showJapaneseImmediately, revealed,
                 app.JapaneseAudioEnabled, app.JapaneseMaleVoice, VoiceSpeedPercents[voiceSpeedIndex], clip != null,
-                app.ShowMainMenu, Move, app.Recenter, ToggleImmediate, ToggleReveal, ToggleAudio, ToggleVoice,
+                back, Move, app.Recenter, ToggleImmediate, ToggleReveal, ToggleAudio, ToggleVoice,
                 ToggleVoiceSpeed, PlayAudio);
         }
     }
