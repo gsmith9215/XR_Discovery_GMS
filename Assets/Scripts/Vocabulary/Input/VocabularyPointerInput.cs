@@ -307,9 +307,9 @@ namespace XRDiscovery.Vocabulary
                 beam.sortingOrder = canvas.sortingOrder + 1;
                 beam.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 beam.receiveShadows = false;
-                // Reuse the uGUI shader already included for this canvas. A Shader.Find
-                // of an otherwise unused URP shader can disappear in stripped builds.
-                pointerMaterial = new Material(UnityEngine.UI.Graphic.defaultGraphicMaterial)
+                // Use a 3D stereo-capable shader, independent of uGUI's canvas render state.
+                // The resource asset also keeps the shader available in stripped Quest builds.
+                pointerMaterial = new Material(Resources.Load<Material>("VocabularyData/Pointer"))
                 {
                     name = "Vocabulary Pointer (Runtime)"
                 };
@@ -343,9 +343,11 @@ namespace XRDiscovery.Vocabulary
             beam.startColor = color;
             beam.endColor = color;
             beam.SetPosition(0, start);
-            beam.SetPosition(1, end);
+            // Stop the beam before the UI plane rather than intersecting its graphics.
+            Vector3 visibleEnd = hit ? end - (end - start).normalized * .012f : end;
+            beam.SetPosition(1, visibleEnd);
             tip.SetActive(hit);
-            tip.transform.position = end - (end - start).normalized * 0.004f;
+            tip.transform.position = visibleEnd;
         }
 
         private void Suspend()

@@ -6,7 +6,10 @@ namespace XRDiscovery.Vocabulary
     internal sealed class VocabularyScreens
     {
         private readonly VocabularyView view;
-        public VocabularyScreens(VocabularyView view) { this.view = view; }
+        private readonly Action recenter;
+        public VocabularyScreens(VocabularyView view, Action recenter) { this.view = view; this.recenter = recenter; }
+        public static void RecenterButton(VocabularyView view, Action recenter) =>
+            view.Button("Recenter", "Recenter", 960, 35, 192, 60, recenter);
         public void MainMenu(bool japanese, bool storageAvailable, string storageNotice, Action study, Action test, Action manage, Action toggleLanguage, Action recenter)
         {
             var heading = view.Text("Heading", "Vocabulary Learning Center", 60, 100, 1080, 100, 58);
@@ -25,9 +28,10 @@ namespace XRDiscovery.Vocabulary
         public void Header(string title, Action back, bool centerTitle = false)
         {
             view.Button("Back", "← Back", 48, 35, 175, 60, back);
+            RecenterButton(view, recenter);
             var titleText = centerTitle
-                ? view.Text("Title", title, 48, 28, 1104, 78, 38)
-                : view.Text("Title", title, 255, 28, 897, 78, 38);
+                ? view.Text("Title", title, 240, 28, 720, 78, 38)
+                : view.Text("Title", title, 255, 28, 690, 78, 38);
             if (centerTitle) titleText.alignment = TextAlignmentOptions.Center;
         }
         public void Pager(int page, int pages, Action<int> change, float y)
@@ -39,6 +43,7 @@ namespace XRDiscovery.Vocabulary
         }
         public void Confirm(string title, string description, Action accept, Action cancel)
         {
+            RecenterButton(view, recenter);
             view.Text("ConfirmTitle", title, 60, 180, 1080, 150, 44);
             view.Text("ConfirmDescription", description, 60, 360, 1080, 200, 30, VocabularyView.Muted);
             view.Button("Confirm", "Confirm", 60, 650, 520, 85, accept, true);

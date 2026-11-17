@@ -25,6 +25,7 @@ namespace XRDiscovery.Vocabulary
         private BrowsePurpose purpose;
         private bool customTab;
         private int page;
+        private bool showJapaneseImmediately;
 
         public SetBrowserController(VocabularyApp app)
         { this.app = app; screen = new SetBrowserScreen(app.View, app.Screens); }
@@ -33,6 +34,11 @@ namespace XRDiscovery.Vocabulary
         {
             purpose = nextPurpose;
             if (reset) { customTab = purpose == BrowsePurpose.Manage; page = 0; }
+            if (reset && purpose == BrowsePurpose.Study)
+            {
+                showJapaneseImmediately = false;
+                app.JapaneseAudioEnabled = false;
+            }
             if (purpose == BrowsePurpose.Manage) customTab = true;
             app.NewPage(VocabularyScreen.Sets);
             var sets = AvailableSets();
@@ -59,6 +65,11 @@ namespace XRDiscovery.Vocabulary
             app.NewPage(VocabularyScreen.SetDetails);
             var valid = app.ValidIds(choice.Items);
             screen.Details(choice, purpose, valid.Select(app.Library.Get).ToArray(), choice.Items.Count - valid.Length,
+                showJapaneseImmediately,
+                () => { showJapaneseImmediately = !showJapaneseImmediately; UpdateStudyOptions(); },
+                app.JapaneseAudioEnabled, app.JapaneseMaleVoice,
+                () => { app.JapaneseAudioEnabled = !app.JapaneseAudioEnabled; UpdateStudyOptions(); },
+                () => { app.JapaneseMaleVoice = !app.JapaneseMaleVoice; UpdateStudyOptions(); },
                 () => Browse(purpose, false),
                 () => app.EditSet(choice.Id, choice.Name, choice.Items),
                 () => app.EditSet(null, choice.Name + " copy", choice.Items),
@@ -67,7 +78,10 @@ namespace XRDiscovery.Vocabulary
                     try { app.CustomSets.Delete(choice.Id); Browse(BrowsePurpose.Manage, false); }
                     catch (Exception e) { app.ShowFailure("Could not delete the set", e, () => ShowSet(choice)); }
                 }, () => ShowSet(choice)),
-                () => { if (purpose == BrowsePurpose.Study) app.StartStudy(choice.Name, valid); else app.StartTest(choice.Name, valid); });
+                () => { if (purpose == BrowsePurpose.Study) app.StartStudy(choice.Name, valid, showJapaneseImmediately); else app.StartTest(choice.Name, valid); });
         }
+
+        private void UpdateStudyOptions() => screen.UpdateStudyOptions(
+            showJapaneseImmediately, app.JapaneseAudioEnabled, app.JapaneseMaleVoice);
     }
 }

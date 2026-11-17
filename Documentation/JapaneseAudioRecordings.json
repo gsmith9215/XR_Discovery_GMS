@@ -1,0 +1,1141 @@
+{
+  "source": "Assets/Resources/VocabularyData/Library.json",
+  "recordings": [
+    {
+      "id": "dfc1a3ff232f34e40a42666c606e6577",
+      "english": "Ambulance",
+      "japanese": "救急車",
+      "reading": "きゅうきゅうしゃ",
+      "male": "Assets/Resources/VocabularyAudio/Male/dfc1a3ff232f34e40a42666c606e6577.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/dfc1a3ff232f34e40a42666c606e6577.wav"
+    },
+    {
+      "id": "d910386731412e74a93c5e3187c5c484",
+      "english": "Anvil",
+      "japanese": "金床",
+      "reading": "かなとこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/d910386731412e74a93c5e3187c5c484.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/d910386731412e74a93c5e3187c5c484.wav"
+    },
+    {
+      "id": "7fe0ecbbb2cde4b469cf3e9a8d172be9",
+      "english": "Apartment building",
+      "japanese": "集合住宅",
+      "reading": "しゅうごうじゅうたく",
+      "male": "Assets/Resources/VocabularyAudio/Male/7fe0ecbbb2cde4b469cf3e9a8d172be9.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/7fe0ecbbb2cde4b469cf3e9a8d172be9.wav"
+    },
+    {
+      "id": "8cf8aea9b66252546a652cfbb9cc6423",
+      "english": "Apple",
+      "japanese": "りんご",
+      "reading": "りんご",
+      "male": "Assets/Resources/VocabularyAudio/Male/8cf8aea9b66252546a652cfbb9cc6423.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/8cf8aea9b66252546a652cfbb9cc6423.wav"
+    },
+    {
+      "id": "f6d750d1c141089468f46c0313009f27",
+      "english": "Asparagus",
+      "japanese": "アスパラガス",
+      "reading": "あすぱらがす",
+      "male": "Assets/Resources/VocabularyAudio/Male/f6d750d1c141089468f46c0313009f27.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/f6d750d1c141089468f46c0313009f27.wav"
+    },
+    {
+      "id": "1bda1014b240b2d4f923634e2983a943",
+      "english": "Astronaut",
+      "japanese": "宇宙飛行士",
+      "reading": "うちゅうひこうし",
+      "male": "Assets/Resources/VocabularyAudio/Male/1bda1014b240b2d4f923634e2983a943.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/1bda1014b240b2d4f923634e2983a943.wav"
+    },
+    {
+      "id": "ad38b34a1ee6b894c888549fb6d1b8a6",
+      "english": "ATM",
+      "japanese": "ATM",
+      "reading": "えーてぃーえむ",
+      "male": "Assets/Resources/VocabularyAudio/Male/ad38b34a1ee6b894c888549fb6d1b8a6.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/ad38b34a1ee6b894c888549fb6d1b8a6.wav"
+    },
+    {
+      "id": "49047f224c83c464f882d7bdb8f6f0ce",
+      "english": "Ax",
+      "japanese": "斧",
+      "reading": "おの",
+      "male": "Assets/Resources/VocabularyAudio/Male/49047f224c83c464f882d7bdb8f6f0ce.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/49047f224c83c464f882d7bdb8f6f0ce.wav"
+    },
+    {
+      "id": "dd22260a2ed2175409ffd9de28b06f0d",
+      "english": "Banana",
+      "japanese": "バナナ",
+      "reading": "ばなな",
+      "male": "Assets/Resources/VocabularyAudio/Male/dd22260a2ed2175409ffd9de28b06f0d.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/dd22260a2ed2175409ffd9de28b06f0d.wav"
+    },
+    {
+      "id": "9ad0d86edf5010444bb520dc4cbdaf5d",
+      "english": "Barn",
+      "japanese": "納屋",
+      "reading": "なや",
+      "male": "Assets/Resources/VocabularyAudio/Male/9ad0d86edf5010444bb520dc4cbdaf5d.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/9ad0d86edf5010444bb520dc4cbdaf5d.wav"
+    },
+    {
+      "id": "22e5c7be402f62045a4b344468f9d741",
+      "english": "Barrel",
+      "japanese": "樽",
+      "reading": "たる",
+      "male": "Assets/Resources/VocabularyAudio/Male/22e5c7be402f62045a4b344468f9d741.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/22e5c7be402f62045a4b344468f9d741.wav"
+    },
+    {
+      "id": "7d753f29dea3977408ed0b73b666c878",
+      "english": "baseball cap",
+      "japanese": "帽子",
+      "reading": "ぼうし",
+      "male": "Assets/Resources/VocabularyAudio/Male/7d753f29dea3977408ed0b73b666c878.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/7d753f29dea3977408ed0b73b666c878.wav"
+    },
+    {
+      "id": "c8a2d104c9f3b5146988e835e319413b",
+      "english": "Beans",
+      "japanese": "豆",
+      "reading": "まめ",
+      "male": "Assets/Resources/VocabularyAudio/Male/c8a2d104c9f3b5146988e835e319413b.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/c8a2d104c9f3b5146988e835e319413b.wav"
+    },
+    {
+      "id": "e07f9b2990e2e684a95ea92fab83ccd7",
+      "english": "Bed",
+      "japanese": "ベッド",
+      "reading": "べっど",
+      "male": "Assets/Resources/VocabularyAudio/Male/e07f9b2990e2e684a95ea92fab83ccd7.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/e07f9b2990e2e684a95ea92fab83ccd7.wav"
+    },
+    {
+      "id": "1fb217dee3915974ea6c7fc47331f42b",
+      "english": "Bell pepper",
+      "japanese": "パプリカ",
+      "reading": "ぱぷりか",
+      "male": "Assets/Resources/VocabularyAudio/Male/1fb217dee3915974ea6c7fc47331f42b.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/1fb217dee3915974ea6c7fc47331f42b.wav"
+    },
+    {
+      "id": "dc524130b14ca404fac9f48146d4d977",
+      "english": "Bench",
+      "japanese": "ベンチ",
+      "reading": "べんち",
+      "male": "Assets/Resources/VocabularyAudio/Male/dc524130b14ca404fac9f48146d4d977.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/dc524130b14ca404fac9f48146d4d977.wav"
+    },
+    {
+      "id": "f08f74c7b6d8c1b4f9a1f456c8975a5f",
+      "english": "Billboard",
+      "japanese": "看板",
+      "reading": "かんばん",
+      "male": "Assets/Resources/VocabularyAudio/Male/f08f74c7b6d8c1b4f9a1f456c8975a5f.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/f08f74c7b6d8c1b4f9a1f456c8975a5f.wav"
+    },
+    {
+      "id": "c8c0d628ff8101448ad4989a36c7ac6e",
+      "english": "Bottle",
+      "japanese": "瓶",
+      "reading": "びん",
+      "male": "Assets/Resources/VocabularyAudio/Male/c8c0d628ff8101448ad4989a36c7ac6e.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/c8c0d628ff8101448ad4989a36c7ac6e.wav"
+    },
+    {
+      "id": "f22d687c8ed5d5b4fba66b613bf058db",
+      "english": "Boy",
+      "japanese": "男の子",
+      "reading": "おとこのこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/f22d687c8ed5d5b4fba66b613bf058db.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/f22d687c8ed5d5b4fba66b613bf058db.wav"
+    },
+    {
+      "id": "bfe2d9839966910429234f18e4262c81",
+      "english": "Bread",
+      "japanese": "パン",
+      "reading": "ぱん",
+      "male": "Assets/Resources/VocabularyAudio/Male/bfe2d9839966910429234f18e4262c81.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/bfe2d9839966910429234f18e4262c81.wav"
+    },
+    {
+      "id": "19be8db3392cc8744b67a8ae10cd8785",
+      "english": "Broccoli",
+      "japanese": "ブロッコリー",
+      "reading": "ぶろっこりー",
+      "male": "Assets/Resources/VocabularyAudio/Male/19be8db3392cc8744b67a8ae10cd8785.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/19be8db3392cc8744b67a8ae10cd8785.wav"
+    },
+    {
+      "id": "b0097fa3a2f029447a448db594f5d390",
+      "english": "Bucket",
+      "japanese": "バケツ",
+      "reading": "ばけつ",
+      "male": "Assets/Resources/VocabularyAudio/Male/b0097fa3a2f029447a448db594f5d390.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/b0097fa3a2f029447a448db594f5d390.wav"
+    },
+    {
+      "id": "f14f8402016cbeb44a4ce8fcf20ea045",
+      "english": "Butternut squash",
+      "japanese": "バターナッツかぼちゃ",
+      "reading": "ばたーなっつかぼちゃ",
+      "male": "Assets/Resources/VocabularyAudio/Male/f14f8402016cbeb44a4ce8fcf20ea045.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/f14f8402016cbeb44a4ce8fcf20ea045.wav"
+    },
+    {
+      "id": "9c6eee6a5a209994eb8ce039627c7d10",
+      "english": "Car",
+      "japanese": "車",
+      "reading": "くるま",
+      "male": "Assets/Resources/VocabularyAudio/Male/9c6eee6a5a209994eb8ce039627c7d10.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/9c6eee6a5a209994eb8ce039627c7d10.wav"
+    },
+    {
+      "id": "c39b9a80655ad11449a5da092c08a6b9",
+      "english": "Cardboard box",
+      "japanese": "段ボール箱",
+      "reading": "だんぼーるばこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/c39b9a80655ad11449a5da092c08a6b9.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/c39b9a80655ad11449a5da092c08a6b9.wav"
+    },
+    {
+      "id": "26674c15987e0b947a516bbfa9246ece",
+      "english": "Carrots",
+      "japanese": "にんじん",
+      "reading": "にんじん",
+      "male": "Assets/Resources/VocabularyAudio/Male/26674c15987e0b947a516bbfa9246ece.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/26674c15987e0b947a516bbfa9246ece.wav"
+    },
+    {
+      "id": "fa56d9e734700984785e016132e292f7",
+      "english": "Chain",
+      "japanese": "鎖",
+      "reading": "くさり",
+      "male": "Assets/Resources/VocabularyAudio/Male/fa56d9e734700984785e016132e292f7.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/fa56d9e734700984785e016132e292f7.wav"
+    },
+    {
+      "id": "c3ec9171edd9db64098d0731be6888e6",
+      "english": "Chainsaw",
+      "japanese": "チェーンソー",
+      "reading": "ちぇーんそー",
+      "male": "Assets/Resources/VocabularyAudio/Male/c3ec9171edd9db64098d0731be6888e6.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/c3ec9171edd9db64098d0731be6888e6.wav"
+    },
+    {
+      "id": "86c8bad2cfa7c304cae9b680e7a52436",
+      "english": "Chair",
+      "japanese": "椅子",
+      "reading": "いす",
+      "male": "Assets/Resources/VocabularyAudio/Male/86c8bad2cfa7c304cae9b680e7a52436.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/86c8bad2cfa7c304cae9b680e7a52436.wav"
+    },
+    {
+      "id": "c5323996965d02343ad72a1bdb077844",
+      "english": "Cherries",
+      "japanese": "さくらんぼ",
+      "reading": "さくらんぼ",
+      "male": "Assets/Resources/VocabularyAudio/Male/c5323996965d02343ad72a1bdb077844.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/c5323996965d02343ad72a1bdb077844.wav"
+    },
+    {
+      "id": "88430571999a5de4da559119211e4e1d",
+      "english": "Chest",
+      "japanese": "宝箱",
+      "reading": "たからばこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/88430571999a5de4da559119211e4e1d.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/88430571999a5de4da559119211e4e1d.wav"
+    },
+    {
+      "id": "f16c2e08dfcf55b4c809079e333c7089",
+      "english": "Chili pepper",
+      "japanese": "唐辛子",
+      "reading": "とうがらし",
+      "male": "Assets/Resources/VocabularyAudio/Male/f16c2e08dfcf55b4c809079e333c7089.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/f16c2e08dfcf55b4c809079e333c7089.wav"
+    },
+    {
+      "id": "df3ee50fee187b142aec258eea29b797",
+      "english": "clam",
+      "japanese": "シャコガイ",
+      "reading": "しゃこがい",
+      "male": "Assets/Resources/VocabularyAudio/Male/df3ee50fee187b142aec258eea29b797.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/df3ee50fee187b142aec258eea29b797.wav"
+    },
+    {
+      "id": "2490b11e00bca9e4d8db67b3ee359c6e",
+      "english": "Clock",
+      "japanese": "時計",
+      "reading": "とけい",
+      "male": "Assets/Resources/VocabularyAudio/Male/2490b11e00bca9e4d8db67b3ee359c6e.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/2490b11e00bca9e4d8db67b3ee359c6e.wav"
+    },
+    {
+      "id": "e442c82cc9451bc4cafa8687dc885940",
+      "english": "Clothesline",
+      "japanese": "物干しロープ",
+      "reading": "ものほしろーぷ",
+      "male": "Assets/Resources/VocabularyAudio/Male/e442c82cc9451bc4cafa8687dc885940.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/e442c82cc9451bc4cafa8687dc885940.wav"
+    },
+    {
+      "id": "3c1616bde8b6fcd40be70578963539d6",
+      "english": "Coconut",
+      "japanese": "ココナッツ",
+      "reading": "ここなっつ",
+      "male": "Assets/Resources/VocabularyAudio/Male/3c1616bde8b6fcd40be70578963539d6.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/3c1616bde8b6fcd40be70578963539d6.wav"
+    },
+    {
+      "id": "398fa938ca0a14c42b43119cf4363f64",
+      "english": "Coin",
+      "japanese": "硬貨",
+      "reading": "こうか",
+      "male": "Assets/Resources/VocabularyAudio/Male/398fa938ca0a14c42b43119cf4363f64.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/398fa938ca0a14c42b43119cf4363f64.wav"
+    },
+    {
+      "id": "bdf41ecce0250994dbb3d8fcc435bc4d",
+      "english": "Combine harvester",
+      "japanese": "コンバイン",
+      "reading": "こんばいん",
+      "male": "Assets/Resources/VocabularyAudio/Male/bdf41ecce0250994dbb3d8fcc435bc4d.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/bdf41ecce0250994dbb3d8fcc435bc4d.wav"
+    },
+    {
+      "id": "74926d2136445fa41acae10c190c4679",
+      "english": "Coral",
+      "japanese": "サンゴ",
+      "reading": "さんご",
+      "male": "Assets/Resources/VocabularyAudio/Male/74926d2136445fa41acae10c190c4679.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/74926d2136445fa41acae10c190c4679.wav"
+    },
+    {
+      "id": "d6b9f503ad5ae904e865b3942192e92f",
+      "english": "Corn",
+      "japanese": "とうもろこし",
+      "reading": "とうもろこし",
+      "male": "Assets/Resources/VocabularyAudio/Male/d6b9f503ad5ae904e865b3942192e92f.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/d6b9f503ad5ae904e865b3942192e92f.wav"
+    },
+    {
+      "id": "44ecc159ce2d77943b47fc6cf7b6d98d",
+      "english": "Cucumber",
+      "japanese": "きゅうり",
+      "reading": "きゅうり",
+      "male": "Assets/Resources/VocabularyAudio/Male/44ecc159ce2d77943b47fc6cf7b6d98d.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/44ecc159ce2d77943b47fc6cf7b6d98d.wav"
+    },
+    {
+      "id": "8db7410e287ffc5439224e1315338f2d",
+      "english": "Dead tree",
+      "japanese": "枯れ木",
+      "reading": "かれき",
+      "male": "Assets/Resources/VocabularyAudio/Male/8db7410e287ffc5439224e1315338f2d.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/8db7410e287ffc5439224e1315338f2d.wav"
+    },
+    {
+      "id": "a8b9adb676251f548aa625e470ce1502",
+      "english": "Desk",
+      "japanese": "机",
+      "reading": "つくえ",
+      "male": "Assets/Resources/VocabularyAudio/Male/a8b9adb676251f548aa625e470ce1502.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/a8b9adb676251f548aa625e470ce1502.wav"
+    },
+    {
+      "id": "4a09995b8b29c9d45ba79fa8a07c8473",
+      "english": "Dock",
+      "japanese": "桟橋",
+      "reading": "さんばし",
+      "male": "Assets/Resources/VocabularyAudio/Male/4a09995b8b29c9d45ba79fa8a07c8473.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/4a09995b8b29c9d45ba79fa8a07c8473.wav"
+    },
+    {
+      "id": "3e02468fb3708ec43b9178f08a2cff87",
+      "english": "Door",
+      "japanese": "ドア",
+      "reading": "どあ",
+      "male": "Assets/Resources/VocabularyAudio/Male/3e02468fb3708ec43b9178f08a2cff87.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/3e02468fb3708ec43b9178f08a2cff87.wav"
+    },
+    {
+      "id": "232da5d832f29a24f82e614c2ac53182",
+      "english": "Dumpster",
+      "japanese": "大型ごみ箱",
+      "reading": "おおがたごみばこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/232da5d832f29a24f82e614c2ac53182.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/232da5d832f29a24f82e614c2ac53182.wav"
+    },
+    {
+      "id": "b61ff96c590c3334cbd72368c3c3703c",
+      "english": "Eggplant",
+      "japanese": "なす",
+      "reading": "なす",
+      "male": "Assets/Resources/VocabularyAudio/Male/b61ff96c590c3334cbd72368c3c3703c.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/b61ff96c590c3334cbd72368c3c3703c.wav"
+    },
+    {
+      "id": "fc4f58c7b8b69734ea8a2edba7512c95",
+      "english": "Farm trailer",
+      "japanese": "農業用トレーラー",
+      "reading": "のうぎょうようとれーらー",
+      "male": "Assets/Resources/VocabularyAudio/Male/fc4f58c7b8b69734ea8a2edba7512c95.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/fc4f58c7b8b69734ea8a2edba7512c95.wav"
+    },
+    {
+      "id": "283989b4b4b4c7c4288d6ef75a48fa34",
+      "english": "Fence",
+      "japanese": "柵",
+      "reading": "さく",
+      "male": "Assets/Resources/VocabularyAudio/Male/283989b4b4b4c7c4288d6ef75a48fa34.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/283989b4b4b4c7c4288d6ef75a48fa34.wav"
+    },
+    {
+      "id": "289640f1916199446942c481fc4c9b30",
+      "english": "Fern",
+      "japanese": "シダ",
+      "reading": "しだ",
+      "male": "Assets/Resources/VocabularyAudio/Male/289640f1916199446942c481fc4c9b30.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/289640f1916199446942c481fc4c9b30.wav"
+    },
+    {
+      "id": "a7daafe53384237478a971d64322e12a",
+      "english": "Fire escape",
+      "japanese": "非常階段",
+      "reading": "ひじょうかいだん",
+      "male": "Assets/Resources/VocabularyAudio/Male/a7daafe53384237478a971d64322e12a.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/a7daafe53384237478a971d64322e12a.wav"
+    },
+    {
+      "id": "69cf9af9675a0bf4b87971ed5a72b127",
+      "english": "Fire hydrant",
+      "japanese": "消火栓",
+      "reading": "しょうかせん",
+      "male": "Assets/Resources/VocabularyAudio/Male/69cf9af9675a0bf4b87971ed5a72b127.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/69cf9af9675a0bf4b87971ed5a72b127.wav"
+    },
+    {
+      "id": "587e3ffd952658346913fde3a398ae11",
+      "english": "Firewood",
+      "japanese": "薪",
+      "reading": "まき",
+      "male": "Assets/Resources/VocabularyAudio/Male/587e3ffd952658346913fde3a398ae11.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/587e3ffd952658346913fde3a398ae11.wav"
+    },
+    {
+      "id": "cba6b4bb7065cd141b00112213deb7ac",
+      "english": "First aid kit",
+      "japanese": "救急箱",
+      "reading": "きゅうきゅうばこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/cba6b4bb7065cd141b00112213deb7ac.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/cba6b4bb7065cd141b00112213deb7ac.wav"
+    },
+    {
+      "id": "0f566025edb000f44816b122aacc4819",
+      "english": "Flowers",
+      "japanese": "花",
+      "reading": "はな",
+      "male": "Assets/Resources/VocabularyAudio/Male/0f566025edb000f44816b122aacc4819.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/0f566025edb000f44816b122aacc4819.wav"
+    },
+    {
+      "id": "dc864b747921c884fa94ade41f6058e8",
+      "english": "Garage",
+      "japanese": "車庫",
+      "reading": "しゃこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/dc864b747921c884fa94ade41f6058e8.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/dc864b747921c884fa94ade41f6058e8.wav"
+    },
+    {
+      "id": "72f450f8a3ca9844ca6b311b17ba6985",
+      "english": "Gas can",
+      "japanese": "ガソリン携行缶",
+      "reading": "がそりんけいこうかん",
+      "male": "Assets/Resources/VocabularyAudio/Male/72f450f8a3ca9844ca6b311b17ba6985.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/72f450f8a3ca9844ca6b311b17ba6985.wav"
+    },
+    {
+      "id": "ee2ed5cdd5bc78f4aaf4779558362ca4",
+      "english": "Gas tank",
+      "japanese": "燃料タンク",
+      "reading": "ねんりょうたんく",
+      "male": "Assets/Resources/VocabularyAudio/Male/ee2ed5cdd5bc78f4aaf4779558362ca4.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/ee2ed5cdd5bc78f4aaf4779558362ca4.wav"
+    },
+    {
+      "id": "6150d0d1bf560394883eb964cd650fc7",
+      "english": "Girl",
+      "japanese": "女の子",
+      "reading": "おんなのこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/6150d0d1bf560394883eb964cd650fc7.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/6150d0d1bf560394883eb964cd650fc7.wav"
+    },
+    {
+      "id": "b1aa7dd139fc61647adb5e3bbc453105",
+      "english": "Glasses",
+      "japanese": "眼鏡",
+      "reading": "めがね",
+      "male": "Assets/Resources/VocabularyAudio/Male/b1aa7dd139fc61647adb5e3bbc453105.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/b1aa7dd139fc61647adb5e3bbc453105.wav"
+    },
+    {
+      "id": "5affd748b322f1140b3e80fcca2ea04e",
+      "english": "Grass",
+      "japanese": "草",
+      "reading": "くさ",
+      "male": "Assets/Resources/VocabularyAudio/Male/5affd748b322f1140b3e80fcca2ea04e.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/5affd748b322f1140b3e80fcca2ea04e.wav"
+    },
+    {
+      "id": "6cb5fb555863a384fa0d18767df2f423",
+      "english": "Greenhouse",
+      "japanese": "温室",
+      "reading": "おんしつ",
+      "male": "Assets/Resources/VocabularyAudio/Male/6cb5fb555863a384fa0d18767df2f423.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/6cb5fb555863a384fa0d18767df2f423.wav"
+    },
+    {
+      "id": "b94e19a042b0e704c864d6dddebc9b10",
+      "english": "Hamburger",
+      "japanese": "ハンバーガー",
+      "reading": "はんばーがー",
+      "male": "Assets/Resources/VocabularyAudio/Male/b94e19a042b0e704c864d6dddebc9b10.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/b94e19a042b0e704c864d6dddebc9b10.wav"
+    },
+    {
+      "id": "fa4678bc0a37a3444bed0f109050d5ef",
+      "english": "Hat",
+      "japanese": "帽子",
+      "reading": "ぼうし",
+      "male": "Assets/Resources/VocabularyAudio/Male/fa4678bc0a37a3444bed0f109050d5ef.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/fa4678bc0a37a3444bed0f109050d5ef.wav"
+    },
+    {
+      "id": "8650744a833f2094e94a965fb6386bc0",
+      "english": "Hoe",
+      "japanese": "鍬",
+      "reading": "くわ",
+      "male": "Assets/Resources/VocabularyAudio/Male/8650744a833f2094e94a965fb6386bc0.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/8650744a833f2094e94a965fb6386bc0.wav"
+    },
+    {
+      "id": "402034f1029002b43b873d78799f2b68",
+      "english": "Hook",
+      "japanese": "フック",
+      "reading": "ふっく",
+      "male": "Assets/Resources/VocabularyAudio/Male/402034f1029002b43b873d78799f2b68.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/402034f1029002b43b873d78799f2b68.wav"
+    },
+    {
+      "id": "86e8b746ebc524740b02fa8776f7bed9",
+      "english": "Hot dog stand",
+      "japanese": "ホットドッグの屋台",
+      "reading": "ほっとどっぐのやたい",
+      "male": "Assets/Resources/VocabularyAudio/Male/86e8b746ebc524740b02fa8776f7bed9.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/86e8b746ebc524740b02fa8776f7bed9.wav"
+    },
+    {
+      "id": "51cf59158bf166d43b77511ba49bf1be",
+      "english": "House",
+      "japanese": "家",
+      "reading": "いえ",
+      "male": "Assets/Resources/VocabularyAudio/Male/51cf59158bf166d43b77511ba49bf1be.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/51cf59158bf166d43b77511ba49bf1be.wav"
+    },
+    {
+      "id": "fa96ab4bd2dcfa842826f2205f03e2ed",
+      "english": "Key",
+      "japanese": "鍵",
+      "reading": "かぎ",
+      "male": "Assets/Resources/VocabularyAudio/Male/fa96ab4bd2dcfa842826f2205f03e2ed.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/fa96ab4bd2dcfa842826f2205f03e2ed.wav"
+    },
+    {
+      "id": "5833286e6f7886644a558792f15da681",
+      "english": "Ladder",
+      "japanese": "はしご",
+      "reading": "はしご",
+      "male": "Assets/Resources/VocabularyAudio/Male/5833286e6f7886644a558792f15da681.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/5833286e6f7886644a558792f15da681.wav"
+    },
+    {
+      "id": "5eb29808572ac0c489f244a3bc51fb2e",
+      "english": "Lemon",
+      "japanese": "レモン",
+      "reading": "れもん",
+      "male": "Assets/Resources/VocabularyAudio/Male/5eb29808572ac0c489f244a3bc51fb2e.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/5eb29808572ac0c489f244a3bc51fb2e.wav"
+    },
+    {
+      "id": "57a35808302f8d04a88242bb5c4453e1",
+      "english": "Log",
+      "japanese": "丸太",
+      "reading": "まるた",
+      "male": "Assets/Resources/VocabularyAudio/Male/57a35808302f8d04a88242bb5c4453e1.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/57a35808302f8d04a88242bb5c4453e1.wav"
+    },
+    {
+      "id": "13a59ed818790f84dabf655daf59eaae",
+      "english": "Mailbox",
+      "japanese": "郵便受け",
+      "reading": "ゆうびんうけ",
+      "male": "Assets/Resources/VocabularyAudio/Male/13a59ed818790f84dabf655daf59eaae.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/13a59ed818790f84dabf655daf59eaae.wav"
+    },
+    {
+      "id": "864e7286dbd2081459cb842b77a2d1b0",
+      "english": "Mug",
+      "japanese": "マグカップ",
+      "reading": "まぐかっぷ",
+      "male": "Assets/Resources/VocabularyAudio/Male/864e7286dbd2081459cb842b77a2d1b0.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/864e7286dbd2081459cb842b77a2d1b0.wav"
+    },
+    {
+      "id": "97b21ae1e9c9df348b719e68fd3b3e41",
+      "english": "Mushroom",
+      "japanese": "きのこ",
+      "reading": "きのこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/97b21ae1e9c9df348b719e68fd3b3e41.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/97b21ae1e9c9df348b719e68fd3b3e41.wav"
+    },
+    {
+      "id": "2eb4063d65dc08848b7cb937660e9694",
+      "english": "Office building",
+      "japanese": "オフィスビル",
+      "reading": "おふぃすびる",
+      "male": "Assets/Resources/VocabularyAudio/Male/2eb4063d65dc08848b7cb937660e9694.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/2eb4063d65dc08848b7cb937660e9694.wav"
+    },
+    {
+      "id": "1c68e715b916c97479f9e81ff1657a35",
+      "english": "Onion",
+      "japanese": "玉ねぎ",
+      "reading": "たまねぎ",
+      "male": "Assets/Resources/VocabularyAudio/Male/1c68e715b916c97479f9e81ff1657a35.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/1c68e715b916c97479f9e81ff1657a35.wav"
+    },
+    {
+      "id": "4b94095381c633b429275d4547c4ecb7",
+      "english": "Orange",
+      "japanese": "オレンジ",
+      "reading": "おれんじ",
+      "male": "Assets/Resources/VocabularyAudio/Male/4b94095381c633b429275d4547c4ecb7.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/4b94095381c633b429275d4547c4ecb7.wav"
+    },
+    {
+      "id": "7842364cd153b3549ba67af0927779cb",
+      "english": "Outrigger canoe",
+      "japanese": "アウトリガーカヌー",
+      "reading": "あうとりがーかぬー",
+      "male": "Assets/Resources/VocabularyAudio/Male/7842364cd153b3549ba67af0927779cb.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/7842364cd153b3549ba67af0927779cb.wav"
+    },
+    {
+      "id": "fd8c333c67bead04e9b8eaada0f5d7fd",
+      "english": "Pallet",
+      "japanese": "パレット",
+      "reading": "ぱれっと",
+      "male": "Assets/Resources/VocabularyAudio/Male/fd8c333c67bead04e9b8eaada0f5d7fd.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/fd8c333c67bead04e9b8eaada0f5d7fd.wav"
+    },
+    {
+      "id": "fa8315c5c957ad446873370f3ad8d59e",
+      "english": "Palm tree",
+      "japanese": "ヤシの木",
+      "reading": "やしのき",
+      "male": "Assets/Resources/VocabularyAudio/Male/fa8315c5c957ad446873370f3ad8d59e.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/fa8315c5c957ad446873370f3ad8d59e.wav"
+    },
+    {
+      "id": "dcb865a882d233e4d827363ec666fdf1",
+      "english": "Parking meter",
+      "japanese": "パーキングメーター",
+      "reading": "ぱーきんぐめーたー",
+      "male": "Assets/Resources/VocabularyAudio/Male/dcb865a882d233e4d827363ec666fdf1.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/dcb865a882d233e4d827363ec666fdf1.wav"
+    },
+    {
+      "id": "cbdb09a4f1ff21f4481b8432ea879eec",
+      "english": "Pear",
+      "japanese": "洋梨",
+      "reading": "ようなし",
+      "male": "Assets/Resources/VocabularyAudio/Male/cbdb09a4f1ff21f4481b8432ea879eec.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/cbdb09a4f1ff21f4481b8432ea879eec.wav"
+    },
+    {
+      "id": "f65c793fb1f2dd747b3da03357750625",
+      "english": "Pickaxe",
+      "japanese": "つるはし",
+      "reading": "つるはし",
+      "male": "Assets/Resources/VocabularyAudio/Male/f65c793fb1f2dd747b3da03357750625.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/f65c793fb1f2dd747b3da03357750625.wav"
+    },
+    {
+      "id": "aa9feb72a952862408a92de99037b80e",
+      "english": "Picnic table",
+      "japanese": "ピクニックテーブル",
+      "reading": "ぴくにっくてーぶる",
+      "male": "Assets/Resources/VocabularyAudio/Male/aa9feb72a952862408a92de99037b80e.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/aa9feb72a952862408a92de99037b80e.wav"
+    },
+    {
+      "id": "532f6977547e4984f901a275bbedc3ca",
+      "english": "Pine tree",
+      "japanese": "松",
+      "reading": "まつ",
+      "male": "Assets/Resources/VocabularyAudio/Male/532f6977547e4984f901a275bbedc3ca.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/532f6977547e4984f901a275bbedc3ca.wav"
+    },
+    {
+      "id": "0627fe5aec67c3649bbc445341a132c7",
+      "english": "Pirate flag",
+      "japanese": "海賊旗",
+      "reading": "かいぞくき",
+      "male": "Assets/Resources/VocabularyAudio/Male/0627fe5aec67c3649bbc445341a132c7.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/0627fe5aec67c3649bbc445341a132c7.wav"
+    },
+    {
+      "id": "26cb28d30de523b45acc9bfec21e677e",
+      "english": "Pitchfork",
+      "japanese": "農業用フォーク",
+      "reading": "のうぎょうようふぉーく",
+      "male": "Assets/Resources/VocabularyAudio/Male/26cb28d30de523b45acc9bfec21e677e.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/26cb28d30de523b45acc9bfec21e677e.wav"
+    },
+    {
+      "id": "e8536ba321fafce468c74a9736397d75",
+      "english": "Plate",
+      "japanese": "皿",
+      "reading": "さら",
+      "male": "Assets/Resources/VocabularyAudio/Male/e8536ba321fafce468c74a9736397d75.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/e8536ba321fafce468c74a9736397d75.wav"
+    },
+    {
+      "id": "fe42368133a068549ba4d0136f735ac2",
+      "english": "Plum",
+      "japanese": "すもも",
+      "reading": "すもも",
+      "male": "Assets/Resources/VocabularyAudio/Male/fe42368133a068549ba4d0136f735ac2.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/fe42368133a068549ba4d0136f735ac2.wav"
+    },
+    {
+      "id": "52eb42e8954635c4fa2408324f6865b0",
+      "english": "Police car",
+      "japanese": "パトカー",
+      "reading": "ぱとかー",
+      "male": "Assets/Resources/VocabularyAudio/Male/52eb42e8954635c4fa2408324f6865b0.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/52eb42e8954635c4fa2408324f6865b0.wav"
+    },
+    {
+      "id": "791e8c70d22801b48bc3403f568f1fc6",
+      "english": "Pot",
+      "japanese": "壺",
+      "reading": "つぼ",
+      "male": "Assets/Resources/VocabularyAudio/Male/791e8c70d22801b48bc3403f568f1fc6.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/791e8c70d22801b48bc3403f568f1fc6.wav"
+    },
+    {
+      "id": "7c75d8947203c9d49ae9eec57dd55270",
+      "english": "Potato",
+      "japanese": "じゃがいも",
+      "reading": "じゃがいも",
+      "male": "Assets/Resources/VocabularyAudio/Male/7c75d8947203c9d49ae9eec57dd55270.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/7c75d8947203c9d49ae9eec57dd55270.wav"
+    },
+    {
+      "id": "263d71938e2694d4d89cb560d0568297",
+      "english": "Pumpkin",
+      "japanese": "かぼちゃ",
+      "reading": "かぼちゃ",
+      "male": "Assets/Resources/VocabularyAudio/Male/263d71938e2694d4d89cb560d0568297.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/263d71938e2694d4d89cb560d0568297.wav"
+    },
+    {
+      "id": "b2cdc72697e8fc6439a143ee5fbae58b",
+      "english": "Rake",
+      "japanese": "熊手",
+      "reading": "くまで",
+      "male": "Assets/Resources/VocabularyAudio/Male/b2cdc72697e8fc6439a143ee5fbae58b.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/b2cdc72697e8fc6439a143ee5fbae58b.wav"
+    },
+    {
+      "id": "2769b40565841f841b8f481fd6bcd45c",
+      "english": "Road barrier",
+      "japanese": "道路のバリケード",
+      "reading": "どうろのばりけーど",
+      "male": "Assets/Resources/VocabularyAudio/Male/2769b40565841f841b8f481fd6bcd45c.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/2769b40565841f841b8f481fd6bcd45c.wav"
+    },
+    {
+      "id": "11354fb668d37f2469262230e26252b1",
+      "english": "Robot",
+      "japanese": "ロボット",
+      "reading": "ろぼっと",
+      "male": "Assets/Resources/VocabularyAudio/Male/11354fb668d37f2469262230e26252b1.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/11354fb668d37f2469262230e26252b1.wav"
+    },
+    {
+      "id": "57c0cad64fe05c049885e482f3cc521f",
+      "english": "Rock",
+      "japanese": "岩",
+      "reading": "いわ",
+      "male": "Assets/Resources/VocabularyAudio/Male/57c0cad64fe05c049885e482f3cc521f.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/57c0cad64fe05c049885e482f3cc521f.wav"
+    },
+    {
+      "id": "be517b999c225bf4a96ed2d1c04d316a",
+      "english": "Rocking chair",
+      "japanese": "ロッキングチェア",
+      "reading": "ろっきんぐちぇあ",
+      "male": "Assets/Resources/VocabularyAudio/Male/be517b999c225bf4a96ed2d1c04d316a.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/be517b999c225bf4a96ed2d1c04d316a.wav"
+    },
+    {
+      "id": "1316d426721e2d1479a5bebee9a6a717",
+      "english": "Sack",
+      "japanese": "袋",
+      "reading": "ふくろ",
+      "male": "Assets/Resources/VocabularyAudio/Male/1316d426721e2d1479a5bebee9a6a717.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/1316d426721e2d1479a5bebee9a6a717.wav"
+    },
+    {
+      "id": "29e0c3a4202ea2540b07dacea7047c58",
+      "english": "Satellite dish",
+      "japanese": "パラボラアンテナ",
+      "reading": "ぱらぼらあんてな",
+      "male": "Assets/Resources/VocabularyAudio/Male/29e0c3a4202ea2540b07dacea7047c58.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/29e0c3a4202ea2540b07dacea7047c58.wav"
+    },
+    {
+      "id": "f4a433d5844a5494d99a5652db85c502",
+      "english": "Scarecrow",
+      "japanese": "かかし",
+      "reading": "かかし",
+      "male": "Assets/Resources/VocabularyAudio/Male/f4a433d5844a5494d99a5652db85c502.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/f4a433d5844a5494d99a5652db85c502.wav"
+    },
+    {
+      "id": "08a2d75f0198d68479dff4dd98c626d0",
+      "english": "Scythe",
+      "japanese": "大鎌",
+      "reading": "おおがま",
+      "male": "Assets/Resources/VocabularyAudio/Male/08a2d75f0198d68479dff4dd98c626d0.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/08a2d75f0198d68479dff4dd98c626d0.wav"
+    },
+    {
+      "id": "22d789b5c7e374d47a0fb71ca067fdc1",
+      "english": "Seaweed",
+      "japanese": "海藻",
+      "reading": "かいそう",
+      "male": "Assets/Resources/VocabularyAudio/Male/22d789b5c7e374d47a0fb71ca067fdc1.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/22d789b5c7e374d47a0fb71ca067fdc1.wav"
+    },
+    {
+      "id": "9fbd1e3dbe2089b4a8f5b9d0fb49e17f",
+      "english": "Security camera",
+      "japanese": "防犯カメラ",
+      "reading": "ぼうはんかめら",
+      "male": "Assets/Resources/VocabularyAudio/Male/9fbd1e3dbe2089b4a8f5b9d0fb49e17f.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/9fbd1e3dbe2089b4a8f5b9d0fb49e17f.wav"
+    },
+    {
+      "id": "cb86f6d39e7e6c24188461fba446c547",
+      "english": "Shelf",
+      "japanese": "棚",
+      "reading": "たな",
+      "male": "Assets/Resources/VocabularyAudio/Male/cb86f6d39e7e6c24188461fba446c547.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/cb86f6d39e7e6c24188461fba446c547.wav"
+    },
+    {
+      "id": "64b3880fe665afe4ba8d0c36e0b3e2bf",
+      "english": "Shop",
+      "japanese": "店",
+      "reading": "みせ",
+      "male": "Assets/Resources/VocabularyAudio/Male/64b3880fe665afe4ba8d0c36e0b3e2bf.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/64b3880fe665afe4ba8d0c36e0b3e2bf.wav"
+    },
+    {
+      "id": "fbb3fc2d1d5d163448e1c0151ad398b0",
+      "english": "Shovel",
+      "japanese": "シャベル",
+      "reading": "しゃべる",
+      "male": "Assets/Resources/VocabularyAudio/Male/fbb3fc2d1d5d163448e1c0151ad398b0.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/fbb3fc2d1d5d163448e1c0151ad398b0.wav"
+    },
+    {
+      "id": "a15f56dee4486624eb7b8ceab421a10c",
+      "english": "Skeleton",
+      "japanese": "骸骨",
+      "reading": "がいこつ",
+      "male": "Assets/Resources/VocabularyAudio/Male/a15f56dee4486624eb7b8ceab421a10c.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/a15f56dee4486624eb7b8ceab421a10c.wav"
+    },
+    {
+      "id": "c6ad68f4008c8294786bb1122d581300",
+      "english": "Skull",
+      "japanese": "頭蓋骨",
+      "reading": "ずがいこつ",
+      "male": "Assets/Resources/VocabularyAudio/Male/c6ad68f4008c8294786bb1122d581300.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/c6ad68f4008c8294786bb1122d581300.wav"
+    },
+    {
+      "id": "00ef6acae3674034d99a64e34466b7b6",
+      "english": "Smartphone",
+      "japanese": "スマートフォン",
+      "reading": "すまーとふぉん",
+      "male": "Assets/Resources/VocabularyAudio/Male/00ef6acae3674034d99a64e34466b7b6.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/00ef6acae3674034d99a64e34466b7b6.wav"
+    },
+    {
+      "id": "5142db8a9557ea847b19a55c6dd51976",
+      "english": "Sofa",
+      "japanese": "ソファ",
+      "reading": "そふぁ",
+      "male": "Assets/Resources/VocabularyAudio/Male/5142db8a9557ea847b19a55c6dd51976.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/5142db8a9557ea847b19a55c6dd51976.wav"
+    },
+    {
+      "id": "99ce77aa628676044af6966142e4f469",
+      "english": "Starfish",
+      "japanese": "ヒトデ",
+      "reading": "ひとで",
+      "male": "Assets/Resources/VocabularyAudio/Male/99ce77aa628676044af6966142e4f469.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/99ce77aa628676044af6966142e4f469.wav"
+    },
+    {
+      "id": "733e19c50536b9c4aae3e8b0529cdf11",
+      "english": "Steering wheel",
+      "japanese": "ハンドル",
+      "reading": "はんどる",
+      "male": "Assets/Resources/VocabularyAudio/Male/733e19c50536b9c4aae3e8b0529cdf11.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/733e19c50536b9c4aae3e8b0529cdf11.wav"
+    },
+    {
+      "id": "9fe3270b5878ba941b47203976ca627b",
+      "english": "Stop sign",
+      "japanese": "一時停止標識",
+      "reading": "いちじていしひょうしき",
+      "male": "Assets/Resources/VocabularyAudio/Male/9fe3270b5878ba941b47203976ca627b.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/9fe3270b5878ba941b47203976ca627b.wav"
+    },
+    {
+      "id": "bcbbfce61787d604e84669bea7a03fc6",
+      "english": "Strawberry",
+      "japanese": "いちご",
+      "reading": "いちご",
+      "male": "Assets/Resources/VocabularyAudio/Male/bcbbfce61787d604e84669bea7a03fc6.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/bcbbfce61787d604e84669bea7a03fc6.wav"
+    },
+    {
+      "id": "f7fce509129295c4bb2cb9bab18886d0",
+      "english": "Sunflower",
+      "japanese": "ひまわり",
+      "reading": "ひまわり",
+      "male": "Assets/Resources/VocabularyAudio/Male/f7fce509129295c4bb2cb9bab18886d0.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/f7fce509129295c4bb2cb9bab18886d0.wav"
+    },
+    {
+      "id": "3ba652d68bfbc1b4e934fb4cc9af5999",
+      "english": "Table",
+      "japanese": "テーブル",
+      "reading": "てーぶる",
+      "male": "Assets/Resources/VocabularyAudio/Male/3ba652d68bfbc1b4e934fb4cc9af5999.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/3ba652d68bfbc1b4e934fb4cc9af5999.wav"
+    },
+    {
+      "id": "fb7af1cebc80ae1428a44253debee307",
+      "english": "Taxi",
+      "japanese": "タクシー",
+      "reading": "たくしー",
+      "male": "Assets/Resources/VocabularyAudio/Male/fb7af1cebc80ae1428a44253debee307.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/fb7af1cebc80ae1428a44253debee307.wav"
+    },
+    {
+      "id": "7d952ef0803a79d4ba32a6dc11f8d3c7",
+      "english": "Tire",
+      "japanese": "タイヤ",
+      "reading": "たいや",
+      "male": "Assets/Resources/VocabularyAudio/Male/7d952ef0803a79d4ba32a6dc11f8d3c7.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/7d952ef0803a79d4ba32a6dc11f8d3c7.wav"
+    },
+    {
+      "id": "6abbe6196c05eb141ad78a2a620ca67f",
+      "english": "Tomato",
+      "japanese": "トマト",
+      "reading": "とまと",
+      "male": "Assets/Resources/VocabularyAudio/Male/6abbe6196c05eb141ad78a2a620ca67f.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/6abbe6196c05eb141ad78a2a620ca67f.wav"
+    },
+    {
+      "id": "3497ac464d7c57c4dab3e129a278223e",
+      "english": "Toolbox",
+      "japanese": "工具箱",
+      "reading": "こうぐばこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/3497ac464d7c57c4dab3e129a278223e.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/3497ac464d7c57c4dab3e129a278223e.wav"
+    },
+    {
+      "id": "cb838e83086305149bbb8772b937f5a8",
+      "english": "Tractor",
+      "japanese": "トラクター",
+      "reading": "とらくたー",
+      "male": "Assets/Resources/VocabularyAudio/Male/cb838e83086305149bbb8772b937f5a8.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/cb838e83086305149bbb8772b937f5a8.wav"
+    },
+    {
+      "id": "c91ce42c95ce53e4082a76d05eaa5695",
+      "english": "Traffic cone",
+      "japanese": "三角コーン",
+      "reading": "さんかくこーん",
+      "male": "Assets/Resources/VocabularyAudio/Male/c91ce42c95ce53e4082a76d05eaa5695.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/c91ce42c95ce53e4082a76d05eaa5695.wav"
+    },
+    {
+      "id": "876d54a10f4a6d64d9cfd5552bf587a2",
+      "english": "Traffic light",
+      "japanese": "信号機",
+      "reading": "しんごうき",
+      "male": "Assets/Resources/VocabularyAudio/Male/876d54a10f4a6d64d9cfd5552bf587a2.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/876d54a10f4a6d64d9cfd5552bf587a2.wav"
+    },
+    {
+      "id": "a84f69530995c214dac3c0d0ff49bb6a",
+      "english": "Trash bag",
+      "japanese": "ごみ袋",
+      "reading": "ごみぶくろ",
+      "male": "Assets/Resources/VocabularyAudio/Male/a84f69530995c214dac3c0d0ff49bb6a.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/a84f69530995c214dac3c0d0ff49bb6a.wav"
+    },
+    {
+      "id": "1553b4480a6c54440a24df529bd6cede",
+      "english": "Trash can",
+      "japanese": "ごみ箱",
+      "reading": "ごみばこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/1553b4480a6c54440a24df529bd6cede.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/1553b4480a6c54440a24df529bd6cede.wav"
+    },
+    {
+      "id": "6c86d2d4357032e4b8224005cf3d3b36",
+      "english": "Tree",
+      "japanese": "木",
+      "reading": "き",
+      "male": "Assets/Resources/VocabularyAudio/Male/6c86d2d4357032e4b8224005cf3d3b36.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/6c86d2d4357032e4b8224005cf3d3b36.wav"
+    },
+    {
+      "id": "c88e6e92e3c6c5c4389ceab11bbfe071",
+      "english": "Tree stump",
+      "japanese": "切り株",
+      "reading": "きりかぶ",
+      "male": "Assets/Resources/VocabularyAudio/Male/c88e6e92e3c6c5c4389ceab11bbfe071.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/c88e6e92e3c6c5c4389ceab11bbfe071.wav"
+    },
+    {
+      "id": "577413b4afba02a46b00fd5b92c04868",
+      "english": "Trough",
+      "japanese": "飼い葉桶",
+      "reading": "かいばおけ",
+      "male": "Assets/Resources/VocabularyAudio/Male/577413b4afba02a46b00fd5b92c04868.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/577413b4afba02a46b00fd5b92c04868.wav"
+    },
+    {
+      "id": "bf7af536ba0a7a9458147b470e88dd0a",
+      "english": "Truck",
+      "japanese": "トラック",
+      "reading": "とらっく",
+      "male": "Assets/Resources/VocabularyAudio/Male/bf7af536ba0a7a9458147b470e88dd0a.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/bf7af536ba0a7a9458147b470e88dd0a.wav"
+    },
+    {
+      "id": "572eabc40c6721f48bcb25facfcad9f1",
+      "english": "Umbrella",
+      "japanese": "傘",
+      "reading": "かさ",
+      "male": "Assets/Resources/VocabularyAudio/Male/572eabc40c6721f48bcb25facfcad9f1.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/572eabc40c6721f48bcb25facfcad9f1.wav"
+    },
+    {
+      "id": "89ce046490941544a89f63bc14c55490",
+      "english": "Van",
+      "japanese": "バン",
+      "reading": "ばん",
+      "male": "Assets/Resources/VocabularyAudio/Male/89ce046490941544a89f63bc14c55490.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/89ce046490941544a89f63bc14c55490.wav"
+    },
+    {
+      "id": "e1abbe040075c1e418608659f89bf186",
+      "english": "Volcano",
+      "japanese": "火山",
+      "reading": "かざん",
+      "male": "Assets/Resources/VocabularyAudio/Male/e1abbe040075c1e418608659f89bf186.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/e1abbe040075c1e418608659f89bf186.wav"
+    },
+    {
+      "id": "46d6adbbb5c84834ca7e9fe73ef1c376",
+      "english": "Watering can",
+      "japanese": "じょうろ",
+      "reading": "じょうろ",
+      "male": "Assets/Resources/VocabularyAudio/Male/46d6adbbb5c84834ca7e9fe73ef1c376.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/46d6adbbb5c84834ca7e9fe73ef1c376.wav"
+    },
+    {
+      "id": "a836e312b3951f64a99d3282132fb406",
+      "english": "Watermelon",
+      "japanese": "すいか",
+      "reading": "すいか",
+      "male": "Assets/Resources/VocabularyAudio/Male/a836e312b3951f64a99d3282132fb406.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/a836e312b3951f64a99d3282132fb406.wav"
+    },
+    {
+      "id": "a0ec05d69a6239e49ad1a458d406e488",
+      "english": "Well",
+      "japanese": "井戸",
+      "reading": "いど",
+      "male": "Assets/Resources/VocabularyAudio/Male/a0ec05d69a6239e49ad1a458d406e488.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/a0ec05d69a6239e49ad1a458d406e488.wav"
+    },
+    {
+      "id": "4fcbccfebbc862745bb54eca27ca3ba5",
+      "english": "Wheelbarrow",
+      "japanese": "手押し車",
+      "reading": "ておしぐるま",
+      "male": "Assets/Resources/VocabularyAudio/Male/4fcbccfebbc862745bb54eca27ca3ba5.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/4fcbccfebbc862745bb54eca27ca3ba5.wav"
+    },
+    {
+      "id": "556ba3a73f2a5d94eaa6ea27b08a5b33",
+      "english": "Wind turbine",
+      "japanese": "風力発電機",
+      "reading": "ふうりょくはつでんき",
+      "male": "Assets/Resources/VocabularyAudio/Male/556ba3a73f2a5d94eaa6ea27b08a5b33.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/556ba3a73f2a5d94eaa6ea27b08a5b33.wav"
+    },
+    {
+      "id": "77101eeff5653b14fba12db53530184c",
+      "english": "Windmill",
+      "japanese": "風車",
+      "reading": "ふうしゃ",
+      "male": "Assets/Resources/VocabularyAudio/Male/77101eeff5653b14fba12db53530184c.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/77101eeff5653b14fba12db53530184c.wav"
+    },
+    {
+      "id": "bb53b28a984abe342bcdaf2ce39dee16",
+      "english": "Window",
+      "japanese": "窓",
+      "reading": "まど",
+      "male": "Assets/Resources/VocabularyAudio/Male/bb53b28a984abe342bcdaf2ce39dee16.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/bb53b28a984abe342bcdaf2ce39dee16.wav"
+    },
+    {
+      "id": "67473ed5384656f488b8238a6f61615d",
+      "english": "Wooden crate",
+      "japanese": "木箱",
+      "reading": "きばこ",
+      "male": "Assets/Resources/VocabularyAudio/Male/67473ed5384656f488b8238a6f61615d.wav",
+      "female": "Assets/Resources/VocabularyAudio/Female/67473ed5384656f488b8238a6f61615d.wav"
+    }
+  ]
+}
