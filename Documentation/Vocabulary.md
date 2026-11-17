@@ -4,16 +4,21 @@ Open `Assets/Scenes/SampleScene.unity` and press Play. The scene's `VocabularyAp
 
 ## Player flow
 
-- **Study:** select All items, a premade set, or a custom set. Previous/Next cycles through every object, with Japanese, kana reading and English shown together. Premade sets follow their authored item order.
-- **Test:** select a set and hit the matching box with the hammer. Each selected item is the target exactly once per round. The results offer a full retest or another round containing only missed targets. Continue until a round has no misses.
+- **Study:** select All items, a premade set, or a custom set. Before starting, choose Word Immediately, Audio Immediately, and Voice (Male/Female). Previous/Next cycles through every object in the set's authored order. When Word Immediately is off, Japanese and its reading stay hidden until Show Word is selected; each item starts hidden again. English stays visible. In Study, Show Word, Say Word, and Voice Speed sit beneath their related controls. Voice Speed cycles through 100%, 75%, and 50%.
+- **Test:** select a set, choose Words, Audio, or Both in the set preview, and hit the matching box with the hammer. Voice and speed can be selected before and during the round, and Say Word replays the Japanese recording. Each selected item is the target exactly once per round. The results offer a full retest or another round containing only missed targets. Continue until a round has no misses.
+
+In Games, Words displays the current text prompt, Audio speaks the Japanese word and hides the text prompt, and Both displays and speaks it. Say Word can replay a recording in any mode. If a selected recording is unavailable, the word appears so the question remains answerable. Playback stops when a box is hit or the player leaves the question.
+The results screen shows the round score above a scrollable list of missed English and Japanese words. Each row has a sound button that replays the selected voice at 75% speed.
+Study and Games Back return to the selected set preview. Games confirms before leaving an active round; the selected box turns green for a correct hit or red for an incorrect hit while retaining its translucent shell.
 - **Custom Sets:** create an empty set or duplicate a custom set. The set screen shows its name and selected words; Add Words opens a separate screen for searching, filtering, and changing the selection. Add/Remove By switches between individual words and existing premade or custom sets. Selecting a set previews its words and shows which are already added; the preview can add its remaining words or remove its selected words from the draft. Return to the set screen to save. Open an existing set to rename/edit/delete it. Leaving the set screen prompts before discarding a draft.
 - Premade and custom sets occupy separate tabs. Names are labels, not IDs; matching names are allowed, including between two custom sets.
-- Japanese test prompts are the default. The main menu can switch to English prompts. Study always shows both languages.
+- Custom set names are limited to 60 characters. Longer names already saved remain readable and are shortened to the limit when edited. Long names are clipped with `...` in fixed-width menu labels.
+- Japanese test prompts are the default. The main menu can switch to English prompts. Study has its own display and audio controls.
 - One- and two-item sets work. Extra answer choices come from the library, but only selected targets are scored. Items sharing the same displayed Japanese word are not competing choices in the same question.
 
 ## Controls
 
-In XR, point the right controller at a menu and press/release its trigger. The left controller is used if the right controller is unavailable. The hammer remains the test answer mechanism. The menu is positioned at startup, then stays in place when navigating, changing settings, or starting Study or Test. Recenter relocates the menu and objects in front of the current head direction.
+In XR, point the right controller at a menu and press/release its trigger. The left controller is used if the right controller is unavailable. The hammer remains the test answer mechanism. The menu is positioned at startup, then stays in place when navigating, changing settings, or starting Study or Test. Recenter is available in the top-right corner of secondary menus. Selecting it shows a three-second countdown, then relocates the menu and objects in front of the current head direction. Navigating away cancels the countdown.
 
 Selecting a text field opens a world-space keyboard with Latin, hiragana and katakana layouts, shift/small kana, voiced marks, backspace and space. Done returns to item selection. Physical keyboard/IME input works, and a System keyboard option is available when supported by the platform.
 
@@ -22,6 +27,22 @@ In the Editor, menus accept mouse clicks, Study accepts Left/Right arrow keys, a
 The object presenter Inspector has separate display distances for tests and study. Tests currently place boxes 1 m forward and 0.25 m below eye level; study places one box 1.5 m forward and 0.1 m below eye level. These can be adjusted after checking reach and comfort in the headset.
 
 ## Content and saved data
+
+### Study recordings
+
+The bundled VoiceVox recordings cover all 142 words in both voices at 100%, 75%, and 50% speech speed. Word Immediately and Audio Immediately default to Off and reset to Off when Study setup is opened from the main menu. Choices made in the set preview apply to the study session. Voice defaults to Female and is shared between the preview and Study for the app session. Voice Speed defaults to 100% and keeps its selection across Study sets during the app session. Study loads a separate VoiceVox recording for each speed and leaves AudioSource pitch at 1, so slower playback keeps the voice's normal pitch.
+
+Study controls update in place when settings change or words are revealed/hidden. Previous/Next replaces only the vocabulary object and updates the existing UI. Preview settings also update in place, preserving the list's scroll position.
+
+All menus keep the opaque beige backdrop on its own lower-order canvas, slightly behind the controls, so button and text updates do not rebuild the backdrop's geometry. The controller beam and tip use a dedicated URP Unlit material (`VocabularyData/Pointer`) and end before the UI plane. Custom Set word and set pickers reuse their rows during selection and search; bulk selection controls remain in place. Navigation and switching picker modes still create the destination page.
+
+Put one recording per word and voice under `Assets/Resources/VocabularyAudio/Male/<item-id>.wav` and `Assets/Resources/VocabularyAudio/Female/<item-id>.wav`. Use the exact stable ID from `Library.json`, not the English name. Unity also supports imported MP3/OGG clips; keep the same filename stem and only one audio file per ID per voice. `Documentation/JapaneseAudioRecordings.json` lists the current words, readings, and both WAV paths. Update that list when the vocabulary catalog changes. Record the Japanese term using its intended catalog reading, trim excess silence, and use consistent volume.
+
+Audio Immediately plays the selected voice when an item appears, when automatic audio is enabled, or when the voice changes with automatic audio on. It works independently of Word Immediately. Say Word manually plays the recording even when automatic audio is off or the Japanese text is hidden. Disabling automatic audio, changing items, or leaving Study stops playback. Missing clips show No Recording as text at the top right and disable Say Word without hiding it; they do not fall back to the other voice. No network access or speech account is needed for bundled recordings.
+
+Possible synthesis sources if desired later: [Azure Speech](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/language-support) provides Japanese male and female voices, including Keita and Nanami; [Google Cloud Text-to-Speech](https://docs.cloud.google.com/text-to-speech/docs/list-voices-and-types) also offers Japanese male and female voices. Neither service is connected to this project.
+
+### Catalog and storage
 
 - Vocabulary boxes remain under `Assets/Resources/VocabularyBoxes/<category>/`.
 - `Assets/Resources/VocabularyData/Library.json` supplies English names, Japanese terms, readings, categories and resource paths. Prefab GUIDs are stable item identities, so renaming or moving a prefab does not disconnect a saved custom set.

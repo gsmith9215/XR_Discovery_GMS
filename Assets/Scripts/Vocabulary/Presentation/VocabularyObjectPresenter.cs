@@ -18,7 +18,7 @@ public class VocabularyObjectPresenter : MonoBehaviour
     [SerializeField] private float heightBelowEyes = 0.25f;
     [Header("Study Display")]
     [SerializeField] private float studyDistance = 1.5f;
-    [SerializeField] private float studyHeightBelowEyes = 0.1f;
+    [SerializeField] private float studyHeightBelowEyes = 0.13f;
     [Header("Legacy Scoreboard")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text targetText;
@@ -94,6 +94,25 @@ public class VocabularyObjectPresenter : MonoBehaviour
     }
 
     public void StopAcceptingHits() => acceptingHits = false;
+
+    public void ShowAnswerFeedback(string id, bool correct)
+    {
+        int index = activeIds.IndexOf(id);
+        if (index < 0) return;
+        var visual = activeObjects[index].transform.Find("BoxVisual");
+        var renderer = visual != null ? visual.GetComponent<Renderer>() : null;
+        if (renderer == null || renderer.sharedMaterial == null) return;
+        var material = renderer.sharedMaterial;
+        string property = material.HasProperty("_BaseColor") ? "_BaseColor" : "_Color";
+        if (!material.HasProperty(property)) return;
+        Color color = correct ? new Color(.1f, .85f, .2f) : new Color(1f, .1f, .1f);
+        color.a = material.GetColor(property).a;
+        // Override only this box shell; models and shared materials keep their original colors.
+        var properties = new MaterialPropertyBlock();
+        renderer.GetPropertyBlock(properties);
+        properties.SetColor(property, color);
+        renderer.SetPropertyBlock(properties);
+    }
 
     public void Recenter()
     {

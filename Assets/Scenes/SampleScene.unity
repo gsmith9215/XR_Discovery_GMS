@@ -921,7 +921,7 @@ MonoBehaviour:
   objectSpacing: 0.5
   heightBelowEyes: 0.25
   studyDistance: 1.5
-  studyHeightBelowEyes: 0.1
+  studyHeightBelowEyes: 0.13
   scoreText: {fileID: 1967025037}
   targetText: {fileID: 420798864}
 --- !u!114 &861400397

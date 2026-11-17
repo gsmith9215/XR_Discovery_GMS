@@ -96,6 +96,7 @@ namespace XRDiscovery.Vocabulary
         public VocabularySet Create(string name, IEnumerable<string> itemIds)
         {
             EnsureLoaded();
+            ValidateNameLength(name);
             var created = new VocabularySet("custom:" + Guid.NewGuid().ToString("N"), name, itemIds);
             var next = new List<VocabularySet>(sets) { created };
             Commit(next);
@@ -105,6 +106,7 @@ namespace XRDiscovery.Vocabulary
         public VocabularySet Update(string id, string name, IEnumerable<string> itemIds)
         {
             EnsureLoaded();
+            ValidateNameLength(name);
             int index = FindIndex(id);
             var updated = new VocabularySet(sets[index].Id, name, itemIds);
             var next = new List<VocabularySet>(sets);
@@ -131,6 +133,12 @@ namespace XRDiscovery.Vocabulary
         {
             EnsureLoaded();
             Commit(new List<VocabularySet>(sets));
+        }
+
+        private static void ValidateNameLength(string name)
+        {
+            if (name != null && name.Trim().Length > VocabularySet.MaxNameLength)
+                throw new ArgumentException($"Set names must be {VocabularySet.MaxNameLength} characters or fewer.", nameof(name));
         }
 
         private string BackupPath => filePath + ".bak";

@@ -142,6 +142,8 @@ namespace XRDiscovery.Vocabulary.Tests
             Click("StartSet");
             CheckButtons();
             Click("Back");
+            Click("Back");
+            Click("Back");
             Click("CustomSets");
             CheckButtons();
             Click("CreateCustomSet");
@@ -273,6 +275,8 @@ namespace XRDiscovery.Vocabulary.Tests
             }
 
             Click("Recenter");
+            Assert.That(Vector3.Distance(menu.position, position), Is.LessThan(.0001f), "The menu moved before the countdown ended.");
+            yield return new WaitForSecondsRealtime(3.1f);
             Assert.That(Vector3.Distance(menu.position, position), Is.GreaterThan(.1f));
             Assert.That(Quaternion.Angle(menu.rotation, rotation), Is.GreaterThan(1f));
             Assert.That(Vector3.Angle(menu.forward, Vector3.ProjectOnPlane(cameraObject.transform.forward, Vector3.up)), Is.LessThan(.001f));
@@ -295,6 +299,7 @@ namespace XRDiscovery.Vocabulary.Tests
 
             Click("Study");
             Click("Set_premade:all");
+            Click("ShowJapaneseImmediately"); // This presentation test opts in; Study now defaults to hidden words.
             Click("StartSet");
             yield return null;
             Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.Study));
@@ -321,8 +326,163 @@ namespace XRDiscovery.Vocabulary.Tests
             Assert.That(app.Session, Is.Null);
             Click("Back");
             yield return null;
-            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.MainMenu));
+            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.SetDetails));
+            Assert.That(Text("Title").text, Is.EqualTo("All items"));
             Assert.That(spawner.ActiveObjects, Is.Empty);
+        }
+
+        [UnityTest]
+        public IEnumerator StudySettingsAndRevealKeepControlsAndBackdropStable()
+        {
+            Click("Study");
+            Click("Set_premade:all");
+            var previewWord = Button("ShowJapaneseImmediately");
+            var previewAudio = Button("JapaneseAudio");
+            Assert.That(previewWord.GetComponentInChildren<TMP_Text>().text, Is.EqualTo("Word Immediately: Off"));
+            Assert.That(previewAudio.GetComponentInChildren<TMP_Text>().text, Is.EqualTo("Audio Immediately: Off"));
+            Click("ShowJapaneseImmediately");
+            Click("JapaneseAudio");
+            Click("ShowJapaneseImmediately");
+            Click("JapaneseAudio");
+            Assert.That(Button("ShowJapaneseImmediately"), Is.SameAs(previewWord));
+            Assert.That(Button("JapaneseAudio"), Is.SameAs(previewAudio));
+
+            Click("StartSet");
+            var controls = app.View.Page.GetComponentsInChildren<UnityEngine.UI.Button>()
+                .ToDictionary(button => button.name);
+            var backdrop = app.View.Canvas.transform.Find("MenuBackground");
+            Assert.That(backdrop, Is.Not.Null);
+            var backgroundCanvas = backdrop.GetComponent<Canvas>();
+            var backgroundImage = backdrop.GetComponent<UnityEngine.UI.Image>();
+            Assert.That(backgroundCanvas.sortingOrder, Is.LessThan(app.View.Canvas.sortingOrder));
+            Assert.That(backgroundImage.color.a, Is.EqualTo(1f));
+            var japanese = app.View.Page.Find("JapaneseWord").gameObject;
+            Assert.That(japanese.activeSelf, Is.False);
+            Assert.That(Button("RevealJapaneseWord").GetComponentInChildren<TMP_Text>().text, Is.EqualTo("Show Word"));
+            Click("RevealJapaneseWord");
+            Assert.That(japanese.activeSelf, Is.True);
+            Assert.That(Button("RevealJapaneseWord").GetComponentInChildren<TMP_Text>().text, Is.EqualTo("Hide Word"));
+            Click("RevealJapaneseWord");
+            Assert.That(japanese.activeSelf, Is.False);
+            Click("ShowJapaneseImmediately");
+            Assert.That(japanese.activeSelf, Is.True);
+            Click("JapaneseAudio");
+            Click("JapaneseVoice");
+            var audioSource = app.GetComponent<AudioSource>();
+            var normalClip = audioSource.clip;
+            Assert.That(Button("VoiceSpeed").GetComponentInChildren<TMP_Text>().text,
+                Is.EqualTo("Voice Speed: 100%"));
+            Assert.That(audioSource.pitch, Is.EqualTo(1f));
+            Click("VoiceSpeed");
+            Assert.That(Button("VoiceSpeed").GetComponentInChildren<TMP_Text>().text,
+                Is.EqualTo("Voice Speed: 75%"));
+            Assert.That(audioSource.pitch, Is.EqualTo(1f));
+            Assert.That(audioSource.clip, Is.Not.SameAs(normalClip));
+            Assert.That(audioSource.clip.length, Is.GreaterThan(normalClip.length));
+            var slowerClip = audioSource.clip;
+            Click("VoiceSpeed");
+            Assert.That(audioSource.pitch, Is.EqualTo(1f));
+            Assert.That(audioSource.clip.length, Is.GreaterThan(slowerClip.length));
+            Click("NextItem");
+            yield return null;
+            Assert.That(Button("VoiceSpeed").GetComponentInChildren<TMP_Text>().text,
+                Is.EqualTo("Voice Speed: 50%"));
+            Assert.That(audioSource.pitch, Is.EqualTo(1f));
+
+            foreach (var control in controls)
+                Assert.That(Button(control.Key), Is.SameAs(control.Value), "Study must retain " + control.Key);
+            Assert.That(app.View.Canvas.transform.Find("MenuBackground"), Is.SameAs(backdrop));
+            Assert.That(backgroundImage.enabled, Is.True);
+            Assert.That(backgroundCanvas.enabled, Is.True);
+            Click("Back");
+            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.SetDetails));
+            Click("Back");
+            Click("Back");
+            Click("Study");
+            Click("Set_premade:all");
+            Assert.That(Button("ShowJapaneseImmediately").GetComponentInChildren<TMP_Text>().text, Does.EndWith(": Off"));
+            Assert.That(Button("JapaneseAudio").GetComponentInChildren<TMP_Text>().text, Does.EndWith(": Off"));
+        }
+
+        [UnityTest]
+        public IEnumerator CustomWordSelectionReusesRowsAndPreservesSearchAndScroll()
+        {
+            Click("CustomSets");
+            Click("CreateCustomSet");
+            Click("AddWords");
+            var rows = app.View.Page.GetComponentsInChildren<UnityEngine.UI.Button>()
+                .Where(button => button.name.StartsWith("Item_", StringComparison.Ordinal))
+                .ToDictionary(button => button.name);
+            var add = Button("AddFiltered");
+            var remove = Button("RemoveFiltered");
+            var search = Input("ItemSearch");
+            var scroll = app.View.Page.GetComponentsInChildren<UnityEngine.UI.ScrollRect>().Single();
+            Canvas.ForceUpdateCanvases();
+            scroll.content.anchoredPosition = new Vector2(0, 160);
+            string firstId = app.Library.Entries[0].Id;
+            Click("Item_" + firstId);
+            Assert.That(Text("SelectedCount").text, Is.EqualTo("1 selected"));
+            Assert.That(Button("Item_" + firstId).GetComponentInChildren<TMP_Text>().text, Does.StartWith("✓"));
+            Assert.That(scroll.content.anchoredPosition.y, Is.EqualTo(160).Within(.01f));
+            Click("AddFiltered");
+            Assert.That(Text("SelectedCount").text, Is.EqualTo(app.Library.Entries.Count + " selected"));
+            Click("RemoveFiltered");
+            Assert.That(Text("SelectedCount").text, Is.EqualTo("0 selected"));
+            Assert.That(scroll.content.anchoredPosition.y, Is.EqualTo(160).Within(.01f));
+            foreach (var row in rows)
+                Assert.That(Button(row.Key), Is.SameAs(row.Value), "Membership edits must retain " + row.Key);
+            Assert.That(Button("AddFiltered"), Is.SameAs(add));
+            Assert.That(Button("RemoveFiltered"), Is.SameAs(remove));
+
+            EventSystem.current.SetSelectedGameObject(search.gameObject);
+            search.text = app.Library.Entries[0].Name;
+            Assert.That(Input("ItemSearch"), Is.SameAs(search));
+            Assert.That(EventSystem.current.currentSelectedGameObject, Is.SameAs(search.gameObject));
+            Assert.That(app.View.Keyboard.Target, Is.SameAs(search));
+            search.text = "no-vocabulary-matches-this-filter";
+            search.text = "";
+            Assert.That(scroll.content.anchoredPosition.y, Is.EqualTo(0).Within(.01f));
+            Assert.That(EventSystem.current.currentSelectedGameObject, Is.SameAs(search.gameObject));
+            app.View.Keyboard.Hide();
+            foreach (var row in rows)
+                Assert.That(Button(row.Key), Is.SameAs(row.Value), "Search must reuse " + row.Key);
+            Assert.That(Button("AddFiltered"), Is.SameAs(add));
+            Assert.That(Button("RemoveFiltered"), Is.SameAs(remove));
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator GamePreviewSelectsAudioWordsOrBothAndUsesTheSelectedVoiceSpeed()
+        {
+            Click("Test");
+            Click("Set_premade:all");
+            var previewMode = Button("GamePromptMode");
+            Assert.That(previewMode.GetComponentInChildren<TMP_Text>().text, Is.EqualTo("Prompt: Words"));
+            Click("GamePromptMode");
+            Assert.That(previewMode.GetComponentInChildren<TMP_Text>().text, Is.EqualTo("Prompt: Audio"));
+            Click("GamePromptMode");
+            Assert.That(previewMode.GetComponentInChildren<TMP_Text>().text, Is.EqualTo("Prompt: Both"));
+            Click("GamePromptMode");
+            Click("GamePromptMode");
+            Assert.That(Button("GamePromptMode"), Is.SameAs(previewMode));
+            Click("JapaneseVoice");
+            Click("GameVoiceSpeed");
+            Click("StartSet");
+            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.Test));
+            var audio = app.GetComponents<AudioSource>().Last();
+            Assert.That(audio.clip, Is.Not.Null);
+            Assert.That(audio.pitch, Is.EqualTo(1f));
+            Assert.That(Text("TargetWord").text, Does.Not.StartWith("Find: "));
+            Click("GamePromptMode");
+            Assert.That(Text("TargetWord").text, Does.StartWith("Find: "));
+            Click("GamePromptMode");
+            Assert.That(Button("GamePromptMode").GetComponentInChildren<TMP_Text>().text, Is.EqualTo("Prompt: Words"));
+            float slowerDuration = audio.clip.length;
+            Click("GameVoiceSpeed");
+            Assert.That(audio.clip.length, Is.GreaterThan(slowerDuration));
+            Click("PlayJapaneseAudio");
+            Assert.That(audio.isPlaying, Is.True);
+            yield return null;
         }
 
         [UnityTest]
@@ -344,8 +504,18 @@ namespace XRDiscovery.Vocabulary.Tests
             Assert.That(app.Session.CorrectCount, Is.EqualTo(3));
             Assert.That(app.Session.MissedItemIds, Is.EqualTo(new[] { missedTarget }));
             Assert.That(spawner.ActiveObjects, Is.Empty);
+            Assert.That(Text("Title").text, Is.EqualTo("Score: 3/4"));
+            Assert.That(Text("MissedWord_" + missedTarget).text,
+                Does.Contain(app.Library.Get(missedTarget).Japanese));
+            Assert.That(app.View.Page.Find("MissedWordsViewport").GetComponent<UnityEngine.UI.ScrollRect>().vertical, Is.True);
+            Click("MissedAudio_" + missedTarget);
+            var resultAudio = app.GetComponents<AudioSource>().Last();
+            Assert.That(resultAudio.clip, Is.SameAs(Resources.Load<AudioClip>(
+                "VocabularyAudio/Female/75/" + missedTarget)));
+            Assert.That(resultAudio.isPlaying, Is.True);
 
             Click("NextMissedRound");
+            Assert.That(resultAudio.isPlaying, Is.False);
             Assert.That(app.Session.RoundNumber, Is.EqualTo(2));
             Assert.That(app.Session.RoundItemIds, Is.EqualTo(new[] { missedTarget }));
             Assert.That(spawner.ActiveObjects.Count, Is.EqualTo(3));
@@ -365,9 +535,11 @@ namespace XRDiscovery.Vocabulary.Tests
         }
 
         [UnityTest]
-        public IEnumerator LeavingTestSuspendsHitsAndFeedbackCannotRestartAfterReturningToMenu()
+        public IEnumerator LeavingTestSuspendsHitsAndFeedbackCannotRestartAfterReturningToPreview()
         {
-            app.StartTest("Navigation test", FourDistinctTargets());
+            Click("Test");
+            Click("Set_premade:all");
+            Click("StartSet");
             yield return new WaitForSecondsRealtime(.4f);
             Collider oldBox = spawner.ActiveObjects[0].GetComponent<Collider>();
             Click("Back");
@@ -388,9 +560,10 @@ namespace XRDiscovery.Vocabulary.Tests
             Assert.That(app.Session.AnsweredCount, Is.EqualTo(1), "Repeated trigger entries cannot score twice.");
             Click("Back"); // Leave while the 1.1-second answer feedback coroutine is running.
             Click("Confirm");
-            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.MainMenu));
+            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.SetDetails));
+            Assert.That(Text("Title").text, Is.EqualTo("All items"));
             yield return new WaitForSecondsRealtime(1.3f);
-            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.MainMenu));
+            Assert.That(app.Screen, Is.EqualTo(VocabularyScreen.SetDetails));
             Assert.That(app.Session, Is.Null);
             Assert.That(spawner.ActiveObjects, Is.Empty);
         }
@@ -624,6 +797,47 @@ namespace XRDiscovery.Vocabulary.Tests
                 path.IndexOf("TrackedDevice", StringComparison.OrdinalIgnoreCase) >= 0;
         }
 
+        [UnityTest]
+        public IEnumerator EveryStudyObjectClearsTheWordArea()
+        {
+            app.StartStudy("Layout check", app.Library.Entries.Select(entry => entry.Id), true);
+            Camera camera = cameraObject.GetComponent<Camera>();
+            float minimumClearance = float.PositiveInfinity;
+            string closestObject = "";
+            for (int i = 0; i < app.Library.Entries.Count; i++)
+            {
+                yield return null;
+                Canvas.ForceUpdateCanvases();
+                var corners = new Vector3[4];
+                Text("EnglishWord").rectTransform.GetWorldCorners(corners);
+                float textTop = corners.Max(point => camera.WorldToViewportPoint(point).y);
+                foreach (var renderer in spawner.ActiveObjects[0].GetComponentsInChildren<Renderer>())
+                {
+                    if (!renderer.enabled || !renderer.gameObject.activeInHierarchy) continue;
+                    Bounds bounds = renderer.bounds;
+                    for (int corner = 0; corner < 8; corner++)
+                    {
+                        Vector3 point = bounds.center + Vector3.Scale(bounds.extents, new Vector3(
+                            (corner & 1) == 0 ? -1 : 1, (corner & 2) == 0 ? -1 : 1, (corner & 4) == 0 ? -1 : 1));
+                        float clearance = camera.WorldToViewportPoint(point).y - textTop;
+                        if (clearance < minimumClearance)
+                        {
+                            minimumClearance = clearance;
+                            closestObject = spawner.ActiveObjects[0].name + "/" + renderer.name;
+                        }
+                    }
+                }
+                foreach (string label in new[] { "EnglishWord", "JapaneseWord", "Reading" })
+                    AssertFullyRendered(Text(label));
+                Vector3 englishPosition = Text("EnglishWord").transform.position;
+                Click("RevealJapaneseWord");
+                Click("RevealJapaneseWord");
+                Assert.That(Text("EnglishWord").transform.position, Is.EqualTo(englishPosition));
+                app.CycleStudy(1);
+            }
+            Assert.That(minimumClearance, Is.GreaterThan(.005f), closestObject + " is too close to the word area.");
+        }
+
         private void AssertStudyPresentationVisible()
         {
             Canvas.ForceUpdateCanvases();
@@ -659,11 +873,21 @@ namespace XRDiscovery.Vocabulary.Tests
             Assert.That(choice, Is.GreaterThanOrEqualTo(0));
             Collider collider = spawner.ActiveObjects[choice].GetComponent<Collider>();
             Assert.That(collider, Is.Not.Null);
+            var shell = spawner.ActiveObjects[choice].transform.Find("BoxVisual").GetComponent<Renderer>();
+            Color original = shell.sharedMaterial.GetColor("_BaseColor");
             int before = app.Session.AnsweredCount;
             yield return new WaitForSecondsRealtime(.4f);
             spawner.SelectBox(collider);
             spawner.SelectBox(collider);
             Assert.That(app.Session.AnsweredCount, Is.EqualTo(before + 1));
+            var feedback = new MaterialPropertyBlock();
+            shell.GetPropertyBlock(feedback);
+            Color tint = feedback.GetColor("_BaseColor");
+            Assert.That(tint.a, Is.EqualTo(original.a).Within(.0001f));
+            Assert.That(correct ? tint.g > tint.r : tint.r > tint.g, Is.True);
+            Assert.That(shell.sharedMaterial.GetColor("_BaseColor"), Is.EqualTo(original));
+            foreach (var other in spawner.ActiveObjects.Where((box, index) => index != choice))
+                Assert.That(other.transform.Find("BoxVisual").GetComponent<Renderer>().HasPropertyBlock(), Is.False);
             yield return new WaitForSecondsRealtime(1.2f);
             yield return null;
         }

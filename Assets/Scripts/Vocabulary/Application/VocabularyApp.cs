@@ -17,6 +17,7 @@ namespace XRDiscovery.Vocabulary
         private bool initialized;
         private bool japanese = true;
         private Coroutine initialPositioning;
+        private Coroutine recenterCountdown;
         private SetBrowserController browser;
         private SetEditorController editor;
         private StudyController study;
@@ -30,6 +31,10 @@ namespace XRDiscovery.Vocabulary
         public VocabularyView View { get; private set; }
         public TestSession Session => test?.Session;
         public int StudyIndex => study?.Index ?? 0;
+        internal bool JapaneseAudioEnabled { get; set; }
+        internal bool JapaneseMaleVoice { get; set; }
+        internal TestPromptMode GamePromptMode { get; set; } = TestPromptMode.Words;
+        internal int GameVoiceSpeedPercent { get; set; } = 100;
         internal VocabularyObjectPresenter Presenter => presenter;
         internal bool StorageAvailable { get; private set; }
         internal string StorageNotice { get; private set; }
@@ -51,7 +56,7 @@ namespace XRDiscovery.Vocabulary
                 presenter.Initialize();
                 View = gameObject.AddComponent<VocabularyView>();
                 View.Initialize(presenter.PlayerCamera, presenter.RightHandAnchor);
-                screens = new VocabularyScreens(View);
+                screens = new VocabularyScreens(View, Recenter);
                 japanese = PlayerPrefs.GetInt("Vocabulary.JapanesePrompts", 1) != 0;
                 Library = VocabularyLibrary.Load();
                 if (Library.Entries.Count == 0) throw new InvalidOperationException("The vocabulary library is empty.");
@@ -96,7 +101,10 @@ namespace XRDiscovery.Vocabulary
         internal void NewPage(VocabularyScreen screen, bool solid = true)
         {
             StopInitialPositioning();
+            CancelRecenterCountdown();
             test?.Suspend();
+            test?.StopAudio();
+            study?.StopAudio();
             presenter.ClearObjects();
             Screen = screen;
             View.Clear(solid);
@@ -124,9 +132,10 @@ namespace XRDiscovery.Vocabulary
         internal string[] ValidIds(IEnumerable<string> ids) => ids.Where(id => Library.Get(id) != null).Distinct().ToArray();
         internal void EditSet(string id, string name, IEnumerable<string> items) => editor.Open(id, name, items);
         internal void ManageSets() => browser.Browse(BrowsePurpose.Manage, false);
-        public void StartStudy(string name, IEnumerable<string> ids) => study.Start(name, ids);
+        public void StartStudy(string name, IEnumerable<string> ids) => study.Start(name, ids, false);
+        public void StartStudy(string name, IEnumerable<string> ids, bool showJapaneseImmediately, Action back = null) => study.Start(name, ids, showJapaneseImmediately, back);
         public void CycleStudy(int delta) => study.Move(delta);
-        public void StartTest(string name, IEnumerable<string> ids) => test.Start(name, ids);
+        public void StartTest(string name, IEnumerable<string> ids, Action back = null) => test.Start(name, ids, back);
         public void NextMissedRound() => test.NextMissedRound();
         public void Retest() => test.Retest();
 
@@ -144,9 +153,30 @@ namespace XRDiscovery.Vocabulary
 
         public void Recenter()
         {
+            if (View == null || presenter == null || recenterCountdown != null) return;
             StopInitialPositioning();
+            recenterCountdown = StartCoroutine(RecenterAfterCountdown());
+        }
+
+        private IEnumerator RecenterAfterCountdown()
+        {
+            for (int remaining = 3; remaining > 0; remaining--)
+            {
+                View.ShowRecenterCountdown(remaining);
+                yield return new WaitForSecondsRealtime(1f);
+            }
             View.Recenter();
             presenter.Recenter(View.PlacementOrigin, View.PlacementForward);
+            View.HideRecenterCountdown();
+            recenterCountdown = null;
+        }
+
+        private void CancelRecenterCountdown()
+        {
+            if (recenterCountdown == null) return;
+            StopCoroutine(recenterCountdown);
+            recenterCountdown = null;
+            View.HideRecenterCountdown();
         }
 
         private IEnumerator PositionAfterTrackingStarts()
@@ -179,7 +209,9 @@ namespace XRDiscovery.Vocabulary
         private void OnDisable()
         {
             StopInitialPositioning();
+            CancelRecenterCountdown();
             test?.Suspend();
+            study?.StopAudio();
         }
 
         private void OnDestroy()

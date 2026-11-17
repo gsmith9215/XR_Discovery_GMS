@@ -14,6 +14,11 @@ namespace XRDiscovery.Vocabulary
         private RectTransform filterMenu;
         private UnityEngine.UI.ScrollRect itemScroll;
         private TMP_Text count, status;
+        private readonly Dictionary<string, UnityEngine.UI.Button> wordButtons = new();
+        private readonly Dictionary<string, UnityEngine.UI.Button> setButtons = new();
+        private TMP_Text emptyWords, emptySets;
+        private UnityEngine.UI.Button addFiltered, removeFiltered;
+        private Action addVisibleWords, removeVisibleWords;
         public SetEditorScreen(VocabularyView view, VocabularyScreens screens) { this.view = view; this.screens = screens; }
 
         public void DrawSet(bool creating, string name, IReadOnlyList<VocabularyEntry> selected, int unavailable,
@@ -21,8 +26,8 @@ namespace XRDiscovery.Vocabulary
         {
             filterMenu = null;
             screens.Header(creating ? "Create a custom set" : "Edit your set", back);
-            view.Text("NameLabel", "SET NAME", 48, 118, 1104, 35, 22, VocabularyView.Muted);
-            view.Input("SetName", name, "Name your set", 48, 155, 1104, rename);
+            view.Text("NameLabel", $"SET NAME (MAX {VocabularySet.MaxNameLength} CHARACTERS)", 48, 118, 1104, 35, 22, VocabularyView.Muted);
+            view.Input("SetName", name, "Name your set", 48, 155, 1104, rename, VocabularySet.MaxNameLength);
             view.Button("AddWords", "Add Words", 48, 240, 1104, 65, addWords, true);
             view.Text("SelectedCount", selected.Count + unavailable + " words in this set", 48, 325, 1104, 45, 28);
             itemArea = view.Area("SelectedWords", 0, 385, 1200, 515);
@@ -50,8 +55,16 @@ namespace XRDiscovery.Vocabulary
             Action back, Action<string> searchChanged, Action toggleSelection, Action toggleMode, Action toggleFilters)
         {
             filterMenu = null;
+            // A new picker page owns a new content transform; do not retain destroyed controls.
+            wordButtons.Clear();
+            setButtons.Clear();
+            emptyWords = null;
+            emptySets = null;
+            addFiltered = null;
+            removeFiltered = null;
+            status = null;
             screens.Header(addBySet ? "Add Sets" : "Add Words", back);
-            count = view.Text("SelectedCount", selectedCount + " selected", 820, 35, 332, 60, 26);
+            count = view.Text("SelectedCount", selectedCount + " selected", 820, 98, 332, 32, 26);
             view.Input("ItemSearch", search, addBySet ? "Search sets" : "Search English or Japanese", 48, 135, 745, searchChanged);
             view.Button("SelectedOnly", selectedOnly ? (addBySet ? "Showing: Added" : "Showing: Selected") : "Showing: All",
                 820, 135, 332, 60, toggleSelection);
@@ -83,35 +96,34 @@ namespace XRDiscovery.Vocabulary
         {
             float scrollOffset = itemContent.anchoredPosition.y;
             itemScroll.StopMovement();
-            for (int i = itemContent.childCount - 1; i >= 0; i--)
-            {
-                var child = itemContent.GetChild(i).gameObject;
-                child.SetActive(false);
-                UnityEngine.Object.Destroy(child);
-            }
-            for (int i = itemArea.childCount - 1; i >= 1; i--)
-            {
-                var child = itemArea.GetChild(i).gameObject;
-                child.SetActive(false);
-                UnityEngine.Object.Destroy(child);
-            }
+            var visibleIds = new HashSet<string>();
             const float rowHeight = 112;
             itemContent.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
                 24 + Mathf.Max(1, (sets.Count + 1) / 2) * rowHeight);
             for (int i = 0; i < sets.Count; i++)
             {
                 var choice = sets[i];
-                view.Button("SourceSet_" + choice.Id,
-                    choice.Name + "\n" + (choice.Custom ? "CUSTOM" : "PREMADE") + " · " + choice.Items.Count + " words",
-                    22 + i % 2 * 504, 12 + i / 2 * rowHeight, 480, 100,
-                    () => add(choice), parent: itemContent);
+                visibleIds.Add(choice.Id);
+                if (!setButtons.TryGetValue(choice.Id, out var button))
+                {
+                    button = view.SetButton("SourceSet_" + choice.Id,
+                        choice.Name, (choice.Custom ? "CUSTOM" : "PREMADE") + " · " + choice.Items.Count + " words",
+                        22 + i % 2 * 504, 12 + i / 2 * rowHeight, 480, 100,
+                        () => add(choice), parent: itemContent);
+                    setButtons.Add(choice.Id, button);
+                }
+                SetRowVisible(button, true, 22 + i % 2 * 504, 12 + i / 2 * rowHeight);
             }
-            if (sets.Count == 0)
-                view.Text("NoSets", "No sets match this filter.", 22, 12, 1000, 65, 30, parent: itemContent);
+            foreach (var row in setButtons)
+                if (!visibleIds.Contains(row.Key)) SetVisible(row.Value.gameObject, false);
+            if (emptySets == null)
+                emptySets = view.Text("NoSets", "No sets match this filter.", 22, 12, 1000, 65, 30, parent: itemContent);
+            SetVisible(emptySets.gameObject, sets.Count == 0);
             itemContent.anchoredPosition = new Vector2(0,
                 Mathf.Clamp(scrollOffset, 0, Mathf.Max(0, itemContent.rect.height - 440)));
-            status = view.Text("PickerStatus", "Select a set to add or remove it.",
-                48, 455, 1104, 65, 27, VocabularyView.Muted, itemArea);
+            if (status == null)
+                status = view.Text("PickerStatus", "Select a set to add or remove it.",
+                    48, 455, 1104, 65, 27, VocabularyView.Muted, itemArea);
             SetKeyboardVisible(view.Keyboard.IsVisible);
         }
 
@@ -155,18 +167,9 @@ namespace XRDiscovery.Vocabulary
         {
             float scrollOffset = itemContent.anchoredPosition.y;
             itemScroll.StopMovement();
-            for (int i = itemContent.childCount - 1; i >= 0; i--)
-            {
-                var child = itemContent.GetChild(i).gameObject;
-                child.SetActive(false);
-                UnityEngine.Object.Destroy(child);
-            }
-            for (int i = itemArea.childCount - 1; i >= 1; i--)
-            {
-                var child = itemArea.GetChild(i).gameObject;
-                child.SetActive(false);
-                UnityEngine.Object.Destroy(child);
-            }
+            var visibleIds = new HashSet<string>();
+            addVisibleWords = addMatching;
+            removeVisibleWords = removeMatching;
             count.text = selected.Count + " selected";
             const float rowHeight = 78;
             itemContent.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
@@ -174,17 +177,46 @@ namespace XRDiscovery.Vocabulary
             for (int i = 0; i < visible.Length; i++)
             {
                 var entry = visible[i];
+                visibleIds.Add(entry.Id);
                 bool included = selected.Contains(entry.Id);
-                view.Button("Item_" + entry.Id, (included ? "✓  " : "+  ") + entry.Name + "  /  " + entry.Japanese,
-                    22, 12 + i * rowHeight, 1000, 65,
-                    () => toggle(entry.Id), included, parent: itemContent);
+                string label = (included ? "✓  " : "+  ") + entry.Name + "  /  " + entry.Japanese;
+                if (!wordButtons.TryGetValue(entry.Id, out var button))
+                {
+                    button = view.Button("Item_" + entry.Id, label, 22, 12 + i * rowHeight, 1000, 65,
+                        () => toggle(entry.Id), included, parent: itemContent);
+                    wordButtons.Add(entry.Id, button);
+                }
+                else
+                    view.UpdateButton(button, label, included);
+                SetRowVisible(button, true, 22, 12 + i * rowHeight);
             }
-            if (visible.Length == 0) view.Text("NoMatches", "No items match this filter.", 22, 12, 1000, 65, 32, parent: itemContent);
+            foreach (var row in wordButtons)
+                if (!visibleIds.Contains(row.Key)) SetVisible(row.Value.gameObject, false);
+            if (emptyWords == null)
+                emptyWords = view.Text("NoMatches", "No items match this filter.", 22, 12, 1000, 65, 32, parent: itemContent);
+            SetVisible(emptyWords.gameObject, visible.Length == 0);
             itemContent.anchoredPosition = new Vector2(0,
                 Mathf.Clamp(scrollOffset, 0, Mathf.Max(0, itemContent.rect.height - 440)));
-            view.Button("AddFiltered", "Add All Displayed", 48, 455, 530, 65, addMatching, parent: itemArea);
-            view.Button("RemoveFiltered", "Remove All Displayed", 622, 455, 530, 65, removeMatching, parent: itemArea);
+            if (addFiltered == null)
+                addFiltered = view.Button("AddFiltered", "Add All Displayed", 48, 455, 530, 65,
+                    () => addVisibleWords?.Invoke(), parent: itemArea);
+            if (removeFiltered == null)
+                removeFiltered = view.Button("RemoveFiltered", "Remove All Displayed", 622, 455, 530, 65,
+                    () => removeVisibleWords?.Invoke(), parent: itemArea);
             SetKeyboardVisible(view.Keyboard.IsVisible);
+        }
+
+        private static void SetVisible(GameObject target, bool visible)
+        {
+            if (target.activeSelf != visible) target.SetActive(visible);
+        }
+
+        private static void SetRowVisible(UnityEngine.UI.Button button, bool visible, float x, float y)
+        {
+            var rect = (RectTransform)button.transform;
+            var position = new Vector2(x, -y);
+            if (rect.anchoredPosition != position) rect.anchoredPosition = position;
+            SetVisible(button.gameObject, visible);
         }
 
         public void Status(string message) { if (status != null) status.text = message; }

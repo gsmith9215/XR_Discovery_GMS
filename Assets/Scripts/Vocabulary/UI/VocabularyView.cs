@@ -15,12 +15,14 @@ namespace XRDiscovery.Vocabulary
         public static readonly Color Secondary = new Color32(43, 75, 112, 255);
         public static readonly Color Highlight = new Color32(65, 108, 158, 255);
         public static readonly Color ButtonInk = new Color32(255, 252, 245, 255);
-        public static readonly Color Surface = new Color32(244, 233, 201, 250);
+        public static readonly Color Surface = new Color32(244, 233, 201, 255);
         private TMP_FontAsset font;
         private RectTransform page;
         private UnityEngine.UI.Image background;
         private Transform cameraTransform;
         private RectTransform keyboardHost;
+        private GameObject recenterCountdownPanel;
+        private TMP_Text recenterCountdownText;
         public Canvas Canvas { get; private set; }
         public VocabularyKeyboard Keyboard { get; private set; }
         public RectTransform Page => page;
@@ -43,7 +45,14 @@ namespace XRDiscovery.Vocabulary
             rect.sizeDelta = new Vector2(1200, 900);
             rect.localScale = Vector3.one * .0013f;
             root.GetComponent<UnityEngine.UI.CanvasScaler>().dynamicPixelsPerUnit = 2;
-            background = root.AddComponent<UnityEngine.UI.Image>();
+            // Keep the static backdrop out of the batch rebuilt by button tint/text changes.
+            // A small depth separation also avoids coplanar transparent surfaces in stereo.
+            var backdrop = Rect("MenuBackground", rect, Vector2.zero, Vector2.one);
+            backdrop.localPosition = Vector3.forward * 2;
+            var backdropCanvas = backdrop.gameObject.AddComponent<Canvas>();
+            backdropCanvas.overrideSorting = true;
+            backdropCanvas.sortingOrder = Canvas.sortingOrder - 1;
+            background = backdrop.gameObject.AddComponent<UnityEngine.UI.Image>();
             RoundedUiSprite.Apply(background, true);
             background.color = Surface;
             background.raycastTarget = false;
@@ -54,6 +63,30 @@ namespace XRDiscovery.Vocabulary
             keyboardHost.anchoredPosition = new Vector2(0, 12);
             Keyboard = VocabularyKeyboard.Build(keyboardHost, font);
             Keyboard.Hide();
+
+            // This canvas follows the headset; the menu itself stays anchored until the countdown ends.
+            var countdownRoot = new GameObject("Headset recenter countdown", typeof(RectTransform), typeof(Canvas));
+            countdownRoot.transform.SetParent(cameraAnchor, false);
+            var countdownCanvas = countdownRoot.GetComponent<Canvas>();
+            countdownCanvas.renderMode = RenderMode.WorldSpace;
+            countdownCanvas.worldCamera = Canvas.worldCamera;
+            countdownCanvas.sortingOrder = Canvas.sortingOrder + 1;
+            var countdownCanvasRect = (RectTransform)countdownRoot.transform;
+            countdownCanvasRect.sizeDelta = new Vector2(1200, 900);
+            countdownCanvasRect.localScale = Vector3.one * .0013f;
+            countdownCanvasRect.localPosition = Vector3.forward * 1.2f;
+            var countdownRect = Area("RecenterCountdown", 365, 370, 470, 160, countdownCanvasRect);
+            var countdownBackground = countdownRect.gameObject.AddComponent<UnityEngine.UI.Image>();
+            RoundedUiSprite.Apply(countdownBackground, true);
+            countdownBackground.color = Secondary;
+            countdownBackground.raycastTarget = false;
+            var countdownLabel = Rect("Label", countdownRect, Vector2.zero, Vector2.one);
+            countdownLabel.offsetMin = new Vector2(20, 10);
+            countdownLabel.offsetMax = new Vector2(-20, -10);
+            recenterCountdownText = Label(countdownLabel, "", 42, ButtonInk);
+            recenterCountdownText.alignment = TextAlignmentOptions.Center;
+            recenterCountdownPanel = countdownRect.gameObject;
+            recenterCountdownPanel.SetActive(false);
 
             var system = EventSystem.current;
             if (system == null)
@@ -85,9 +118,18 @@ namespace XRDiscovery.Vocabulary
                 Quaternion.LookRotation(forward, Vector3.up));
         }
 
+        public void ShowRecenterCountdown(int remaining)
+        {
+            recenterCountdownText.text = "recentering in\n" + remaining;
+            recenterCountdownPanel.SetActive(true);
+        }
+
+        public void HideRecenterCountdown() => recenterCountdownPanel.SetActive(false);
+
         public void Clear(bool solidBackground = true)
         {
             Keyboard.Hide();
+            SetBackgroundBottomExtension(0);
             for (int i = page.childCount - 1; i >= 0; i--)
             {
                 var child = page.GetChild(i).gameObject;
@@ -95,6 +137,12 @@ namespace XRDiscovery.Vocabulary
                 Destroy(child);
             }
             background.enabled = solidBackground;
+        }
+
+        public void SetBackgroundBottomExtension(float extraHeight)
+        {
+            var backdrop = (RectTransform)background.transform;
+            backdrop.offsetMin = new Vector2(0, -extraHeight);
         }
 
         // Positions are measured from the top left in the 1200 x 900 design canvas.
@@ -111,6 +159,47 @@ namespace XRDiscovery.Vocabulary
             float size = 30, Color? color = null, Transform parent = null)
         {
             return Label(Area(name, x, y, width, height, parent), value, size, color ?? Ink);
+        }
+
+        // Measure actual glyphs, preserving text elements (including surrogate pairs) at the cut.
+        public static void FitSingleLine(TMP_Text label, string value)
+        {
+            value = (value ?? "").Replace('\r', ' ').Replace('\n', ' ').Replace('\t', ' ');
+            label.enableAutoSizing = false;
+            label.textWrappingMode = TextWrappingModes.NoWrap;
+            label.overflowMode = TextOverflowModes.Ellipsis;
+            float width = label.rectTransform.rect.width - label.margin.x - label.margin.z;
+            if (label.GetPreferredValues(value, float.PositiveInfinity, float.PositiveInfinity).x <= width)
+            {
+                label.text = value;
+                return;
+            }
+            var starts = System.Globalization.StringInfo.ParseCombiningCharacters(value);
+            int low = 0, high = starts.Length;
+            while (low < high)
+            {
+                int mid = (low + high + 1) / 2;
+                int end = mid == starts.Length ? value.Length : starts[mid];
+                string candidate = value.Substring(0, end).TrimEnd() + "...";
+                if (label.GetPreferredValues(candidate, float.PositiveInfinity, float.PositiveInfinity).x <= width) low = mid;
+                else high = mid - 1;
+            }
+            label.text = value.Substring(0, low == starts.Length ? value.Length : starts[low]).TrimEnd() + "...";
+        }
+
+        public UnityEngine.UI.Button SetButton(string name, string setName, string details,
+            float x, float y, float width, float height, Action clicked, Transform parent = null)
+        {
+            var button = Button(name, "", x, y, width, height, clicked, parent: parent);
+            var label = button.GetComponentInChildren<TMP_Text>();
+            label.rectTransform.anchorMin = new Vector2(0, .5f);
+            label.rectTransform.offsetMin = new Vector2(18, 0);
+            label.rectTransform.offsetMax = new Vector2(-18, -5);
+            FitSingleLine(label, setName);
+            var detail = Text("Details", details, 18, height / 2, width - 36, height / 2 - 5, 24, ButtonInk, button.transform);
+            detail.alignment = TextAlignmentOptions.Midline;
+            detail.textWrappingMode = TextWrappingModes.NoWrap;
+            return button;
         }
 
         public void Panel(string name, float x, float y, float width, float height)
@@ -217,7 +306,7 @@ namespace XRDiscovery.Vocabulary
             var labelRect = Rect("Label", rect, Vector2.zero, Vector2.one);
             labelRect.offsetMin = new Vector2(18, 5);
             labelRect.offsetMax = new Vector2(-18, -5);
-            var text = Label(labelRect, label, 28, ButtonInk);
+            var text = Label(labelRect, System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(label), 28, ButtonInk);
             text.alignment = TextAlignmentOptions.Midline;
             text.enableAutoSizing = true;
             text.fontSizeMin = 20;
@@ -225,12 +314,21 @@ namespace XRDiscovery.Vocabulary
             return button;
         }
 
+        public void UpdateButton(UnityEngine.UI.Button button, string label, bool primary = false, bool enabled = true)
+        {
+            button.GetComponentInChildren<TMP_Text>().text = System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(label);
+            var colors = button.colors;
+            colors.normalColor = primary ? Accent : Secondary;
+            button.colors = colors;
+            button.interactable = enabled;
+        }
+
         public UnityEngine.UI.Button MenuButton(string name, string title, string description,
             float x, float y, float width, float height, Action clicked)
         {
             var button = Button(name, "", x, y, width, height, clicked, true);
             // Noto Sans JP needs more than 60 units of line height at this size.
-            var titleText = Text("Title", title, 20, 20, width - 40, 80, 42, ButtonInk, button.transform);
+            var titleText = Text("Title", System.Globalization.CultureInfo.InvariantCulture.TextInfo.ToTitleCase(title), 20, 20, width - 40, 80, 42, ButtonInk, button.transform);
             titleText.alignment = TextAlignmentOptions.Center;
             titleText.textWrappingMode = TextWrappingModes.NoWrap;
             var descriptionText = Text("Description", description, 20, 120, width - 40, 75, 24,
@@ -240,7 +338,7 @@ namespace XRDiscovery.Vocabulary
         }
 
         public TMP_InputField Input(string name, string value, string placeholder, float x, float y,
-            float width, Action<string> changed)
+            float width, Action<string> changed, int characterLimit = 80)
         {
             var rect = Area(name, x, y, width, 60);
             var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
@@ -261,7 +359,7 @@ namespace XRDiscovery.Vocabulary
             field.placeholder = placeholderText;
             field.fontAsset = font;
             field.lineType = TMP_InputField.LineType.SingleLine;
-            field.characterLimit = 80;
+            field.characterLimit = characterLimit;
             field.richText = false;
             field.text = value;
             field.onValueChanged.AddListener(s => changed?.Invoke(s));
